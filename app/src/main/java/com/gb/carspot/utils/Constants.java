@@ -27,4 +27,14 @@ public class Constants
 
     public static final int TYPE_HEADER = 0;
     public static final int TYPE_ITEM = 1;
+
+    // Database Stuff
+    public static final String COLLECTION_USERS = "";
+    public static final String COLLECTION_LICENSE_PLATES = "";
+    public static final String COLLECTION_TICKETS = "";
+
+
+
+
+
 }

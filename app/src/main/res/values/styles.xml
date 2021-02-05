@@ -69,9 +69,17 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="EditTextBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
-        <item name="boxStrokeColor">?colorPrimaryVariant</item>
-        <item name="hintTextColor">?colorSecondary</item>
+        <item name="boxStrokeErrorColor">@color/colorError</item>
+        <item name="boxStrokeColor">@color/colorPrimaryVariantLight</item>
+        <item name="hintTextColor">@color/colorSecondary</item>
         <item name="android:textColorHint">@color/black_50</item>
+    </style>
+
+    <style name="ButtonToggleOutlined" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeWidth">1.5dp</item>
+        <item name="strokeColor">@color/colorSecondaryLight</item>
+        <item name="rippleColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/colorOnBackground</item>
     </style>
 
     <style name="ButtonOutlined" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
@@ -79,6 +87,13 @@
         <item name="strokeColor">@color/buttonOutline</item>
         <item name="rippleColor">@color/buttonRipple</item>
         <item name="android:textColor">@color/buttonText</item>
+    </style>
+
+    <style name="ButtonOutlined2" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/buttonText</item>
+        <item name="rippleColor">@color/buttonText</item>
+        <item name="android:textColor">@color/buttonOutline</item>
     </style>
 
     <style name="About.Title.Text" parent="TextAppearance.MaterialComponents.Headline1">
