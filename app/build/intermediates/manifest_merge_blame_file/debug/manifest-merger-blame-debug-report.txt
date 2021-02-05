@@ -16,165 +16,192 @@
 12    <uses-permission android:name="android.permission.VIBRATE" />
 12-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:6:5-66
 12-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:6:22-63
-13    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-13-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:23:5-79
-13-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:23:22-76
-14    <uses-permission android:name="android.permission.WAKE_LOCK" />
-14-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:24:5-68
-14-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:24:22-65
-15    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
-15-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:26:5-110
-15-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:26:22-107
+13
+14    <!-- Include required permissions for Google Maps API to run. -->
+15    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+15-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\5ef8e64c0651f2c33189ccae2c75b60e\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:5-79
+15-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\5ef8e64c0651f2c33189ccae2c75b60e\jetified-play-services-maps-17.0.0\AndroidManifest.xml:23:22-76
 16
-17    <application
-17-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:8:5-33:19
-18        android:allowBackup="true"
-18-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:9:9-35
-19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-19-->[androidx.core:core:1.3.1] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c02b395648618b23d4259efa5af8033d\core-1.3.1\AndroidManifest.xml:24:18-86
-20        android:debuggable="true"
-21        android:extractNativeLibs="false"
-22        android:icon="@mipmap/ic_launcher"
-22-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:10:9-43
-23        android:label="@string/app_name"
-23-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:11:9-41
-24        android:roundIcon="@mipmap/ic_launcher_round"
-24-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:12:9-54
-25        android:supportsRtl="true"
-25-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:13:9-35
-26        android:testOnly="true"
-27        android:theme="@style/AppTheme"
-27-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:14:9-40
-28        android:usesCleartextTraffic="true" >
-28-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:15:9-44
-29        <activity
-29-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:17:9-26:20
-30            android:name="com.gb.carspot.activities.LoginActivity"
-30-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:18:13-53
-31            android:launchMode="singleTop"
-31-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:19:13-43
-32            android:theme="@style/AppTheme.NoActionBar" >
-32-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:20:13-56
-33            <intent-filter>
-33-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:21:13-25:29
-34                <action android:name="android.intent.action.MAIN" />
-34-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:22:17-69
-34-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:22:25-66
-35
-36                <category android:name="android.intent.category.LAUNCHER" />
-36-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:24:17-77
-36-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:24:27-74
-37            </intent-filter>
-38        </activity>
-39        <activity
-39-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:28:9-31:59
-40            android:name="com.gb.carspot.activities.MainActivity"
-40-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:29:13-52
-41            android:launchMode="singleTop"
-41-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:30:13-43
-42            android:theme="@style/AppTheme.NoActionBar" />
-42-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:31:13-56
-43
-44        <provider
-44-->[com.squareup.picasso:picasso:2.71828] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\8508859b5459b26f4788669888d89cef\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
-45            android:name="com.squareup.picasso.PicassoProvider"
-45-->[com.squareup.picasso:picasso:2.71828] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\8508859b5459b26f4788669888d89cef\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
-46            android:authorities="com.gb.carspot.com.squareup.picasso"
-46-->[com.squareup.picasso:picasso:2.71828] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\8508859b5459b26f4788669888d89cef\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
-47            android:exported="false" />
-47-->[com.squareup.picasso:picasso:2.71828] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\8508859b5459b26f4788669888d89cef\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
-48
-49        <service
-49-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:27:9-33:19
-50            android:name="com.google.firebase.components.ComponentDiscoveryService"
-50-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:28:13-84
-51            android:directBootAware="true"
-51-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:35:13-43
-52            android:exported="false" >
-52-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:29:13-37
-53            <meta-data
-53-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:30:13-32:85
-54                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
-54-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:31:17-139
-55                android:value="com.google.firebase.components.ComponentRegistrar" />
-55-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:32:17-82
-56            <meta-data
-56-->[com.google.firebase:firebase-installations:16.3.5] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\67c82d86d1e06f07e6590f7b1d0679af\jetified-firebase-installations-16.3.5\AndroidManifest.xml:18:13-20:85
-57                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
-57-->[com.google.firebase:firebase-installations:16.3.5] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\67c82d86d1e06f07e6590f7b1d0679af\jetified-firebase-installations-16.3.5\AndroidManifest.xml:19:17-127
-58                android:value="com.google.firebase.components.ComponentRegistrar" />
-58-->[com.google.firebase:firebase-installations:16.3.5] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\67c82d86d1e06f07e6590f7b1d0679af\jetified-firebase-installations-16.3.5\AndroidManifest.xml:20:17-82
-59            <!--
-60                This registrar is not defined in the dynamic-module-support sdk itself to allow non-firebase
-61                clients to use it as well, by defining this registrar in their own core/common library.
-62            -->
-63            <meta-data
-63-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:43:13-45:85
-64                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
-64-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:44:17-121
-65                android:value="com.google.firebase.components.ComponentRegistrar" />
-65-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:45:17-82
-66        </service>
-67
-68        <provider
-68-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:26:9-31:39
-69            android:name="com.google.firebase.provider.FirebaseInitProvider"
-69-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:27:13-77
-70            android:authorities="com.gb.carspot.firebaseinitprovider"
-70-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:28:13-72
-71            android:directBootAware="true"
-71-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:29:13-43
-72            android:exported="false"
-72-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:30:13-37
-73            android:initOrder="100" />
-73-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:31:13-36
-74
-75        <receiver
-75-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:29:9-33:20
-76            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
-76-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:30:13-85
-77            android:enabled="true"
-77-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:31:13-35
-78            android:exported="false" >
-78-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:32:13-37
-79        </receiver>
-80
-81        <service
-81-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:35:9-38:40
-82            android:name="com.google.android.gms.measurement.AppMeasurementService"
-82-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:36:13-84
-83            android:enabled="true"
-83-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:37:13-35
-84            android:exported="false" />
-84-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:38:13-37
-85        <service
-85-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:39:9-43:72
-86            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
-86-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:40:13-87
-87            android:enabled="true"
-87-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:41:13-35
-88            android:exported="false"
-88-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:42:13-37
-89            android:permission="android.permission.BIND_JOB_SERVICE" />
-89-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:43:13-69
-90
-91        <meta-data
-91-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\a0220e926a485afac34731f9baf91ae5\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
-92            android:name="com.google.android.gms.version"
-92-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\a0220e926a485afac34731f9baf91ae5\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
-93            android:value="@integer/google_play_services_version" />
-93-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\a0220e926a485afac34731f9baf91ae5\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
-94
-95        <provider
-95-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\906adcd43c9c23aec99fd30778534b42\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
-96            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
-96-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\906adcd43c9c23aec99fd30778534b42\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
-97            android:authorities="com.gb.carspot.lifecycle-process"
-97-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\906adcd43c9c23aec99fd30778534b42\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
-98            android:exported="false"
-98-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\906adcd43c9c23aec99fd30778534b42\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
-99            android:multiprocess="true" />
-99-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\906adcd43c9c23aec99fd30778534b42\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
-100    </application>
-101
-102</manifest>
+17    <uses-feature
+17-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\5ef8e64c0651f2c33189ccae2c75b60e\jetified-play-services-maps-17.0.0\AndroidManifest.xml:26:5-28:35
+18        android:glEsVersion="0x00020000"
+18-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\5ef8e64c0651f2c33189ccae2c75b60e\jetified-play-services-maps-17.0.0\AndroidManifest.xml:27:9-41
+19        android:required="true" />
+19-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\5ef8e64c0651f2c33189ccae2c75b60e\jetified-play-services-maps-17.0.0\AndroidManifest.xml:28:9-32
+20
+21    <uses-permission android:name="android.permission.WAKE_LOCK" />
+21-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:24:5-68
+21-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:24:22-65
+22    <uses-permission android:name="com.google.android.finsky.permission.BIND_GET_INSTALL_REFERRER_SERVICE" />
+22-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:26:5-110
+22-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:26:22-107
+23
+24    <application
+24-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:8:5-33:19
+25        android:allowBackup="true"
+25-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:9:9-35
+26        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+26-->[androidx.core:core:1.3.1] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c02b395648618b23d4259efa5af8033d\core-1.3.1\AndroidManifest.xml:24:18-86
+27        android:debuggable="true"
+28        android:extractNativeLibs="false"
+29        android:icon="@mipmap/ic_launcher"
+29-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:10:9-43
+30        android:label="@string/app_name"
+30-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:11:9-41
+31        android:roundIcon="@mipmap/ic_launcher_round"
+31-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:12:9-54
+32        android:supportsRtl="true"
+32-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:13:9-35
+33        android:testOnly="true"
+34        android:theme="@style/AppTheme"
+34-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:14:9-40
+35        android:usesCleartextTraffic="true" >
+35-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:15:9-44
+36        <activity
+36-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:17:9-26:20
+37            android:name="com.gb.carspot.activities.LoginActivity"
+37-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:18:13-53
+38            android:launchMode="singleTop"
+38-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:19:13-43
+39            android:theme="@style/AppTheme.NoActionBar" >
+39-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:20:13-56
+40            <intent-filter>
+40-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:21:13-25:29
+41                <action android:name="android.intent.action.MAIN" />
+41-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:22:17-69
+41-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:22:25-66
+42
+43                <category android:name="android.intent.category.LAUNCHER" />
+43-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:24:17-77
+43-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:24:27-74
+44            </intent-filter>
+45        </activity>
+46        <activity
+46-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:28:9-31:59
+47            android:name="com.gb.carspot.activities.MainActivity"
+47-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:29:13-52
+48            android:launchMode="singleTop"
+48-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:30:13-43
+49            android:theme="@style/AppTheme.NoActionBar" />
+49-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:31:13-56
+50
+51        <!-- Needs to be explicitly declared on P+ -->
+52        <uses-library
+52-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\5ef8e64c0651f2c33189ccae2c75b60e\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40
+53            android:name="org.apache.http.legacy"
+53-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\5ef8e64c0651f2c33189ccae2c75b60e\jetified-play-services-maps-17.0.0\AndroidManifest.xml:34:13-50
+54            android:required="false" />
+54-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\5ef8e64c0651f2c33189ccae2c75b60e\jetified-play-services-maps-17.0.0\AndroidManifest.xml:35:13-37
+55
+56        <provider
+56-->[com.squareup.picasso:picasso:2.71828] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\8508859b5459b26f4788669888d89cef\jetified-picasso-2.71828\AndroidManifest.xml:8:9-11:40
+57            android:name="com.squareup.picasso.PicassoProvider"
+57-->[com.squareup.picasso:picasso:2.71828] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\8508859b5459b26f4788669888d89cef\jetified-picasso-2.71828\AndroidManifest.xml:9:13-64
+58            android:authorities="com.gb.carspot.com.squareup.picasso"
+58-->[com.squareup.picasso:picasso:2.71828] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\8508859b5459b26f4788669888d89cef\jetified-picasso-2.71828\AndroidManifest.xml:10:13-72
+59            android:exported="false" />
+59-->[com.squareup.picasso:picasso:2.71828] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\8508859b5459b26f4788669888d89cef\jetified-picasso-2.71828\AndroidManifest.xml:11:13-37
+60
+61        <service
+61-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:27:9-33:19
+62            android:name="com.google.firebase.components.ComponentDiscoveryService"
+62-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:28:13-84
+63            android:directBootAware="true"
+63-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:35:13-43
+64            android:exported="false" >
+64-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:29:13-37
+65            <meta-data
+65-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:30:13-32:85
+66                android:name="com.google.firebase.components:com.google.firebase.analytics.connector.internal.AnalyticsConnectorRegistrar"
+66-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:31:17-139
+67                android:value="com.google.firebase.components.ComponentRegistrar" />
+67-->[com.google.android.gms:play-services-measurement-api:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\0910c86630cae20f7c7ec9f7f5b5529f\jetified-play-services-measurement-api-18.0.2\AndroidManifest.xml:32:17-82
+68            <meta-data
+68-->[com.google.firebase:firebase-installations:16.3.5] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\67c82d86d1e06f07e6590f7b1d0679af\jetified-firebase-installations-16.3.5\AndroidManifest.xml:18:13-20:85
+69                android:name="com.google.firebase.components:com.google.firebase.installations.FirebaseInstallationsRegistrar"
+69-->[com.google.firebase:firebase-installations:16.3.5] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\67c82d86d1e06f07e6590f7b1d0679af\jetified-firebase-installations-16.3.5\AndroidManifest.xml:19:17-127
+70                android:value="com.google.firebase.components.ComponentRegistrar" />
+70-->[com.google.firebase:firebase-installations:16.3.5] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\67c82d86d1e06f07e6590f7b1d0679af\jetified-firebase-installations-16.3.5\AndroidManifest.xml:20:17-82
+71            <!--
+72                This registrar is not defined in the dynamic-module-support sdk itself to allow non-firebase
+73                clients to use it as well, by defining this registrar in their own core/common library.
+74            -->
+75            <meta-data
+75-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:43:13-45:85
+76                android:name="com.google.firebase.components:com.google.firebase.dynamicloading.DynamicLoadingRegistrar"
+76-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:44:17-121
+77                android:value="com.google.firebase.components.ComponentRegistrar" />
+77-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:45:17-82
+78        </service>
+79
+80        <provider
+80-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:26:9-31:39
+81            android:name="com.google.firebase.provider.FirebaseInitProvider"
+81-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:27:13-77
+82            android:authorities="com.gb.carspot.firebaseinitprovider"
+82-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:28:13-72
+83            android:directBootAware="true"
+83-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:29:13-43
+84            android:exported="false"
+84-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:30:13-37
+85            android:initOrder="100" />
+85-->[com.google.firebase:firebase-common:19.5.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\c97c421c7083c1393f5889b5cc2c5043\jetified-firebase-common-19.5.0\AndroidManifest.xml:31:13-36
+86
+87        <activity
+87-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\72fe7bbf8b1c14f1971af403fa755e9f\jetified-play-services-base-17.0.0\AndroidManifest.xml:23:9-26:75
+88            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+88-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\72fe7bbf8b1c14f1971af403fa755e9f\jetified-play-services-base-17.0.0\AndroidManifest.xml:24:13-79
+89            android:exported="false"
+89-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\72fe7bbf8b1c14f1971af403fa755e9f\jetified-play-services-base-17.0.0\AndroidManifest.xml:25:13-37
+90            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+90-->[com.google.android.gms:play-services-base:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\72fe7bbf8b1c14f1971af403fa755e9f\jetified-play-services-base-17.0.0\AndroidManifest.xml:26:13-72
+91
+92        <receiver
+92-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:29:9-33:20
+93            android:name="com.google.android.gms.measurement.AppMeasurementReceiver"
+93-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:30:13-85
+94            android:enabled="true"
+94-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:31:13-35
+95            android:exported="false" >
+95-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:32:13-37
+96        </receiver>
+97
+98        <service
+98-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:35:9-38:40
+99            android:name="com.google.android.gms.measurement.AppMeasurementService"
+99-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:36:13-84
+100            android:enabled="true"
+100-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:37:13-35
+101            android:exported="false" />
+101-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:38:13-37
+102        <service
+102-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:39:9-43:72
+103            android:name="com.google.android.gms.measurement.AppMeasurementJobService"
+103-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:40:13-87
+104            android:enabled="true"
+104-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:41:13-35
+105            android:exported="false"
+105-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:42:13-37
+106            android:permission="android.permission.BIND_JOB_SERVICE" />
+106-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:43:13-69
+107
+108        <meta-data
+108-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\a0220e926a485afac34731f9baf91ae5\jetified-play-services-basement-17.0.0\AndroidManifest.xml:23:9-25:69
+109            android:name="com.google.android.gms.version"
+109-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\a0220e926a485afac34731f9baf91ae5\jetified-play-services-basement-17.0.0\AndroidManifest.xml:24:13-58
+110            android:value="@integer/google_play_services_version" />
+110-->[com.google.android.gms:play-services-basement:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\a0220e926a485afac34731f9baf91ae5\jetified-play-services-basement-17.0.0\AndroidManifest.xml:25:13-66
+111
+112        <provider
+112-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\906adcd43c9c23aec99fd30778534b42\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:25:9-29:43
+113            android:name="androidx.lifecycle.ProcessLifecycleOwnerInitializer"
+113-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\906adcd43c9c23aec99fd30778534b42\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:26:13-79
+114            android:authorities="com.gb.carspot.lifecycle-process"
+114-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\906adcd43c9c23aec99fd30778534b42\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:27:13-69
+115            android:exported="false"
+115-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\906adcd43c9c23aec99fd30778534b42\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:28:13-37
+116            android:multiprocess="true" />
+116-->[androidx.lifecycle:lifecycle-process:2.2.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\906adcd43c9c23aec99fd30778534b42\jetified-lifecycle-process-2.2.0\AndroidManifest.xml:29:13-40
+117    </application>
+118
+119</manifest>
