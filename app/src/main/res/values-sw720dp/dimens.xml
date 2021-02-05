@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="app_bar_view_height">100dp</dimen>
+    <dimen name="bottom_nav_view_height">60dp</dimen>
+    <dimen name="toolbar_view_height">60dp</dimen>
+    <dimen name="home_logo_margin">12dp</dimen>
+
+    <dimen name="preview_card_width">350dp</dimen>
+    <dimen name="preview_card_image_height">220dp</dimen>
+    <dimen name="preview_card_image_radius">6dp</dimen>
+    <dimen name="preview_card_image_elevation">2dp</dimen>
+
+    <dimen name="match_constraint">0dp</dimen>
+
+    <!--    Margins-->
+    <dimen name="margin_2">8dp</dimen>
+    <dimen name="margin_4">10dp</dimen>
+    <dimen name="margin_6">12dp</dimen>
+    <dimen name="margin_8">14dp</dimen>
+    <dimen name="margin_16">22dp</dimen>
+    <dimen name="margin_24">30dp</dimen>
+    <dimen name="margin_32">38dp</dimen>
+
+    <!--    Text Sizes-->
+
+    <dimen name="about_title_text">30sp</dimen>
+    <dimen name="about_by_text">26sp</dimen>
+    <dimen name="about_author_text">34sp</dimen>
+    <dimen name="about_email_text">26sp</dimen>
+    <dimen name="about_version_text">22sp</dimen>
+
+</resources>

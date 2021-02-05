@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!--DARK COLOR THEME-->
+
+    <color name="colorPrimary">#1930C3</color>
+    <color name="colorPrimaryLight">#4CB1FF</color>
+    <color name="colorPrimaryDark">#11259E</color>
+
+    <color name="colorPrimaryVariant">#FF00398E</color>
+    <color name="colorPrimaryVariantLight">#2475ED</color>
+
+    <color name="colorSecondary">#FF008C77</color>
+    <color name="colorSecondaryLight">#1BE1C3</color>
+    <color name="colorSecondaryDark">#016153</color>
+    <color name="colorSecondaryVariant">#389788</color>
+
+    <color name="colorAccent">#4E33C8</color>
+    <color name="colorAccentLight">#8977DD</color>
+
+    <color name="colorBackground">@color/black_85</color>>
+    <color name="colorSurface">@color/black_80</color>
+
+    <color name="colorOnPrimary">#ffffff</color>
+    <color name="colorOnSecondary">#ffffff</color>
+    <color name="colorOnBackground">@color/black_5</color>
+    <color name="colorOnBackgroundSecondary">@color/black_25</color>
+    <color name="colorOnError">#ffffff</color>
+    <color name="colorOnSurface">#ffffff</color>
+    <color name="colorError">#B00000</color>
+
+    <color name="primaryBackground">@color/black_10</color>
+    <color name="secondaryBackground">@color/white</color>
+    <color name="roundIconBackground">#FFFFFF</color>
+
+    <color name="statusBarBg">@color/colorPrimary</color>
+    <color name="toolbarBg">@color/colorSecondary</color>
+    <color name="navigationBarColor">@color/colorPrimary</color>
+
+    <color name="bottomNavBg">@color/colorSecondary</color>
+    <color name="navIcon">@color/colorPrimaryLight</color>
+    <color name="navIconSelected">@color/white</color>
+
+    <color name="buttonOutline">@color/colorSecondary</color>
+    <color name="buttonText">@color/colorPrimary</color>
+    <color name="buttonRipple">@color/colorSecondary</color>
+
+    <color name="aboutTitleText">@color/colorOnBackground</color>
+    <color name="aboutByText">@color/colorOnBackground</color>
+    <color name="aboutAuthorText">@color/colorPrimaryVariantLight</color>
+    <color name="aboutVersionText">@color/colorOnBackgroundSecondary</color>
+    <color name="aboutStudentText">@color/colorPrimaryLight</color>
+    <color name="aboutCloseButton">@color/colorSecondary</color>
+
+    <color name="mtrl_textinput_default_box_stroke_color" tools:ignore="PrivateResource">@color/colorSecondaryLight</color>
+</resources>

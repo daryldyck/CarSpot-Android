@@ -1,0 +1,131 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="android:colorBackground">@color/colorBackground</item>
+        <item name="colorError">@color/colorError</item>
+
+        <item name="android:statusBarColor" tools:targetApi="21">@color/statusBarBg</item>
+        <item name="android:autofilledHighlight" tools:targetApi="26">@color/transparent</item>
+        <item name="android:navigationBarColor" tools:targetApi="21">@color/navigationBarColor</item>
+
+        <item name="actionBarSize">@dimen/toolbar_view_height</item>
+
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorSecondaryVariant">@color/colorSecondaryVariant</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorOnError">@color/colorOnError</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+
+        <!-- enable window content transitions -->
+        <item name="android:windowActivityTransitions" tools:targetApi="21">true</item>
+        <item name="android:windowContentTransitions" tools:targetApi="21">true</item>
+
+        <item name="android:windowEnterTransition" tools:targetApi="21">@transition/fade</item>
+        <item name="android:windowExitTransition" tools:targetApi="21">@transition/fade</item>
+        <item name="android:windowReenterTransition" tools:targetApi="21">@transition/fade</item>
+
+        <item name="android:windowSharedElementEnterTransition" tools:targetApi="21">@transition/fade</item>
+        <item name="android:windowSharedElementExitTransition" tools:targetApi="21">@transition/fade</item>
+
+        <item name="android:fragmentEnterTransition" tools:targetApi="21">@transition/slide_bottom</item>
+        <item name="android:fragmentExitTransition" tools:targetApi="21">@android:transition/fade</item>
+        <item name="android:fragmentReenterTransition" tools:targetApi="21">@android:transition/fade</item>
+
+        <item name="android:fragmentSharedElementEnterTransition" tools:targetApi="21">@transition/move</item>
+        <item name="android:fragmentSharedElementReturnTransition" tools:targetApi="21">@transition/move</item>
+
+    </style>
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <!-- enable window content transitions -->
+
+        <item name="android:windowActivityTransitions" tools:targetApi="21">true</item>
+        <item name="android:windowContentTransitions" tools:targetApi="21">true</item>
+
+        <item name="android:windowEnterTransition" tools:targetApi="21">@transition/fade</item>
+        <item name="android:windowExitTransition" tools:targetApi="21">@transition/fade</item>
+        <item name="android:windowReenterTransition" tools:targetApi="21">@transition/fade</item>
+
+        <item name="android:windowSharedElementEnterTransition" tools:targetApi="21">@transition/fade</item>
+        <item name="android:windowSharedElementExitTransition" tools:targetApi="21">@transition/fade</item>
+
+        <item name="android:fragmentEnterTransition" tools:targetApi="21">@transition/slide_bottom</item>
+        <item name="android:fragmentExitTransition" tools:targetApi="21">@android:transition/fade</item>
+        <item name="android:fragmentReenterTransition" tools:targetApi="21">@android:transition/fade</item>
+
+        <item name="android:fragmentSharedElementEnterTransition" tools:targetApi="21">@transition/move</item>
+        <item name="android:fragmentSharedElementReturnTransition" tools:targetApi="21">@transition/move</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="EditTextBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">?colorPrimaryVariant</item>
+        <item name="hintTextColor">?colorSecondary</item>
+        <item name="android:textColorHint">@color/black_50</item>
+    </style>
+
+    <style name="ButtonOutlined" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="strokeWidth">2dp</item>
+        <item name="strokeColor">@color/buttonOutline</item>
+        <item name="rippleColor">@color/buttonRipple</item>
+        <item name="android:textColor">@color/buttonText</item>
+    </style>
+
+    <style name="About.Title.Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">@dimen/about_title_text</item>
+        <item name="android:textColor">@color/aboutTitleText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="About.By.Text" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:textSize">@dimen/about_by_text</item>
+        <item name="android:textColor">@color/aboutByText</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="About.Author.Text" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">@dimen/about_author_text</item>
+        <item name="android:textColor">@color/aboutAuthorText</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="About.Student.Text" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:textSize">@dimen/about_email_text</item>
+        <item name="android:textColor">@color/aboutStudentText</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="About.Version.Text" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="android:textSize">@dimen/about_version_text</item>
+        <item name="android:textColor">@color/aboutVersionText</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="AlertDialogFullScreen" parent="AppTheme">
+        <item name="windowFixedWidthMajor">90%</item>
+        <item name="windowFixedWidthMinor">90%</item>
+        <item name="android:layout_gravity">center</item>
+        <item name="android:windowAnimationStyle">@style/DialogAnimation</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.7</item>
+    </style>
+
+    <style name="DialogAnimation">
+        <item name="android:duration">5000</item>
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
+
+</resources>

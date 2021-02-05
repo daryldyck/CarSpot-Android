@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "412567971281",
+    "project_id": "carspot-gb",
+    "storage_bucket": "carspot-gb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:412567971281:android:a5bffb36fd14c8b5892cf0",
+        "android_client_info": {
+          "package_name": "com.gb.carspot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "412567971281-i8om75jh9fn5t25goiqgbmb12to7rge7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeABq3yfHBI4-ag0gs_7wKfhNsjuRcst0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "412567971281-i8om75jh9fn5t25goiqgbmb12to7rge7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

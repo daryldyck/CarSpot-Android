@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">412567971281-i8om75jh9fn5t25goiqgbmb12to7rge7.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">412567971281</string>
+    <string name="google_api_key" translatable="false">AIzaSyDeABq3yfHBI4-ag0gs_7wKfhNsjuRcst0</string>
+    <string name="google_app_id" translatable="false">1:412567971281:android:a5bffb36fd14c8b5892cf0</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDeABq3yfHBI4-ag0gs_7wKfhNsjuRcst0</string>
+    <string name="google_storage_bucket" translatable="false">carspot-gb.appspot.com</string>
+    <string name="project_id" translatable="false">carspot-gb</string>
+</resources>

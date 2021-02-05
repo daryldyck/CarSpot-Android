@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Car Spot</string>
+
+    <string name="theme_light">Light theme</string>
+    <string name="theme_dark">Dark theme</string>
+    <string name="theme_default">System default</string>
+
+    <string name="about">About</string>
+    <string name="close">Close</string>
+    <string name="by">By</string>
+    <string name="version_">Version:</string>
+    <string name="purchase">Purchase</string>
+    <string name="profile">Profile</string>
+    <string name="history">History</string>
+
+    <string name="daryl_dyck">Daryl Dyck</string>
+    <string name="student_no_daryl">101338429</string>
+    <string name="brian_domingo">Brian Domingo</string>
+    <string name="student_no_brian">101330689</string>
+    <string name="logout">Logout</string>
+    <string name="login">Login</string>
+
+</resources>
