@@ -22,7 +22,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede69f89-9403-489f-aaa7-7b77527263b1" name="Default Changelist" comment="Initial Commit" />
+    <list default="true" id="ede69f89-9403-489f-aaa7-7b77527263b1" name="Default Changelist" comment="Initial Commit">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -276,14 +278,14 @@
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
     <state x="1157" y="311" key="FileChooserDialogImpl/0.0.2752.1112/3440.358.1536.824@0.0.2752.1112" timestamp="1612540630568" />
-    <state x="1252" y="453" width="341" height="205" key="Github.ShareDialog" timestamp="1612540446802">
+    <state x="1252" y="453" width="341" height="205" key="Github.ShareDialog" timestamp="1612541951703">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state x="1252" y="453" width="341" height="205" key="Github.ShareDialog/0.0.2752.1112/3440.358.1536.824@0.0.2752.1112" timestamp="1612540446802" />
-    <state x="1052" y="262" key="Github.UntrackedFilesDialog" timestamp="1612540471329">
+    <state x="1252" y="453" width="341" height="205" key="Github.ShareDialog/0.0.2752.1112/3440.358.1536.824@0.0.2752.1112" timestamp="1612541951703" />
+    <state x="1052" y="262" key="Github.UntrackedFilesDialog" timestamp="1612541974232">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
-    <state x="1052" y="262" key="Github.UntrackedFilesDialog/0.0.2752.1112/3440.358.1536.824@0.0.2752.1112" timestamp="1612540471329" />
+    <state x="1052" y="262" key="Github.UntrackedFilesDialog/0.0.2752.1112/3440.358.1536.824@0.0.2752.1112" timestamp="1612541974232" />
     <state width="2707" height="293" key="GridCell.Tab.0.bottom" timestamp="1612478854287">
       <screen x="0" y="0" width="2752" height="1112" />
     </state>
