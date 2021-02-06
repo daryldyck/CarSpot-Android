@@ -77,23 +77,93 @@
 
     <style name="ButtonToggleOutlined" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
         <item name="strokeWidth">1.5dp</item>
-        <item name="strokeColor">@color/colorSecondaryLight</item>
-        <item name="rippleColor">@color/colorPrimary</item>
-        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="strokeColor">@color/button_selected_color</item>
+        <item name="rippleColor">@color/buttonSelected</item>
+        <item name="android:textColor">@color/colorOnBackgroundSecondary</item>
     </style>
 
     <style name="ButtonOutlined" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="strokeWidth">2dp</item>
+        <item name="strokeWidth">1.5dp</item>
         <item name="strokeColor">@color/buttonOutline</item>
         <item name="rippleColor">@color/buttonRipple</item>
         <item name="android:textColor">@color/buttonText</item>
     </style>
 
     <style name="ButtonOutlined2" parent="@style/Widget.MaterialComponents.Button.OutlinedButton">
-        <item name="strokeWidth">2dp</item>
-        <item name="strokeColor">@color/buttonText</item>
-        <item name="rippleColor">@color/buttonText</item>
-        <item name="android:textColor">@color/buttonOutline</item>
+        <item name="strokeWidth">1.5dp</item>
+        <item name="strokeColor">@color/button_enabled_color</item>
+        <item name="rippleColor">@color/buttonSelected</item>
+        <item name="android:textColor">@color/text_enabled_color</item>
+    </style>
+
+    <style name="TicketHistory.Address.Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TicketHistory.Purchased.Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TicketHistory.Date.Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorOnBackgroundSecondary</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TicketHistory.Length.Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">22sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TicketDetails.Address.Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TicketDetails.Address2.Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorSecondary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TicketDetails.Subtitle.Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TicketDetails.Value.Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TicketDetails.License.Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorSecondaryVariant</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
+    </style>
+
+    <style name="TicketDetails.Length.Text" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="android:textSize">26sp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:typeface">sans</item>
     </style>
 
     <style name="About.Title.Text" parent="TextAppearance.MaterialComponents.Headline1">

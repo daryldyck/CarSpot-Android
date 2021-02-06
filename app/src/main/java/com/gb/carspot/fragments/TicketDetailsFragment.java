@@ -5,16 +5,22 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.transition.TransitionInflater;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.gb.carspot.R;
 import com.gb.carspot.activities.MainActivity;
+import com.gb.carspot.models.ParkingTicket;
+import com.gb.carspot.viewmodels.TicketDetailsFragmentViewModel;
+import com.google.android.gms.maps.MapView;
 
 import static com.gb.carspot.utils.Constants.ACTION_DISPLAY_BACK_BUTTON;
+import static com.gb.carspot.utils.Constants.EXTRA_PARKING_TICKET;
 import static com.gb.carspot.utils.Constants.INITIAL_FRAGMENT_LOAD;
 
 /**
@@ -26,6 +32,18 @@ public class TicketDetailsFragment extends Fragment
 {
     private final String TAG = getClass().getCanonicalName();
     private View rootView;
+    private TicketDetailsFragmentViewModel viewModel;
+
+    private MapView mapView;
+    private TextView address;
+    private TextView address2;
+    private TextView buildingCode;
+    private TextView aptNo;
+    private TextView date;
+    private TextView start;
+    private TextView end;
+    private TextView license;
+    private TextView length;
 
     // used to track first load of fragment
     private boolean initialFragmentLoad = true;
@@ -34,15 +52,20 @@ public class TicketDetailsFragment extends Fragment
     {
     }
 
-    public static TicketDetailsFragment newInstance()
+    public static TicketDetailsFragment newInstance(ParkingTicket parkingTicket)
     {
-        return new TicketDetailsFragment();
+        TicketDetailsFragment fragment = new TicketDetailsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(EXTRA_PARKING_TICKET, parkingTicket);
+        fragment.setArguments(bundle);
+        return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(TicketDetailsFragmentViewModel.class);
 
         // set fragment animations
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
@@ -57,7 +80,7 @@ public class TicketDetailsFragment extends Fragment
         // load values from saved state
         if (savedInstanceState != null)
         {
-            initialFragmentLoad = savedInstanceState.getBoolean(INITIAL_FRAGMENT_LOAD);
+            viewModel.setParkingTicket((ParkingTicket) getArguments().getSerializable(EXTRA_PARKING_TICKET));
         }
     }
 
@@ -73,7 +96,32 @@ public class TicketDetailsFragment extends Fragment
     // setup and load fields with ticket data
     private void setup()
     {
+        if (getContext() != null)
+        {
+            mapView = rootView.findViewById(R.id.mapView);
+            address = rootView.findViewById(R.id.address_textView);
+            address2 = rootView.findViewById(R.id.address2_textView);
+            buildingCode = rootView.findViewById(R.id.buildingCode_textView);
+            aptNo = rootView.findViewById(R.id.suiteNo_textView);
+            date = rootView.findViewById(R.id.dateValue_textView);
+            start = rootView.findViewById(R.id.startValue_textView);
+            end = rootView.findViewById(R.id.endValue_textView);
+            license = rootView.findViewById(R.id.license_textView);
+            length = rootView.findViewById(R.id.length_textView);
 
+            //TODO - load map
+
+            address.setText(viewModel.getParkingTicket().getLocation().getStreetAddress());
+            address2.setText(viewModel.getParkingTicket().getLocation().getCity() + ", " +
+                    viewModel.getParkingTicket().getLocation().getCountry());
+            buildingCode.setText(viewModel.getParkingTicket().getBuildingCode());
+            aptNo.setText(viewModel.getParkingTicket().getHostSuite());
+            date.setText(viewModel.getParkingTicket().getDateString());
+            start.setText(viewModel.getParkingTicket().getStartString());
+            end.setText(viewModel.getParkingTicket().getEndString());
+            license.setText(viewModel.getParkingTicket().getLicensePlate());
+            length.setText(viewModel.getParkingTicket().getLength());
+        }
     }
 
     // turn on back button in toolbar from MainActivity

@@ -309,8 +309,8 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_nav_car" />
-                            <entry key="sourceFile" value="C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\Files\icons\ic_nav_car.svg" />
+                            <entry key="outputName" value="ic_map_default" />
+                            <entry key="sourceFile" value="C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\Files\icons\ic_map_default-01.svg" />
                           </map>
                         </option>
                       </PersistentState>

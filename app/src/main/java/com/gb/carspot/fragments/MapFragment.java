@@ -6,11 +6,21 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.transition.TransitionInflater;
 
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.widget.Button;
+import android.widget.Spinner;
 
 import com.gb.carspot.R;
+import com.gb.carspot.utils.Utils;
+import com.google.android.gms.maps.MapView;
+import com.google.android.material.button.MaterialButtonToggleGroup;
+import com.google.android.material.textfield.TextInputLayout;
 
 import static com.gb.carspot.utils.Constants.INITIAL_FRAGMENT_LOAD;
 
@@ -23,6 +33,16 @@ public class MapFragment extends Fragment
 {
     private final String TAG = getClass().getCanonicalName();
     private View rootView;
+    boolean okToError = false;
+
+    private MapView mapView;
+    private TextInputLayout buildingCodeTextInputLayout;
+    private TextInputLayout hostSuiteTextInputLayout;
+    private TextInputLayout addressTextInputLayout;
+    private MaterialButtonToggleGroup lengthToggleGroup;
+    private Spinner licensePlateSpinner;
+    private Button updateMapButton;
+    private Button purchaseButton;
 
     // used to track first load of fragment
     private boolean initialFragmentLoad = true;
@@ -78,9 +98,182 @@ public class MapFragment extends Fragment
     // initialize views
     private void setup()
     {
+        okToError = false;
+
         if (getContext() != null)
         {
+            // listen for views to fully load
+            rootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
+            {
+                @Override
+                public void onGlobalLayout()
+                {
+                    // enable textInput error checking
+                    okToError = true;
+                }
+            });
 
+            mapView = rootView.findViewById(R.id.mapView);
+
+            buildingCodeTextInputLayout = rootView.findViewById(R.id.buildingCode_InputLayout);
+            buildingCodeTextInputLayout.getEditText().addTextChangedListener(new TextWatcher()
+            {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+                {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+                {
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable)
+                {
+                    if (okToError)
+                    {
+                        Utils.checkBuildingCode(getContext(), buildingCodeTextInputLayout);
+                    }
+                }
+            });
+
+            hostSuiteTextInputLayout = rootView.findViewById(R.id.hostSuite_InputLayout);
+            hostSuiteTextInputLayout.getEditText().addTextChangedListener(new TextWatcher()
+            {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+                {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+                {
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable)
+                {
+                    if (okToError)
+                    {
+                        Utils.checkSuiteNumber(getContext(), hostSuiteTextInputLayout);
+                    }
+                }
+            });
+
+            addressTextInputLayout = rootView.findViewById(R.id.address_InputLayout);
+            addressTextInputLayout.getEditText().addTextChangedListener(new TextWatcher()
+            {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2)
+                {
+                }
+
+                @Override
+                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2)
+                {
+                }
+
+                @Override
+                public void afterTextChanged(Editable editable)
+                {
+                    if (okToError)
+                    {
+                        purchaseButton.setEnabled(false);
+                        Utils.checkStreetAddress(getContext(), addressTextInputLayout);
+                    }
+                }
+            });
+
+            lengthToggleGroup = rootView.findViewById(R.id.length_ButtonToggleGroup);
+            lengthToggleGroup.check(R.id.length1_button);
+            Utils.setHaptic(lengthToggleGroup.getChildAt(0));
+            Utils.setHaptic(lengthToggleGroup.getChildAt(1));
+            Utils.setHaptic(lengthToggleGroup.getChildAt(2));
+            Utils.setHaptic(lengthToggleGroup.getChildAt(3));
+            lengthToggleGroup.getChildAt(0).setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    lengthToggleGroup.check(view.getId());
+                }
+            });
+            lengthToggleGroup.getChildAt(1).setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    lengthToggleGroup.check(view.getId());
+                }
+            });
+            lengthToggleGroup.getChildAt(2).setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    lengthToggleGroup.check(view.getId());
+                }
+            });
+            lengthToggleGroup.getChildAt(3).setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+                    lengthToggleGroup.check(view.getId());
+                }
+            });
+
+            licensePlateSpinner = rootView.findViewById(R.id.license_spinner);
+
+            updateMapButton = rootView.findViewById(R.id.update_button);
+            Utils.setHaptic(updateMapButton);
+            updateMapButton.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+
+                }
+            });
+
+            purchaseButton = rootView.findViewById(R.id.purchase_button);
+            Utils.setHaptic(purchaseButton);
+            purchaseButton.setOnClickListener(new View.OnClickListener()
+            {
+                @Override
+                public void onClick(View view)
+                {
+
+                    if (Utils.checkBuildingCode(getContext(), buildingCodeTextInputLayout) &&
+                            Utils.checkBuildingCode(getContext(), hostSuiteTextInputLayout) &&
+                            Utils.checkBuildingCode(getContext(), addressTextInputLayout))
+                    {
+
+                    }
+                }
+            });
         }
+    }
+
+    private int getLength()
+    {
+        int length = 1;
+        switch (lengthToggleGroup.getCheckedButtonId())
+        {
+            case R.id.length1_button:
+                length = 1;
+                break;
+            case R.id.length4_button:
+                length = 4;
+                break;
+            case R.id.length12_button:
+                length = 12;
+                break;
+            case R.id.length24_button:
+                length = 24;
+                break;
+        }
+        return length;
     }
 }

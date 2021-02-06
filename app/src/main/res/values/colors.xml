@@ -22,8 +22,8 @@
 
     <color name="colorOnPrimary">#ffffff</color>
     <color name="colorOnSecondary">#ffffff</color>
-    <color name="colorOnBackground">#202020</color>
-    <color name="colorOnBackgroundSecondary">@color/black_75</color>
+    <color name="colorOnBackground">@color/black_90</color>
+    <color name="colorOnBackgroundSecondary">@color/black_70</color>
     <color name="colorOnError">#ffffff</color>
     <color name="colorOnSurface">#ffffff</color>
     <color name="colorError">#B00000</color>
@@ -40,9 +40,12 @@
     <color name="navIcon">@color/colorPrimaryLight</color>
     <color name="navIconSelected">@color/white</color>
 
-    <color name="buttonOutline">@color/colorSecondary</color>
-    <color name="buttonText">@color/colorPrimary</color>
+    <color name="buttonOutline">@color/colorSecondaryVariant</color>
+    <color name="buttonText">@color/colorPrimaryVariantLight</color>
     <color name="buttonRipple">@color/colorSecondary</color>
+    <color name="buttonSelected">@color/colorPrimary</color>
+    <color name="buttonDisabledOutline">@color/black_40</color>
+    <color name="buttonDisabledText">@color/black_30</color>
 
     <color name="aboutTitleText">@color/colorOnBackground</color>
     <color name="aboutByText">@color/colorOnBackground</color>
@@ -80,5 +83,5 @@
     <color name="black_90">#191919</color>
     <color name="black_95">#0d0d0d</color>
 
-    <color name="mtrl_textinput_default_box_stroke_color" tools:ignore="PrivateResource">@color/colorSecondary</color>
+    <color name="mtrl_textinput_default_box_stroke_color" tools:ignore="PrivateResource">@color/colorSecondaryVariant</color>
 </resources>

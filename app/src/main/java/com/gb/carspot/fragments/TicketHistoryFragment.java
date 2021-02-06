@@ -2,13 +2,18 @@ package com.gb.carspot.fragments;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.gb.carspot.R;
+import com.gb.carspot.adapters.TicketAdapter;
+
+import java.util.Date;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionInflater;
 
@@ -23,6 +28,7 @@ public class TicketHistoryFragment extends Fragment
     private View rootView;
 
     private RecyclerView recyclerView;
+    private TicketAdapter ticketAdapter;
 
     public TicketHistoryFragment()
     {
@@ -62,7 +68,10 @@ public class TicketHistoryFragment extends Fragment
     {
         if (getContext() != null)
         {
-
+            recyclerView = rootView.findViewById(R.id.ticketHistory_recyclerView);
+            recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            ticketAdapter = new TicketAdapter(getContext());
+            recyclerView.setAdapter(ticketAdapter);
         }
     }
 }
