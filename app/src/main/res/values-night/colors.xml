@@ -43,6 +43,9 @@
     <color name="buttonOutline">@color/colorSecondary</color>
     <color name="buttonText">@color/colorPrimary</color>
     <color name="buttonRipple">@color/colorSecondary</color>
+    <color name="buttonSelected">@color/colorPrimaryLight</color>
+    <color name="buttonDisabledOutline">@color/black_60</color>
+    <color name="buttonDisabledText">@color/black_65</color>
 
     <color name="aboutTitleText">@color/colorOnBackground</color>
     <color name="aboutByText">@color/colorOnBackground</color>

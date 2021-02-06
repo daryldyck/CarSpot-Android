@@ -1045,9 +1045,13 @@ color bright_foreground_inverse_material_dark
 color bright_foreground_inverse_material_light
 color bright_foreground_material_dark
 color bright_foreground_material_light
+color buttonDisabledOutline
+color buttonDisabledText
 color buttonOutline
 color buttonRipple
+color buttonSelected
 color buttonText
+color button_enabled_color
 color button_material_dark
 color button_material_light
 color button_selected_color
@@ -1256,6 +1260,7 @@ color switch_thumb_normal_material_dark
 color switch_thumb_normal_material_light
 color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
+color text_enabled_color
 color toolbarBg
 color tooltip_background_dark
 color tooltip_background_light
@@ -1808,6 +1813,7 @@ drawable ic_icon
 drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_map_default
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
@@ -1933,8 +1939,10 @@ id action_ticket_history
 id actions
 id activity_chooser_view_content
 id add
+id address2_textView
 id address_InputLayout
 id address_textField
+id address_textView
 id adjust_height
 id adjust_width
 id alertTitle
@@ -1960,6 +1968,8 @@ id bottomNavView
 id bounce
 id buildingCode_InputLayout
 id buildingCode_textField
+id buildingCode_textView
+id building_textView
 id buttonPanel
 id cache_measures
 id cancel_action
@@ -1996,7 +2006,9 @@ id custom
 id customPanel
 id cut
 id dark
+id dateValue_textView
 id date_picker_actions
+id date_textView
 id decelerate
 id decelerateAndComplete
 id decor_content_parent
@@ -2029,7 +2041,9 @@ id edit_query
 id elastic
 id end
 id endToStart
+id endValue_textView
 id end_padder
+id end_textView
 id enterAlways
 id enterAlwaysCollapsed
 id exitUntilCollapsed
@@ -2088,7 +2102,10 @@ id length1_button
 id length24_button
 id length4_button
 id length_ButtonToggleGroup
+id length_textView
 id licensePlate_textView
+id license_spinner
+id license_textView
 id light
 id line1
 id line3
@@ -2185,6 +2202,7 @@ id progress_circular
 id progress_horizontal
 id purchaseCard_constraintLayout
 id purchase_button
+id purchased_textView
 id radio
 id ratio
 id rectangles
@@ -2232,7 +2250,6 @@ id snackbar_text
 id snap
 id snapMargins
 id spacer
-id spinner
 id spline
 id split_action_bar
 id spread
@@ -2245,7 +2262,9 @@ id standard
 id start
 id startHorizontal
 id startToEnd
+id startValue_textView
 id startVertical
+id start_textView
 id staticLayout
 id staticPostLayout
 id status_bar_latest_event_content
@@ -2253,6 +2272,8 @@ id stop
 id stretch
 id submenuarrow
 id submit_area
+id suiteNo_textView
+id suite_textView
 id tabMode
 id tag_accessibility_actions
 id tag_accessibility_clickable_spans
@@ -2287,6 +2308,7 @@ id theme_dark
 id theme_default
 id theme_light
 id ticketHistory_recyclerView
+id ticket_imageView
 id time
 id title
 id titleDividerNoCustom
@@ -2518,6 +2540,7 @@ string appbar_scrolling_view_behavior
 string bottom_sheet_behavior
 string bottomsheet_action_expand_halfway
 string brian_domingo
+string building_code
 string by
 string character_counter_content_description
 string character_counter_overflowed_content_description
@@ -2544,7 +2567,9 @@ string common_open_on_phone
 string common_signin_button_text
 string common_signin_button_text_long
 string daryl_dyck
+string date
 string default_web_client_id
+string end
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
@@ -2557,9 +2582,12 @@ string google_storage_bucket
 string hide_bottom_view_on_scroll_behavior
 string history
 string icon_content_description
+string incorrect_input
 string item_view_role_description
+string license_plate
 string login
 string logout
+string mandatory_field
 string material_clock_display_divider
 string material_clock_toggle_content_description
 string material_hour_selection
@@ -2618,10 +2646,13 @@ string path_password_strike_through
 string profile
 string project_id
 string purchase
+string purchased
 string search_menu_title
+string start
 string status_bar_notification_info_overflow
 string student_no_brian
 string student_no_daryl
+string suite_no
 string theme_dark
 string theme_default
 string theme_light
@@ -3159,6 +3190,16 @@ style ThemeOverlay_MaterialComponents_TimePicker_Display
 style ThemeOverlay_MaterialComponents_Toolbar_Primary
 style ThemeOverlay_MaterialComponents_Toolbar_Surface
 style ThemeOverlayColorAccentRed
+style TicketDetails_Address_Text
+style TicketDetails_Address2_Text
+style TicketDetails_Length_Text
+style TicketDetails_License_Text
+style TicketDetails_Subtitle_Text
+style TicketDetails_Value_Text
+style TicketHistory_Address_Text
+style TicketHistory_Date_Text
+style TicketHistory_Length_Text
+style TicketHistory_Purchased_Text
 style Widget_AppCompat_ActionBar
 style Widget_AppCompat_ActionBar_Solid
 style Widget_AppCompat_ActionBar_TabBar

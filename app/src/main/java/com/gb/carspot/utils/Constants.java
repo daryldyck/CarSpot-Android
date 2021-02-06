@@ -25,16 +25,29 @@ public class Constants
 
     public static final String INITIAL_FRAGMENT_LOAD = "initialFragmentLoad";
 
+    public static final String EXTRA_PARKING_TICKET = "extraParkingTicket";
+
+
     public static final int TYPE_HEADER = 0;
     public static final int TYPE_ITEM = 1;
 
     // Database Stuff
-    public static final String COLLECTION_USERS = "";
-    public static final String COLLECTION_LICENSE_PLATES = "";
-    public static final String COLLECTION_TICKETS = "";
+    public static final String COLLECTION_USERS = "collectionUsers";
+    public static final String FIELD_EMAIL = "email";
+    public static final String FIELD_PASSWORD = "password";
+    public static final String FIELD_PHONE = "phone";
+    public static final String FIELD_FIRST_NAME = "firstName";
+    public static final String FIELD_LAST_NAME = "lastName";
+    public static final String FIELD_LICENSE_PLATES = "licensePlates";
+    public static final String FIELD_PARKING_TICKETS = "parkingTickets";
 
-
-
-
+    public static final String COLLECTION_PARKING_TICKETS = "collectionParkingTickets";
+    public static final String FIELD_BUILDING_CODE = "buildingCode";
+    public static final String FIELD_NO_OF_HOURS = "noOfHours";
+    public static final String FIELD_LICENSE_PLATE = "licensePlate";
+    public static final String FIELD_HOST_SUITE = "hostSuite";
+    public static final String FIELD_LOCATION = "location";
+    public static final String FIELD_DATE = "date";
+    public static final String FIELD_IMAGE_URL = "imageUrl";
 
 }

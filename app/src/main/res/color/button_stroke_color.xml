@@ -10,6 +10,6 @@
         android:color="@color/buttonOutline"
         android:state_enabled="true"/>
 
-    <item android:color="?colorPrimaryVariant"/>
+    <item android:color="@color/buttonSelected"/>
 
 </selector>

@@ -19,5 +19,14 @@
     <string name="student_no_brian">101330689</string>
     <string name="logout">Logout</string>
     <string name="login">Login</string>
+    <string name="purchased">Purchased</string>
+    <string name="license_plate">License Plate</string>
+    <string name="start">Start:</string>
+    <string name="end">End:</string>
+    <string name="building_code">Building Code:</string>
+    <string name="suite_no">Suite #:</string>
+    <string name="date">Date:</string>
+    <string name="mandatory_field">Mandatory Field</string>
+    <string name="incorrect_input">Incorrect Input</string>
 
 </resources>

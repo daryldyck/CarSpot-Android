@@ -7,7 +7,6 @@ public class Location implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    private UUID id;
     private Double lat;
     private Double lon;
     private String streetAddress;
@@ -15,25 +14,24 @@ public class Location implements Serializable
     private String country;
     private boolean isCurrentLocation;
 
-    public Location(UUID id, Double lat, Double lon, String streetAddress, String city, String country, boolean isCurrentLocation)
+    public Location()
     {
-        this.id = id;
+        this.lat = 0.0;
+        this.lon = 0.0;
+        this.streetAddress = "";
+        this.city = "";
+        this.country = "";
+        this.isCurrentLocation = false;
+    }
+
+    public Location(Double lat, Double lon, String streetAddress, String city, String country, boolean isCurrentLocation)
+    {
         this.lat = lat;
         this.lon = lon;
         this.streetAddress = streetAddress;
         this.city = city;
         this.country = country;
         this.isCurrentLocation = isCurrentLocation;
-    }
-
-    public UUID getId()
-    {
-        return id;
-    }
-
-    public void setId(UUID id)
-    {
-        this.id = id;
     }
 
     public Double getLat()
@@ -100,8 +98,7 @@ public class Location implements Serializable
     public String toString()
     {
         return
-                id + "," +
-                        lat + "," +
+                lat + "," +
                         lon + "," +
                         streetAddress + "," +
                         city + "," +
