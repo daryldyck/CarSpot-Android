@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity
     private Toolbar toolbar;
     private BottomNavigationView bottomNavigationView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -302,6 +301,11 @@ public class MainActivity extends AppCompatActivity
     public void setCurrentPage(int currentPage)
     {
         viewModel.setCurrentPage(currentPage);
+    }
+
+    public MainActivityViewModel getViewModel()
+    {
+        return viewModel;
     }
 
     @Override

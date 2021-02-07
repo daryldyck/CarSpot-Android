@@ -43,16 +43,12 @@ public class TicketDetailsFragment extends Fragment
     private TextView license;
     private TextView length;
 
-    // used to track first load of fragment
-    private boolean initialFragmentLoad = true;
-
     public TicketDetailsFragment()
     {
     }
 
     public static TicketDetailsFragment newInstance(ParkingTicket parkingTicket)
     {
-        Log.d("TicketDetailsFragment", "newInstance: ");
         TicketDetailsFragment fragment = new TicketDetailsFragment();
         Bundle bundle = new Bundle();
         bundle.putSerializable(EXTRA_PARKING_TICKET, parkingTicket);
@@ -79,8 +75,6 @@ public class TicketDetailsFragment extends Fragment
         if (getArguments() != null)
         {
             viewModel.setParkingTicket((ParkingTicket) getArguments().getSerializable(EXTRA_PARKING_TICKET));
-
-            Log.d(TAG, "onCreate: " + viewModel.getParkingTicket().getLocation().getStreetAddress());
         }
     }
 

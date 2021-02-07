@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.gb.carspot.R;
+import com.gb.carspot.activities.MainActivity;
 import com.gb.carspot.models.Location;
 import com.gb.carspot.models.ParkingTicket;
 import com.gb.carspot.utils.Utils;
@@ -53,14 +54,13 @@ public class MapFragment extends Fragment
     // used to track first load of fragment
     private boolean initialFragmentLoad = true;
 
-    public MapFragment(MainActivityViewModel mainActivityViewModel)
+    public MapFragment()
     {
-        this.mainActivityViewModel = mainActivityViewModel;
     }
 
     public static MapFragment newInstance(MainActivityViewModel mainActivityViewModel)
     {
-        return new MapFragment(mainActivityViewModel);
+        return new MapFragment();
     }
 
     @Override
@@ -109,6 +109,8 @@ public class MapFragment extends Fragment
 
         if (getContext() != null)
         {
+            this.mainActivityViewModel = ((MainActivity) getActivity()).getViewModel();
+
             // listen for views to fully load
             rootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
             {

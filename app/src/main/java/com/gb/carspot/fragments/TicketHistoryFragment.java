@@ -36,14 +36,13 @@ public class TicketHistoryFragment extends Fragment
     private RecyclerView recyclerView;
     private TicketAdapter ticketAdapter;
 
-    public TicketHistoryFragment(MainActivityViewModel mainActivityViewModel)
+    public TicketHistoryFragment()
     {
-        this.mainActivityViewModel = mainActivityViewModel;
     }
 
     public static TicketHistoryFragment newInstance(MainActivityViewModel mainActivityViewModel)
     {
-        return new TicketHistoryFragment(mainActivityViewModel);
+        return new TicketHistoryFragment();
     }
 
     @Override
@@ -75,6 +74,8 @@ public class TicketHistoryFragment extends Fragment
     {
         if (getContext() != null)
         {
+            this.mainActivityViewModel = ((MainActivity) getActivity()).getViewModel();
+
             recyclerView = rootView.findViewById(R.id.ticketHistory_recyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             recyclerView.setHasFixedSize(true);
