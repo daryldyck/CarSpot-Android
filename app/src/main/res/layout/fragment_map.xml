@@ -37,52 +37,61 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/buildingCode_InputLayout"
-            style="@style/EditTextBox"
-            android:layout_width="@dimen/match_constraint"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/editText_constraintLayout"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:hint="Building Code"
-            app:layout_constraintEnd_toStartOf="@+id/hostSuite_InputLayout"
-            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/buildingCode_textField"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/buildingCode_InputLayout"
+                style="@style/EditTextBox"
+                android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
-                android:inputType="textNoSuggestions"
-                android:maxLines="1"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:hint="Building Code"
+                app:layout_constraintEnd_toStartOf="@+id/hostSuite_InputLayout"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/hostSuite_InputLayout"
-            style="@style/EditTextBox"
-            android:layout_width="@dimen/match_constraint"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
-            android:hint="Host Suite"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toEndOf="@+id/buildingCode_InputLayout"
-            app:layout_constraintTop_toTopOf="parent">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/buildingCode_textField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textNoSuggestions"
+                    android:maxLines="1"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/hostSuite_textField"
-                android:layout_width="match_parent"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/hostSuite_InputLayout"
+                style="@style/EditTextBox"
+                android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
-                android:inputType="textNoSuggestions"
-                android:maxLines="1"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:hint="Host Suite"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/buildingCode_InputLayout"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/hostSuite_textField"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textNoSuggestions"
+                    android:maxLines="1"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/address_InputLayout"
@@ -96,7 +105,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buildingCode_InputLayout">
+            app:layout_constraintTop_toBottomOf="@+id/editText_constraintLayout">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/address_textField"

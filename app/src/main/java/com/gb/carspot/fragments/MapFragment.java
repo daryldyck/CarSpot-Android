@@ -8,7 +8,6 @@ import androidx.transition.TransitionInflater;
 
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,10 +16,15 @@ import android.widget.Button;
 import android.widget.Spinner;
 
 import com.gb.carspot.R;
+import com.gb.carspot.models.Location;
+import com.gb.carspot.models.ParkingTicket;
 import com.gb.carspot.utils.Utils;
+import com.gb.carspot.viewmodels.MainActivityViewModel;
 import com.google.android.gms.maps.MapView;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Date;
 
 import static com.gb.carspot.utils.Constants.INITIAL_FRAGMENT_LOAD;
 
@@ -32,6 +36,8 @@ import static com.gb.carspot.utils.Constants.INITIAL_FRAGMENT_LOAD;
 public class MapFragment extends Fragment
 {
     private final String TAG = getClass().getCanonicalName();
+    private MainActivityViewModel mainActivityViewModel;
+
     private View rootView;
     boolean okToError = false;
 
@@ -47,13 +53,14 @@ public class MapFragment extends Fragment
     // used to track first load of fragment
     private boolean initialFragmentLoad = true;
 
-    public MapFragment()
+    public MapFragment(MainActivityViewModel mainActivityViewModel)
     {
+        this.mainActivityViewModel = mainActivityViewModel;
     }
 
-    public static MapFragment newInstance()
+    public static MapFragment newInstance(MainActivityViewModel mainActivityViewModel)
     {
-        return new MapFragment();
+        return new MapFragment(mainActivityViewModel);
     }
 
     @Override
@@ -133,7 +140,7 @@ public class MapFragment extends Fragment
                 {
                     if (okToError)
                     {
-                        Utils.checkBuildingCode(getContext(), buildingCodeTextInputLayout);
+                        Utils.checkBuildingCode(buildingCodeTextInputLayout, getString(R.string.five_characters));
                     }
                 }
             });
@@ -156,7 +163,7 @@ public class MapFragment extends Fragment
                 {
                     if (okToError)
                     {
-                        Utils.checkSuiteNumber(getContext(), hostSuiteTextInputLayout);
+                        Utils.checkSuiteNumber(hostSuiteTextInputLayout, getString(R.string.two_five_characters));
                     }
                 }
             });
@@ -180,7 +187,7 @@ public class MapFragment extends Fragment
                     if (okToError)
                     {
                         purchaseButton.setEnabled(false);
-                        Utils.checkStreetAddress(getContext(), addressTextInputLayout);
+//                        Utils.checkStreetAddress(addressTextInputLayout, getString(R.string.invalid_address));
                     }
                 }
             });
@@ -233,7 +240,7 @@ public class MapFragment extends Fragment
                 @Override
                 public void onClick(View view)
                 {
-
+                    purchaseButton.setEnabled(true);
                 }
             });
 
@@ -245,11 +252,20 @@ public class MapFragment extends Fragment
                 public void onClick(View view)
                 {
 
-                    if (Utils.checkBuildingCode(getContext(), buildingCodeTextInputLayout) &&
-                            Utils.checkBuildingCode(getContext(), hostSuiteTextInputLayout) &&
-                            Utils.checkBuildingCode(getContext(), addressTextInputLayout))
+                    if (Utils.checkBuildingCode(buildingCodeTextInputLayout, getString(R.string.five_characters)) &&
+                            Utils.checkSuiteNumber(hostSuiteTextInputLayout, getString(R.string.two_five_characters)) &&
+                            Utils.checkStreetAddress(addressTextInputLayout, getString(R.string.invalid_address)))
                     {
+                        ParkingTicket parkingTicket = new ParkingTicket(
+                                buildingCodeTextInputLayout.getEditText().getText().toString().toUpperCase(),
+                                4,
+                                "MBU4D2",
+                                hostSuiteTextInputLayout.getEditText().getText().toString().toUpperCase(),
+                                new Location(),
+                                new Date(),
+                                "imageUrl");
 
+                        mainActivityViewModel.addParkingTicket(parkingTicket);
                     }
                 }
             });

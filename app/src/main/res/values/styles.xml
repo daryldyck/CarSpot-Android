@@ -119,7 +119,7 @@
 
     <style name="TicketHistory.Length.Text" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="android:textSize">22sp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/ticketPreviewLength</item>
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">sans</item>
     </style>
@@ -140,7 +140,7 @@
 
     <style name="TicketDetails.Subtitle.Text" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/ticketDetailsSubtitle</item>
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">sans</item>
     </style>
@@ -161,7 +161,7 @@
 
     <style name="TicketDetails.Length.Text" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="android:textSize">26sp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@color/ticketDetailsLength</item>
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">sans</item>
     </style>

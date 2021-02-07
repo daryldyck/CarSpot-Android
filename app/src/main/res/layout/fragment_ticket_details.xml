@@ -25,7 +25,7 @@
         app:layout_constraintTop_toTopOf="@+id/purchaseCard_constraintLayout" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/purchaseCard_constraintLayout"
+        android:id="@+id/ticketDetails_constraintLayout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -42,7 +42,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="16dp"
             android:text="924 - College Park Rd."
             app:autoSizeTextType="uniform"
@@ -167,10 +167,10 @@
             style="@style/TicketDetails.Subtitle.Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
             android:text="@string/end"
             app:autoSizeTextType="uniform"
-            app:layout_constraintStart_toEndOf="@+id/startValue_textView"
-            app:layout_constraintStart_toStartOf="@+id/suite_textView"
+            app:layout_constraintEnd_toStartOf="@+id/endValue_textView"
             app:layout_constraintTop_toBottomOf="@+id/date_textView" />
 
         <TextView
@@ -178,13 +178,10 @@
             style="@style/TicketDetails.Value.Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
             android:layout_marginEnd="16dp"
             android:text="2:31 PM"
             app:autoSizeTextType="uniform"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toEndOf="@+id/end_textView"
             app:layout_constraintTop_toBottomOf="@+id/date_textView" />
 
         <TextView
@@ -210,7 +207,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="12dp"
             android:text="JWM0E6"
             app:autoSizeTextType="uniform"
             app:layout_constraintBottom_toBottomOf="parent"
