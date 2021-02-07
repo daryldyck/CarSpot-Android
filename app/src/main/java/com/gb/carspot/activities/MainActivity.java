@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 
 import android.app.Dialog;
@@ -23,6 +24,7 @@ import com.gb.carspot.R;
 import com.gb.carspot.fragments.ProfileFragment;
 import com.gb.carspot.fragments.MapFragment;
 import com.gb.carspot.fragments.TicketHistoryFragment;
+import com.gb.carspot.models.User;
 import com.gb.carspot.utils.Utils;
 import com.gb.carspot.viewmodels.MainActivityViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -48,6 +50,8 @@ public class MainActivity extends AppCompatActivity
     {
         sharedPrefs = getSharedPreferences(SHARED_PREF_NAME, 0);
         prefEditor = sharedPrefs.edit();
+
+        prefEditor.putString(LOGIN_CURRENT_USER, "test@email.com").commit();
         Utils.applyTheme(sharedPrefs.getInt(THEME_PREFERENCE, THEME_PREFERENCE_DEFAULT));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -96,6 +100,19 @@ public class MainActivity extends AppCompatActivity
                         break;
                 }
                 return true;
+            }
+        });
+
+        viewModel.getUser().observe(this, new Observer<User>()
+        {
+            @Override
+            public void onChanged(User user)
+            {
+                Log.d(TAG, "User onChanged");
+                if (user != null)
+                {
+                    Log.d(TAG, "User: " + user.getEmail());
+                }
             }
         });
     }
@@ -165,7 +182,7 @@ public class MainActivity extends AppCompatActivity
     {
         if (viewModel.getMapFragment() == null)
         {
-            viewModel.setMapFragment(MapFragment.newInstance());
+            viewModel.setMapFragment(MapFragment.newInstance(viewModel));
         }
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -187,7 +204,7 @@ public class MainActivity extends AppCompatActivity
     {
         if (viewModel.getTicketHistoryFragment() == null)
         {
-            viewModel.setTicketHistoryFragment(TicketHistoryFragment.newInstance());
+            viewModel.setTicketHistoryFragment(TicketHistoryFragment.newInstance(viewModel));
         }
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.main_container, viewModel.getTicketHistoryFragment()).commit();
@@ -205,7 +222,7 @@ public class MainActivity extends AppCompatActivity
         }
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.main_container, viewModel.getProfileFragment()).commit();
-        viewModel.setCurrentPage(PAGE_TICKET_DETAILS);
+        viewModel.setCurrentPage(PAGE_PROFILE);
         bottomNavigationView.getMenu().findItem(R.id.action_profile).setChecked(true);
         resetBackButton();
     }
@@ -262,8 +279,8 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     *  Called only when ticket details page is open
-     *  to go back to list of tickets
+     * Called only when ticket details page is open
+     * to go back to list of tickets
      */
     private void returnToTicketHistory()
     {
@@ -280,7 +297,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     *
      * @param currentPage - set reference for current fragment loaded
      */
     public void setCurrentPage(int currentPage)
@@ -309,7 +325,7 @@ public class MainActivity extends AppCompatActivity
     @Override // back affordance
     public void onBackPressed()
     {
-        if (viewModel.getCurrentPage() == PAGE_PROFILE)
+        if (viewModel.getCurrentPage() == PAGE_TICKET_DETAILS)
         {
             returnToTicketHistory();
         }

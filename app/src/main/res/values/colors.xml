@@ -47,6 +47,11 @@
     <color name="buttonDisabledOutline">@color/black_40</color>
     <color name="buttonDisabledText">@color/black_30</color>
 
+    <color name="ticketDetailsSubtitle">@color/colorPrimary</color>
+    <color name="ticketDetailsLength">@color/colorSecondaryVariant</color>
+
+    <color name="ticketPreviewLength">@color/colorPrimary</color>
+
     <color name="aboutTitleText">@color/colorOnBackground</color>
     <color name="aboutByText">@color/colorOnBackground</color>
     <color name="aboutAuthorText">@color/colorPrimaryVariantLight</color>

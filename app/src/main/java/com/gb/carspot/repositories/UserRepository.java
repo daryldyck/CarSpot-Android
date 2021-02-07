@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.NonNull;
+import androidx.lifecycle.MutableLiveData;
 
 import static com.gb.carspot.utils.Constants.COLLECTION_PARKING_TICKETS;
 import static com.gb.carspot.utils.Constants.COLLECTION_USERS;
@@ -25,66 +26,55 @@ import static com.gb.carspot.utils.Constants.FIELD_EMAIL;
 public class UserRepository
 {
     private final String TAG = getClass().getCanonicalName();
+    private static UserRepository instance;
     private FirebaseFirestore firestore;
+    private MutableLiveData<User> userData = new MutableLiveData<User>();
+    //private User user;
 
     public UserRepository()
     {
         firestore = FirebaseFirestore.getInstance();
     }
 
-    // get user from Firestore
-    public void getUser(final String userEmail)
+    public static UserRepository getInstance()
     {
-        // need to add snapshot listeners later.
+        if (instance == null)
+        {
+            instance = new UserRepository();
+        }
+        return instance;
+    }
+
+    public MutableLiveData<User> getUser(String userEmail)
+    {
+        getUserFromFirestore(userEmail);
+        return userData;
+    }
+
+    // get user from Firestore
+    public void getUserFromFirestore(final String userEmail)
+    {
+        Log.d(TAG, "getUserFromFirestore: User: " + userEmail);
         final List<ParkingTicket> parkingTicketList = new ArrayList<ParkingTicket>();
         try
         {
-            // first we get their parking tickets
             firestore.collection(COLLECTION_USERS)
                     .document(userEmail)
-                    .collection(COLLECTION_PARKING_TICKETS)
-                    .orderBy(FIELD_DATE, Query.Direction.DESCENDING)
                     .get()
-                    .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
                     {
                         @Override
-                        public void onComplete(@NonNull Task<QuerySnapshot> task)
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task)
                         {
                             if (task.isSuccessful())
                             {
-                                for (QueryDocumentSnapshot document : task.getResult())
-                                {
-                                    ParkingTicket parkingTicket = document.toObject(ParkingTicket.class);
-                                    parkingTicketList.add(parkingTicket);
-                                }
-                                Log.d(TAG, "Parking tickets retrieved successfully.");
+                                userData.setValue(task.getResult().toObject(User.class));
+                                Log.d(TAG, "User retrieved successfully.");
                             }
                             else
                             {
-                                Log.d(TAG, "There was a error retrieving their parking tickets.");
+                                Log.d(TAG, "User retrieval unsuccessful.");
                             }
-
-                            // after parking ticket retrieval done - get user and add ticket list to it.
-                            firestore.collection(COLLECTION_USERS)
-                                    .document(userEmail)
-                                    .get()
-                                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
-                                    {
-                                        @Override
-                                        public void onComplete(@NonNull Task<DocumentSnapshot> task)
-                                        {
-                                            if (task.isSuccessful())
-                                            {
-                                                User user = task.getResult().toObject(User.class);
-                                                user.setParkingTickets(parkingTicketList);
-                                                Log.d(TAG, "User retrieved successfully.");
-                                            }
-                                            else
-                                            {
-                                                Log.d(TAG, "User retrieval unsuccessful.");
-                                            }
-                                        }
-                                    });
                         }
                     });
         }

@@ -42,5 +42,8 @@
     <string name="remember_me">Remember Me</string>
     <string name="create_new_account">Create New Account</string>
     <string name="plateNumber_placeholder">XXXXXXXX</string>
+    <string name="five_characters">5 characters</string>
+    <string name="two_five_characters">2-5 characters</string>
+    <string name="invalid_address">Invalid Address</string>
 
 </resources>

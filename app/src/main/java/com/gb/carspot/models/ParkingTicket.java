@@ -20,6 +20,10 @@ public class ParkingTicket implements Serializable
     private Date date;  // system date
     private String imageUrl;
 
+    public ParkingTicket()
+    {
+    }
+
     public ParkingTicket(String buildingCode, int noOfHours, String licensePlate, String hostSuite, Location location, Date date, String imageUrl)
     {
         this.buildingCode = buildingCode;

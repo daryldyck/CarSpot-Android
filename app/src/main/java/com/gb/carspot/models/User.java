@@ -14,9 +14,12 @@ public class User implements Serializable
     private String firstName;
     private String lastName;
     private List<String> licensePlates;
-    private List<ParkingTicket> parkingTickets;
 
-    public User(String email, String password, long phone, String firstName, String lastName, List<String> licensePlates, List<ParkingTicket> parkingTickets)
+    public User()
+    {
+    }
+
+    public User(String email, String password, long phone, String firstName, String lastName, List<String> licensePlates)
     {
         this.email = email;
         this.password = password;
@@ -24,7 +27,6 @@ public class User implements Serializable
         this.firstName = firstName;
         this.lastName = lastName;
         this.licensePlates = licensePlates;
-        this.parkingTickets = parkingTickets;
     }
 
     public String getEmail()
@@ -91,20 +93,6 @@ public class User implements Serializable
         this.licensePlates = licensePlates;
     }
 
-    public List<ParkingTicket> getParkingTickets()
-    {
-        if (parkingTickets == null)
-        {
-            parkingTickets = new ArrayList<ParkingTicket>();
-        }
-        return parkingTickets;
-    }
-
-    public void setParkingTickets(List<ParkingTicket> parkingTickets)
-    {
-        this.parkingTickets = parkingTickets;
-    }
-
     @Override
     public String toString()
     {
@@ -115,7 +103,6 @@ public class User implements Serializable
                         firstName + "," +
                         lastName + "," +
                         licensePlates + "," +
-                        parkingTickets + "," +
                         "";
     }
 }
