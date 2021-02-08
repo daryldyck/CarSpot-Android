@@ -44,16 +44,16 @@ public class ParkingTicketRepository
         return instance;
     }
 
-    public MutableLiveData<List<ParkingTicket>> getParkingTicketList(String userEmail)
+    public MutableLiveData<List<ParkingTicket>> getParkingTicketList(String userId)
     {
-        getParkingTickets(userEmail);
+        getParkingTickets(userId);
         return tickets;
     }
 
-    public void addParkingTicket(String userEmail, ParkingTicket parkingTicket)
+    public void addParkingTicket(String userId, ParkingTicket parkingTicket)
     {
         firestore.collection(COLLECTION_USERS)
-                .document(userEmail)
+                .document(userId)
                 .collection(COLLECTION_PARKING_TICKETS)
                 .document(String.valueOf(parkingTicket.getDate().getTime()))
                 .set(parkingTicket)
@@ -74,13 +74,13 @@ public class ParkingTicketRepository
                 });
     }
 
-    private void getParkingTickets(String userEmail)
+    private void getParkingTickets(String userId)
     {
         try
         {
             // first we get their parking tickets
             firestore.collection(COLLECTION_USERS)
-                    .document(userEmail)
+                    .document(userId)
                     .collection(COLLECTION_PARKING_TICKETS)
                     .orderBy(FIELD_DATE, Query.Direction.DESCENDING)
                     .get()
@@ -97,7 +97,7 @@ public class ParkingTicketRepository
                                     ParkingTicket parkingTicket = document.toObject(ParkingTicket.class);
                                     parkingTicketArrayList.add(parkingTicket);
                                 }
-                                tickets.setValue(parkingTicketArrayList);
+                                tickets.postValue(parkingTicketArrayList);
                                 Log.d(TAG, "Parking tickets retrieved successfully.");
                             }
                             else

@@ -17,7 +17,6 @@ import java.util.List;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.MutableLiveData;
-import androidx.lifecycle.ViewModel;
 
 import static com.gb.carspot.utils.Constants.LOGIN_CURRENT_USER;
 import static com.gb.carspot.utils.Constants.PAGE_MAP;
@@ -30,7 +29,7 @@ public class MainActivityViewModel extends AndroidViewModel
 
     public boolean initialized = false;
     private int currentPage = PAGE_MAP;
-    private String userEmail;
+    private String userId;
 
     private MapFragment mapFragment;
     private TicketHistoryFragment ticketHistoryFragment;
@@ -46,7 +45,7 @@ public class MainActivityViewModel extends AndroidViewModel
     {
         super(application);
         sharedPrefs = getApplication().getSharedPreferences(SHARED_PREF_NAME, 0);
-        this.userEmail = sharedPrefs.getString(LOGIN_CURRENT_USER, "");
+        this.userId = sharedPrefs.getString(LOGIN_CURRENT_USER, "");
         init();
     }
 
@@ -57,15 +56,15 @@ public class MainActivityViewModel extends AndroidViewModel
             return;
         }
         userRepository = UserRepository.getInstance();
-        user = userRepository.getUser(userEmail);
+        user = userRepository.getUser(userId);
 
         parkingTicketRepository = ParkingTicketRepository.getInstance();
-        parkingTicketList = parkingTicketRepository.getParkingTicketList(userEmail);
+        parkingTicketList = parkingTicketRepository.getParkingTicketList(userId);
     }
 
     public void addParkingTicket(ParkingTicket parkingTicket)
     {
-        parkingTicketRepository.addParkingTicket(userEmail, parkingTicket);
+        parkingTicketRepository.addParkingTicket(userId, parkingTicket);
     }
 
     public boolean isInitialized()
