@@ -1,5 +1,6 @@
 package com.gb.carspot.activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -7,10 +8,16 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.gb.carspot.R;
 import com.gb.carspot.fragments.LoginFragment;
 import com.gb.carspot.utils.Utils;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_LOGIN_PAGE;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_MAIN_PAGE;
@@ -25,6 +32,9 @@ public class LoginActivity extends AppCompatActivity
     private static SharedPreferences sharedPrefs;
     private static SharedPreferences.Editor prefEditor;
 
+    //Firebase authorization
+    private FirebaseAuth mAuth;
+
     private LoginFragment loginFragment;
 
     @Override
@@ -36,8 +46,23 @@ public class LoginActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //initialize firebase auth
+        mAuth = FirebaseAuth.getInstance();
+
         loadLoginPage();
     }
+
+    //Checks to see if user is already logged in. Uncomment after log in functionality works.
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        // Check if user is signed in (non-null) and update UI accordingly.
+//        FirebaseUser currentUser = mAuth.getCurrentUser();
+//        if(currentUser != null){
+//            //if user is already in go to main activity
+//            gotoMain();
+//        }
+//    }
 
     // load Login fragment
     private void loadLoginPage()
