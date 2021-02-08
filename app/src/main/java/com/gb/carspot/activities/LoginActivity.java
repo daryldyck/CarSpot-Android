@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity
         loadLoginPage();
     }
 
-    //Checks to see if user is already logged in. Uncomment after log in functionality works.
+//    Checks to see if user is already logged in. Uncomment after log in functionality works.
 //    @Override
 //    public void onStart() {
 //        super.onStart();

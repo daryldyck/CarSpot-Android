@@ -29,7 +29,6 @@ public class UserRepository
     private static UserRepository instance;
     private FirebaseFirestore firestore;
     private MutableLiveData<User> userData = new MutableLiveData<User>();
-    //private User user;
 
     public UserRepository()
     {
@@ -45,21 +44,21 @@ public class UserRepository
         return instance;
     }
 
-    public MutableLiveData<User> getUser(String userEmail)
+    public MutableLiveData<User> getUser(String userId)
     {
-        getUserFromFirestore(userEmail);
+        getUserFromFirestore(userId);
         return userData;
     }
 
     // get user from Firestore
-    public void getUserFromFirestore(final String userEmail)
+    public void getUserFromFirestore(final String userId)
     {
-        Log.d(TAG, "getUserFromFirestore: User: " + userEmail);
+        Log.d(TAG, "getUserFromFirestore: User: " + userId);
         final List<ParkingTicket> parkingTicketList = new ArrayList<ParkingTicket>();
         try
         {
             firestore.collection(COLLECTION_USERS)
-                    .document(userEmail)
+                    .document(userId)
                     .get()
                     .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>()
                     {
@@ -68,7 +67,7 @@ public class UserRepository
                         {
                             if (task.isSuccessful())
                             {
-                                userData.setValue(task.getResult().toObject(User.class));
+                                userData.postValue(task.getResult().toObject(User.class));
                                 Log.d(TAG, "User retrieved successfully.");
                             }
                             else

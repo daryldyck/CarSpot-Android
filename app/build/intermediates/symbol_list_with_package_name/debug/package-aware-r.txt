@@ -1039,6 +1039,7 @@ color black_89
 color black_90
 color black_95
 color bottomNavBg
+color boxStrokeColor
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark

@@ -70,7 +70,7 @@
 
     <style name="EditTextBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeErrorColor">@color/colorError</item>
-        <item name="boxStrokeColor">@color/colorPrimaryVariantLight</item>
+        <item name="boxStrokeColor">@color/boxStrokeColor</item>
         <item name="hintTextColor">@color/colorSecondary</item>
         <item name="android:textColorHint">@color/black_50</item>
     </style>

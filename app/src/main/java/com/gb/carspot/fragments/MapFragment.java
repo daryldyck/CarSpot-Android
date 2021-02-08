@@ -4,14 +4,17 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.transition.TransitionInflater;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
@@ -19,6 +22,7 @@ import com.gb.carspot.R;
 import com.gb.carspot.activities.MainActivity;
 import com.gb.carspot.models.Location;
 import com.gb.carspot.models.ParkingTicket;
+import com.gb.carspot.models.User;
 import com.gb.carspot.utils.Utils;
 import com.gb.carspot.viewmodels.MainActivityViewModel;
 import com.google.android.gms.maps.MapView;
@@ -253,22 +257,34 @@ public class MapFragment extends Fragment
                 @Override
                 public void onClick(View view)
                 {
-
                     if (Utils.checkBuildingCode(buildingCodeTextInputLayout, getString(R.string.five_characters)) &&
                             Utils.checkSuiteNumber(hostSuiteTextInputLayout, getString(R.string.two_five_characters)) &&
                             Utils.checkStreetAddress(addressTextInputLayout, getString(R.string.invalid_address)))
                     {
                         ParkingTicket parkingTicket = new ParkingTicket(
                                 buildingCodeTextInputLayout.getEditText().getText().toString().toUpperCase(),
-                                4,
-                                "MBU4D2",
+                                getLength(),
+                                mainActivityViewModel.getUser().getValue().getLicensePlates().get(licensePlateSpinner.getSelectedItemPosition()),
                                 hostSuiteTextInputLayout.getEditText().getText().toString().toUpperCase(),
                                 new Location(),
                                 new Date(),
                                 "imageUrl");
 
-                        mainActivityViewModel.addParkingTicket(parkingTicket);
+                        //mainActivityViewModel.addParkingTicket(parkingTicket);
                     }
+                }
+            });
+
+            mainActivityViewModel.getUser().observe(getActivity(), new Observer<User>()
+            {
+                @Override
+                public void onChanged(User user)
+                {
+                    ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item,
+                            mainActivityViewModel.getUser().getValue().getLicensePlates());
+                    arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    licensePlateSpinner.setAdapter(arrayAdapter);
+                    arrayAdapter.notifyDataSetChanged();
                 }
             });
         }
