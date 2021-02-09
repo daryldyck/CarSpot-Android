@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.gb.carspot.R;
@@ -26,6 +27,7 @@ import androidx.transition.TransitionInflater;
 
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_LOGIN_PAGE;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_MAIN_PAGE;
+import static com.gb.carspot.utils.Constants.ACTION_LOAD_PROFILE_PAGE;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -40,6 +42,7 @@ public class LoginFragment extends Fragment
     private FirebaseAuth mAuth;
 
     private Button loginButton;
+    private TextView tvCreateAccount;
 
     public LoginFragment()
     {
@@ -79,6 +82,7 @@ public class LoginFragment extends Fragment
     private void setup()
     {
         loginButton = rootView.findViewById(R.id.login_button);
+        tvCreateAccount = rootView.findViewById(R.id.lblCreateAccount);
 
         mAuth = FirebaseAuth.getInstance();
         Utils.setHaptic(loginButton);
@@ -90,12 +94,28 @@ public class LoginFragment extends Fragment
                 gotoMain();
             }
         });
+
+        tvCreateAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "tvCreateAccount pressed.");
+                gotoSignUp();
+            }
+        });
+
     }
 
     private void gotoMain()
     {
         Intent intent = new Intent(getContext(), LoginActivity.class);
         intent.setAction(ACTION_LOAD_MAIN_PAGE);
+        startActivity(intent);
+    }
+
+    private void gotoSignUp()
+    {
+        Intent intent = new Intent(getContext(), LoginActivity.class);
+        intent.setAction(ACTION_LOAD_PROFILE_PAGE);
         startActivity(intent);
     }
 
