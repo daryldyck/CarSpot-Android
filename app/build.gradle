@@ -41,7 +41,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore'
     implementation 'com.google.firebase:firebase-auth'
 
-
     // used to load profile images
     implementation 'com.squareup.picasso:picasso:2.71828'
 }

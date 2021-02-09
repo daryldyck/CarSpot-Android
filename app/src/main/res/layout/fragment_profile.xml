@@ -270,7 +270,7 @@
 
     <!-- Changes depending on context -->
     <FrameLayout
-        android:id="@+id/licensePlate_container"
+        android:id="@+id/licensePlate_frame"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/createAccount_button"
@@ -290,6 +290,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/licensePlate_container"/>
+        app:layout_constraintTop_toBottomOf="@id/licensePlate_frame"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

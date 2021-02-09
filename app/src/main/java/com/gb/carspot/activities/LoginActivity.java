@@ -101,6 +101,7 @@ public class LoginActivity extends AppCompatActivity
                     break;
                 case ACTION_LOAD_PROFILE_PAGE:
                     // load profile page
+                    gotoSignUp();
                     break;
             }
         }
@@ -111,6 +112,14 @@ public class LoginActivity extends AppCompatActivity
         Log.d(TAG, "gotoMain: ");
         finish();
         Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+    }
+
+    private void gotoSignUp()
+    {
+        Log.d(TAG, "gotoSignUp: ");
+        finish();
+        Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
     }
 }

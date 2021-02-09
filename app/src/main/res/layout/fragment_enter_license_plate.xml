@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/add_plate_layout"
+    android:id="@+id/enter_plate_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/tvLicensePlate"
+        android:id="@+id/tvEnterPlate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/license_plate"
@@ -30,21 +30,33 @@
         android:background="@drawable/card_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvLicensePlate">
+        app:layout_constraintTop_toBottomOf="@id/tvEnterPlate">
 
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/managePlates_button"
-            style="@style/ButtonOutlined"
-            android:layout_width="0dp"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/enterPlate_InputLayout"
+            style="@style/EditTextBox"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
             android:layout_marginEnd="16dp"
-            android:text="@string/add_remove_license_plates"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginBottom="4dp"
+            android:hint="Enter Plate Number"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/enterPlate_textField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textNoSuggestions"
+                android:maxLines="1"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp" />
+        </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
