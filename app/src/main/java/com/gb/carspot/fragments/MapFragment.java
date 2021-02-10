@@ -1,8 +1,11 @@
 package com.gb.carspot.fragments;
 
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.transition.TransitionInflater;
@@ -17,36 +20,52 @@ import android.view.ViewTreeObserver;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.gb.carspot.R;
 import com.gb.carspot.activities.MainActivity;
 import com.gb.carspot.models.Location;
 import com.gb.carspot.models.ParkingTicket;
 import com.gb.carspot.models.User;
+import com.gb.carspot.utils.LocationManager;
 import com.gb.carspot.utils.Utils;
 import com.gb.carspot.viewmodels.MainActivityViewModel;
+import com.google.android.gms.location.LocationAvailability;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.location.LocationResult;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.util.Date;
+import java.util.List;
 
-import static com.gb.carspot.utils.Constants.INITIAL_FRAGMENT_LOAD;
+import static com.gb.carspot.utils.Constants.*;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link MapFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class MapFragment extends Fragment
 {
     private final String TAG = getClass().getCanonicalName();
+    private static SharedPreferences sharedPrefs;
+    private static SharedPreferences.Editor prefEditor;
     private MainActivityViewModel mainActivityViewModel;
 
     private View rootView;
     boolean okToError = false;
 
+    private GoogleMap googleMap;
+    private final Float DEFAULT_ZOOM = 16.0f;
+    private LocationManager locationManager;
+    private LocationCallback locationCallback;
+    private LatLng currentLocation;
+    private Location myLocation;
     private MapView mapView;
+
     private TextInputLayout buildingCodeTextInputLayout;
     private TextInputLayout hostSuiteTextInputLayout;
     private TextInputLayout addressTextInputLayout;
@@ -71,6 +90,8 @@ public class MapFragment extends Fragment
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
+        sharedPrefs = getActivity().getSharedPreferences(SHARED_PREF_NAME, 0);
+        prefEditor = sharedPrefs.edit();
 
         // set fragment animations
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
@@ -93,7 +114,7 @@ public class MapFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         rootView = inflater.inflate(R.layout.fragment_map, container, false);
-        setup();
+        setup(savedInstanceState);
         initialFragmentLoad = false;
         return rootView;
     }
@@ -107,7 +128,7 @@ public class MapFragment extends Fragment
     }
 
     // initialize views
-    private void setup()
+    private void setup(Bundle savedInstanceState)
     {
         okToError = false;
 
@@ -126,7 +147,78 @@ public class MapFragment extends Fragment
                 }
             });
 
+            locationCallback = new LocationCallback()
+            {
+                @Override
+                public void onLocationResult(LocationResult locationResult)
+                {
+                    if (locationResult == null)
+                    {
+                        return;
+                    }
+
+                    for (android.location.Location loc : locationResult.getLocations())
+                    {
+                        currentLocation = new LatLng(loc.getLatitude(), loc.getLongitude());
+                        myLocation = locationManager.getLocation(getActivity(), loc);
+
+                        if (myLocation != null && googleMap != null)
+                        {
+                            addressTextInputLayout.getEditText().setText(myLocation.getStreetAddress());
+                            purchaseButton.setEnabled(true);
+
+                            // move camera center point up a bit
+                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                                    new LatLng(currentLocation.latitude - 0.002, currentLocation.longitude), DEFAULT_ZOOM));
+
+                            googleMap.addMarker(new MarkerOptions().position(currentLocation).title(getString(R.string.current_location)));
+
+                            // add current location to sharedPrefs
+                            prefEditor.putString(LOCATION_LAT, String.valueOf(loc.getLatitude() - 0.002)).commit();
+                            prefEditor.putString(LOCATION_LON, String.valueOf(loc.getLongitude())).commit();
+                        }
+                    }
+                    locationManager.stopLocationUpdates(getActivity(), this);
+                }
+
+                @Override
+                public void onLocationAvailability(LocationAvailability locationAvailability)
+                {
+                    super.onLocationAvailability(locationAvailability);
+                }
+            };
+
+            locationManager = LocationManager.getInstance();
+            locationManager.checkPermissions(getActivity(), this);
+
+            if (locationManager.locationPermissionGranted)
+            {
+                locationManager.requestLocationUpdates(getActivity(), locationCallback);
+            }
+
             mapView = rootView.findViewById(R.id.mapView);
+            mapView.onCreate(savedInstanceState);
+            mapView.getMapAsync(new OnMapReadyCallback()
+            {
+                @Override
+                public void onMapReady(GoogleMap map)
+                {
+                    googleMap = map;
+
+                    if (googleMap != null)
+                    {
+                        // set default map location based on last location
+                        LatLng location = new LatLng(
+                                Double.parseDouble(sharedPrefs.getString(LOCATION_LAT, LOCATION_LAT_DEFAULT)),
+                                Double.parseDouble(sharedPrefs.getString(LOCATION_LON, LOCATION_LON_DEFAULT)));
+
+                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(location, DEFAULT_ZOOM));
+                        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+                        setupMapScreen(googleMap);
+                        addTicketMarkers();
+                    }
+                }
+            });
 
             buildingCodeTextInputLayout = rootView.findViewById(R.id.buildingCode_InputLayout);
             buildingCodeTextInputLayout.getEditText().addTextChangedListener(new TextWatcher()
@@ -246,7 +338,7 @@ public class MapFragment extends Fragment
                 @Override
                 public void onClick(View view)
                 {
-                    purchaseButton.setEnabled(true);
+                    updateMap();
                 }
             });
 
@@ -266,11 +358,11 @@ public class MapFragment extends Fragment
                                 getLength(),
                                 mainActivityViewModel.getUser().getValue().getLicensePlates().get(licensePlateSpinner.getSelectedItemPosition()),
                                 hostSuiteTextInputLayout.getEditText().getText().toString().toUpperCase(),
-                                new Location(),
+                                myLocation,
                                 new Date(),
                                 "imageUrl");
 
-                        //mainActivityViewModel.addParkingTicket(parkingTicket);
+                        mainActivityViewModel.addParkingTicket(parkingTicket);
                     }
                 }
             });
@@ -287,6 +379,99 @@ public class MapFragment extends Fragment
                     arrayAdapter.notifyDataSetChanged();
                 }
             });
+
+            mainActivityViewModel.getParkingTicketList().observe(getActivity(), new Observer<List<ParkingTicket>>()
+            {
+                @Override
+                public void onChanged(List<ParkingTicket> parkingTickets)
+                {
+                    addTicketMarkers();
+                }
+            });
+
+            mainActivityViewModel.getTicketAdded().observe(getActivity(), new Observer<Integer>()
+            {
+                @Override
+                public void onChanged(Integer ticketAdded)
+                {
+                    Log.d(TAG, "getTicketAdded onChanged: ");
+
+                    switch (ticketAdded)
+                    {
+                        case TICKET_ADDED:
+                            Toast.makeText(getActivity(), R.string.ticket_purchase_success, Toast.LENGTH_SHORT).show();
+                            mainActivityViewModel.getTicketAdded().setValue(TICKET_DEFAULT);
+                            break;
+                        case TICKET_FAILED:
+                            Toast.makeText(getActivity(), R.string.error_purchasing_ticket, Toast.LENGTH_SHORT).show();
+                            break;
+                    }
+                }
+            });
+        }
+    }
+
+    private void setupMapScreen(GoogleMap googleMap)
+    {
+        if (googleMap != null)
+        {
+            Log.d(TAG, "setupMapScreen: ");
+            googleMap.setBuildingsEnabled(false);
+            googleMap.setIndoorEnabled(false);
+            googleMap.setTrafficEnabled(false);
+
+            UiSettings uiSettings = googleMap.getUiSettings();
+            uiSettings.setZoomControlsEnabled(true);
+            uiSettings.setZoomGesturesEnabled(true);
+            uiSettings.setMyLocationButtonEnabled(false);
+            uiSettings.setScrollGesturesEnabled(true);
+            uiSettings.setRotateGesturesEnabled(true);
+        }
+    }
+
+    private void addTicketMarkers()
+    {
+        if (mainActivityViewModel.getParkingTicketList().getValue() != null)
+        {
+            for (ParkingTicket parkingTicket : mainActivityViewModel.getParkingTicketList().getValue())
+            {
+                if (googleMap != null)
+                {
+                    googleMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(parkingTicket.getLocation().getLat(), parkingTicket.getLocation().getLon()))
+                            .icon(Utils.getBitmapDescriptor(getActivity(), R.drawable.ic_map_ticket_car)));
+                }
+            }
+        }
+    }
+
+    private void updateMap()
+    {
+        Location newLocation = locationManager.getLocationFromAddress(getActivity(),
+                new Location(
+                        0.0,
+                        0.0,
+                        addressTextInputLayout.getEditText().getText().toString(),
+                        myLocation.getCity(),
+                        myLocation.getCountry(),
+                        false));
+
+        if (newLocation != null && googleMap != null)
+        {
+            myLocation = newLocation;
+            // move map to new location and the camera center point up a bit
+            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                    new LatLng(newLocation.getLat() - 0.002, newLocation.getLon()), DEFAULT_ZOOM));
+
+            googleMap.addMarker(new MarkerOptions()
+                    .position(new LatLng(newLocation.getLat(), newLocation.getLon()))
+                    .title(newLocation.getStreetAddress()));
+
+            purchaseButton.setEnabled(true);
+        }
+        else
+        {
+            Utils.setEditTextError(addressTextInputLayout, "Invalid Address");
         }
     }
 
@@ -309,5 +494,55 @@ public class MapFragment extends Fragment
                 break;
         }
         return length;
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
+    {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == locationManager.LOCATION_PERMISSION_REQUEST_CODE)
+        {
+            locationManager.locationPermissionGranted =
+                    (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED);
+
+            if (locationManager.locationPermissionGranted)
+            {
+                if (locationCallback != null)
+                {
+                    locationManager.requestLocationUpdates(getActivity(), locationCallback);
+                }
+            }
+            return;
+        }
+    }
+
+    @Override
+    public void onResume()
+    {
+        mapView.onResume();
+        super.onResume();
+    }
+
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory()
+    {
+        super.onLowMemory();
+        mapView.onLowMemory();
     }
 }

@@ -45,5 +45,8 @@
     <string name="five_characters">5 characters</string>
     <string name="two_five_characters">2-5 characters</string>
     <string name="invalid_address">Invalid Address</string>
+    <string name="current_location">Current Location</string>
+    <string name="ticket_purchase_success">Parking ticket purchase successful!</string>
+    <string name="error_purchasing_ticket">There was an error purchasing your parking ticket.</string>
 
 </resources>

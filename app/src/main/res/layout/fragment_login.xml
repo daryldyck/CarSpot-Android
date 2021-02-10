@@ -164,4 +164,18 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!--    Just added this here so I could get to main page-->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/login_button2"
+        style="@style/ButtonOutlined"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="12dp"
+        android:text="@string/login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

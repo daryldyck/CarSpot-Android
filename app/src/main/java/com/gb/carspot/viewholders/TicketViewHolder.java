@@ -22,7 +22,7 @@ import static com.gb.carspot.utils.Constants.PAGE_TICKET_DETAILS;
 public class TicketViewHolder extends RecyclerView.ViewHolder
 {
     private final String TAG = getClass().getCanonicalName();
-    private ConstraintLayout constraintLayout;
+    private ImageView background;
     private ImageView imageView;
     private TextView address;
     private TextView date;
@@ -31,8 +31,8 @@ public class TicketViewHolder extends RecyclerView.ViewHolder
     public TicketViewHolder(@NonNull View itemView)
     {
         super(itemView);
-        constraintLayout = itemView.findViewById(R.id.ticketPreview_constraintLayout);
-        Utils.setHaptic(constraintLayout);
+        background = itemView.findViewById(R.id.background_imageView);
+        Utils.setHaptic(background);
         imageView = itemView.findViewById(R.id.ticket_imageView);
         address = itemView.findViewById(R.id.address_textView);
         date = itemView.findViewById(R.id.date_textView);
@@ -44,14 +44,14 @@ public class TicketViewHolder extends RecyclerView.ViewHolder
         // used for shared element animations
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
         {
-            constraintLayout.setTransitionName("constraintLayout" + "_" + parkingTicket.getDate().getTime());
+            background.setTransitionName("background" + "_" + parkingTicket.getDate().getTime());
             imageView.setTransitionName("imageView" + "_" + parkingTicket.getDate().getTime());
             address.setTransitionName("address" + "_" + parkingTicket.getDate().getTime());
             date.setTransitionName("date" + "_" + parkingTicket.getDate().getTime());
             length.setTransitionName("length" + "_" + parkingTicket.getDate().getTime());
         }
 
-        constraintLayout.setOnClickListener(new View.OnClickListener()
+        background.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
@@ -62,7 +62,7 @@ public class TicketViewHolder extends RecyclerView.ViewHolder
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
                 {
                     ticketAdapter.getMainActivity().getSupportFragmentManager().beginTransaction()
-                            .addSharedElement(constraintLayout, ViewCompat.getTransitionName(constraintLayout))
+                            .addSharedElement(background, ViewCompat.getTransitionName(background))
                             .addSharedElement(imageView, ViewCompat.getTransitionName(imageView))
                             .addSharedElement(address, ViewCompat.getTransitionName(address))
                             .addSharedElement(date, ViewCompat.getTransitionName(date))

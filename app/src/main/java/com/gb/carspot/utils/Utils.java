@@ -2,11 +2,16 @@ package com.gb.carspot.utils;
 
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.drawable.Drawable;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.widget.EditText;
 
 import com.gb.carspot.R;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.material.textfield.TextInputLayout;
 
 import org.json.JSONArray;
@@ -16,7 +21,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 
+import androidx.annotation.DrawableRes;
 import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.res.ResourcesCompat;
 
 public class Utils
 {
@@ -98,5 +105,16 @@ public class Utils
 
         clearError(textInputLayout);
         return true;
+    }
+
+    public static synchronized BitmapDescriptor getBitmapDescriptor(Context context, int id)
+    {
+        Drawable vectorDrawable = ResourcesCompat.getDrawable(context.getResources(), id, null);
+        Bitmap bitmap = Bitmap.createBitmap(vectorDrawable.getIntrinsicWidth(),
+                vectorDrawable.getIntrinsicHeight(), Bitmap.Config.ARGB_8888);
+        Canvas canvas = new Canvas(bitmap);
+        vectorDrawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+        vectorDrawable.draw(canvas);
+        return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
 }
