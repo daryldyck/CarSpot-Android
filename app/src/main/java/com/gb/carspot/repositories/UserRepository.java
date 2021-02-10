@@ -5,6 +5,8 @@ import android.util.Log;
 import com.gb.carspot.models.ParkingTicket;
 import com.gb.carspot.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -30,6 +32,26 @@ public class UserRepository
     public UserRepository()
     {
         firestore = FirebaseFirestore.getInstance();
+    }
+
+    public void addUser(final User newUser) {
+        firestore.collection(COLLECTION_USERS)
+                .document(newUser.getEmail())
+                .set(newUser)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "Successfully added new user for " + newUser.getEmail());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e(TAG, "Could not add new user " + newUser.getEmail());
+                        Log.e(TAG, e.toString());
+                        Log.e(TAG, e.getLocalizedMessage());
+                    }
+                });
     }
 
     // get user from Firestore

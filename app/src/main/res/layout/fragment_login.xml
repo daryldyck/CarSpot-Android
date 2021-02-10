@@ -32,7 +32,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/username_InputLayout"
+            android:id="@+id/login_username_InputLayout"
             style="@style/EditTextBox"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
@@ -41,13 +41,13 @@
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="4dp"
             android:hint="@string/e_mail"
-            app:layout_constraintBottom_toTopOf="@id/password_InputLayout"
+            app:layout_constraintBottom_toTopOf="@id/login_password_InputLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/username_textField"
+                android:id="@+id/login_username_textField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textNoSuggestions"
@@ -57,7 +57,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/password_InputLayout"
+            android:id="@+id/login_password_InputLayout"
             style="@style/EditTextBox"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
             app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/password_textField"
+                android:id="@+id/login_password_textField"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="textNoSuggestions"
