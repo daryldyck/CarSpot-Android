@@ -124,7 +124,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         User newUser = new User(editEmail.getText().toString(), editPassword.getText().toString(),
                 Long.parseLong(editPhoneNumber.getText().toString()), editFirstName.getText().toString(),
-                editLastName.getText().toString(), newPlateList, new ArrayList<ParkingTicket>());
+                editLastName.getText().toString(), newPlateList);
 
         userRepository.addUser(newUser);
     }

@@ -3,6 +3,7 @@ package com.gb.carspot.viewmodels;
 
 import android.app.Application;
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import com.gb.carspot.fragments.MapFragment;
 import com.gb.carspot.fragments.ProfileFragment;
@@ -40,6 +41,7 @@ public class MainActivityViewModel extends AndroidViewModel
 
     private MutableLiveData<User> user;
     private MutableLiveData<List<ParkingTicket>> parkingTicketList;
+    private MutableLiveData<Integer> ticketAdded;
 
     public MainActivityViewModel(@NonNull Application application)
     {
@@ -60,6 +62,7 @@ public class MainActivityViewModel extends AndroidViewModel
 
         parkingTicketRepository = ParkingTicketRepository.getInstance();
         parkingTicketList = parkingTicketRepository.getParkingTicketList(userId);
+        ticketAdded = parkingTicketRepository.getTicketAdded();
     }
 
     public void addParkingTicket(ParkingTicket parkingTicket)
@@ -125,5 +128,10 @@ public class MainActivityViewModel extends AndroidViewModel
     public MutableLiveData<List<ParkingTicket>> getParkingTicketList()
     {
         return parkingTicketList;
+    }
+
+    public MutableLiveData<Integer> getTicketAdded()
+    {
+        return ticketAdded;
     }
 }

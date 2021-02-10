@@ -27,9 +27,17 @@ public class Constants
 
     public static final String EXTRA_PARKING_TICKET = "extraParkingTicket";
 
+    public final static String LOCATION_LAT = "locationLat";
+    public final static String LOCATION_LON = "locationLon";
+    public final static String LOCATION_LAT_DEFAULT = "43.6532";
+    public final static String LOCATION_LON_DEFAULT = "-79.3832";
 
     public static final int TYPE_HEADER = 0;
     public static final int TYPE_ITEM = 1;
+
+    public static final int TICKET_DEFAULT = 0;
+    public static final int TICKET_ADDED = 1;
+    public static final int TICKET_FAILED = 2;
 
     // Database Stuff
     public static final String COLLECTION_USERS = "collectionUsers";

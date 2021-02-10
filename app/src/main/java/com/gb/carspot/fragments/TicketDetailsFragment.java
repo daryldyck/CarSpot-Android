@@ -13,17 +13,32 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.gb.carspot.R;
 import com.gb.carspot.activities.MainActivity;
+import com.gb.carspot.models.Location;
 import com.gb.carspot.models.ParkingTicket;
+import com.gb.carspot.utils.LocationManager;
+import com.gb.carspot.utils.Utils;
 import com.gb.carspot.viewmodels.TicketDetailsFragmentViewModel;
+import com.google.android.gms.location.LocationCallback;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import static com.gb.carspot.utils.Constants.ACTION_DISPLAY_BACK_BUTTON;
 import static com.gb.carspot.utils.Constants.EXTRA_PARKING_TICKET;
 import static com.gb.carspot.utils.Constants.INITIAL_FRAGMENT_LOAD;
+import static com.gb.carspot.utils.Constants.LOCATION_LAT;
+import static com.gb.carspot.utils.Constants.LOCATION_LAT_DEFAULT;
+import static com.gb.carspot.utils.Constants.LOCATION_LON;
+import static com.gb.carspot.utils.Constants.LOCATION_LON_DEFAULT;
 
 public class TicketDetailsFragment extends Fragment
 {
@@ -31,8 +46,12 @@ public class TicketDetailsFragment extends Fragment
     private View rootView;
     private TicketDetailsFragmentViewModel viewModel;
 
+    private GoogleMap googleMap;
+    private final Float DEFAULT_ZOOM = 16.0f;
+    private LocationManager locationManager;
     private MapView mapView;
-    private ConstraintLayout constraintLayout;
+
+    private ImageView background;
     private TextView address;
     private TextView address2;
     private TextView buildingCode;
@@ -82,17 +101,51 @@ public class TicketDetailsFragment extends Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         rootView = inflater.inflate(R.layout.fragment_ticket_details, container, false);
-        setup();
+        setup(savedInstanceState);
         setupBackButton();
         return rootView;
     }
 
     // setup and load fields with ticket data
-    private void setup()
+    private void setup(Bundle savedInstanceState)
     {
         if (getContext() != null)
         {
-            constraintLayout = rootView.findViewById(R.id.ticketDetails_constraintLayout);
+            locationManager = LocationManager.getInstance();
+            locationManager.checkPermissions(getActivity(), this);
+
+            mapView = rootView.findViewById(R.id.mapView);
+            mapView.onCreate(savedInstanceState);
+            mapView.getMapAsync(new OnMapReadyCallback()
+            {
+                @Override
+                public void onMapReady(GoogleMap map)
+                {
+                    googleMap = map;
+
+                    if (googleMap != null)
+                    {
+                        setupMapScreen(googleMap);
+
+//                        // move map to new location and the camera center point up a bit
+//                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+//                                new LatLng(viewModel.getParkingTicket().getLocation().getLat() - 0.002,
+//                                        viewModel.getParkingTicket().getLocation().getLon()), DEFAULT_ZOOM));
+
+                        googleMap.addMarker(new MarkerOptions()
+                                .position(new LatLng(viewModel.getParkingTicket().getLocation().getLat(),
+                                        viewModel.getParkingTicket().getLocation().getLon()))
+                                .icon(Utils.getBitmapDescriptor(getActivity(), R.drawable.ic_map_ticket_car)));
+
+                        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                                new LatLng(viewModel.getParkingTicket().getLocation().getLat() - 0.002,
+                                        viewModel.getParkingTicket().getLocation().getLon()), DEFAULT_ZOOM));
+
+                    }
+                }
+            });
+
+            background = rootView.findViewById(R.id.background_imageView);
             mapView = rootView.findViewById(R.id.mapView);
             address = rootView.findViewById(R.id.address_textView);
             address2 = rootView.findViewById(R.id.address2_textView);
@@ -107,7 +160,7 @@ public class TicketDetailsFragment extends Fragment
             // used for shared element animations
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             {
-                constraintLayout.setTransitionName("constraintLayout" + "_" + viewModel.getParkingTicket().getDate().getTime());
+                background.setTransitionName("background" + "_" + viewModel.getParkingTicket().getDate().getTime());
                 mapView.setTransitionName("imageView" + "_" + viewModel.getParkingTicket().getDate().getTime());
                 address.setTransitionName("address" + "_" + viewModel.getParkingTicket().getDate().getTime());
                 date.setTransitionName("date" + "_" + viewModel.getParkingTicket().getDate().getTime());
@@ -129,12 +182,59 @@ public class TicketDetailsFragment extends Fragment
         }
     }
 
+    private void setupMapScreen(GoogleMap googleMap)
+    {
+        if (googleMap != null)
+        {
+            Log.d(TAG, "setupMapScreen: ");
+            googleMap.setBuildingsEnabled(false);
+            googleMap.setIndoorEnabled(false);
+            googleMap.setTrafficEnabled(false);
+
+            UiSettings uiSettings = googleMap.getUiSettings();
+            uiSettings.setZoomControlsEnabled(true);
+            uiSettings.setZoomGesturesEnabled(true);
+            uiSettings.setMyLocationButtonEnabled(false);
+            uiSettings.setScrollGesturesEnabled(true);
+            uiSettings.setRotateGesturesEnabled(true);
+        }
+    }
+
     // turn on back button in toolbar from MainActivity
     private void setupBackButton()
     {
         Intent intent = new Intent(getContext(), MainActivity.class);
         intent.setAction(ACTION_DISPLAY_BACK_BUTTON);
         startActivity(intent);
+    }
+
+    @Override
+    public void onResume()
+    {
+        mapView.onResume();
+        super.onResume();
+    }
+
+
+    @Override
+    public void onPause()
+    {
+        super.onPause();
+        mapView.onPause();
+    }
+
+    @Override
+    public void onDestroy()
+    {
+        super.onDestroy();
+        mapView.onDestroy();
+    }
+
+    @Override
+    public void onLowMemory()
+    {
+        super.onLowMemory();
+        mapView.onLowMemory();
     }
 
 }

@@ -1142,6 +1142,7 @@ color foreground_material_light
 color highlighted_text_material_dark
 color highlighted_text_material_light
 color ic_launcher_background
+color mapTicketCar
 color material_blue_grey_800
 color material_blue_grey_900
 color material_blue_grey_950
@@ -1818,6 +1819,7 @@ drawable ic_keyboard_black_24dp
 drawable ic_launcher_background
 drawable ic_launcher_foreground
 drawable ic_map_default
+drawable ic_map_ticket_car
 drawable ic_mtrl_checked_circle
 drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
@@ -1945,6 +1947,7 @@ id activity_chooser_view_content
 id add
 id addPlateCard_constraintLayout
 id addPlate_constraintLayout
+id add_plate_layout
 id address2_textView
 id address_InputLayout
 id address_textField
@@ -1964,6 +1967,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id background_imageView
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -2060,6 +2064,9 @@ id end_padder
 id end_textView
 id enterAlways
 id enterAlwaysCollapsed
+id enterPlate_InputLayout
+id enterPlate_textField
+id enter_plate_layout
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -2124,7 +2131,7 @@ id length24_button
 id length4_button
 id length_ButtonToggleGroup
 id length_textView
-id licensePlate_container
+id licensePlate_frame
 id licensePlate_textView
 id licensePlates_recyclerView
 id license_spinner
@@ -2137,6 +2144,11 @@ id listMode
 id list_item
 id loginCard_constraintLayout
 id login_button
+id login_button2
+id login_password_InputLayout
+id login_password_textField
+id login_username_InputLayout
+id login_username_textField
 id logo
 id main_container
 id main_coordinatorLayout
@@ -2363,6 +2375,7 @@ id transition_transform
 id triangle
 id tvConfirmPassword
 id tvEmail
+id tvEnterPlate
 id tvFirstName
 id tvLastName
 id tvLicensePlate
@@ -2376,8 +2389,6 @@ id unlabeled
 id up
 id update_button
 id useLogo
-id username_InputLayout
-id username_textField
 id view_offset_helper
 id visible
 id visible_removing_fragment_view_tag
@@ -2450,6 +2461,7 @@ layout abc_select_dialog_material
 layout abc_tooltip
 layout activity_login
 layout activity_main
+layout activity_sign_up
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -2468,6 +2480,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_about
 layout fragment_add_license_plate
+layout fragment_enter_license_plate
 layout fragment_login
 layout fragment_manage_plates
 layout fragment_map
@@ -2620,6 +2633,7 @@ string common_signin_button_text_long
 string confirm_password
 string create_account
 string create_new_account
+string current_location
 string daryl_dyck
 string date
 string default_web_client_id
@@ -2627,6 +2641,7 @@ string dont_have_an_account
 string e_mail
 string end
 string error_icon_content_description
+string error_purchasing_ticket
 string exposed_dropdown_menu_content_description
 string fab_transformation_scrim_behavior
 string fab_transformation_sheet_behavior
@@ -2721,6 +2736,7 @@ string suite_no
 string theme_dark
 string theme_default
 string theme_light
+string ticket_purchase_success
 string two_five_characters
 string version_
 style About_Author_Text
