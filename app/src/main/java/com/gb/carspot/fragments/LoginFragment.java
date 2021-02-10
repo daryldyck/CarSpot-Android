@@ -1,6 +1,7 @@
 package com.gb.carspot.fragments;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -17,6 +19,7 @@ import com.gb.carspot.activities.MainActivity;
 import com.gb.carspot.utils.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -28,6 +31,10 @@ import androidx.transition.TransitionInflater;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_LOGIN_PAGE;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_MAIN_PAGE;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_PROFILE_PAGE;
+import static com.gb.carspot.utils.Constants.LOGIN_CURRENT_USER;
+import static com.gb.carspot.utils.Constants.SHARED_PREF_NAME;
+import static com.gb.carspot.utils.Constants.THEME_PREFERENCE;
+import static com.gb.carspot.utils.Constants.THEME_PREFERENCE_DEFAULT;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -39,10 +46,18 @@ public class LoginFragment extends Fragment
     private final String TAG = getClass().getCanonicalName();
     private View rootView;
 
+    private static SharedPreferences sharedPrefs;
+    private static SharedPreferences.Editor prefEditor;
+
     private FirebaseAuth mAuth;
 
     private Button loginButton;
     private TextView tvCreateAccount;
+
+    private TextInputEditText editEmail;
+    private TextInputEditText editPassword;
+    private CheckBox checkRememberMe;
+
 
     public LoginFragment()
     {
@@ -68,12 +83,21 @@ public class LoginFragment extends Fragment
             setSharedElementReturnTransition(TransitionInflater.from(getContext()).inflateTransition(R.transition.move));
         }
 
+        sharedPrefs = getActivity().getSharedPreferences(SHARED_PREF_NAME, 0);
+        prefEditor = sharedPrefs.edit();
+        Utils.applyTheme(sharedPrefs.getInt(THEME_PREFERENCE, THEME_PREFERENCE_DEFAULT));
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         rootView = inflater.inflate(R.layout.fragment_login, container, false);
+
+
+        editEmail = rootView.findViewById(R.id.login_username_textField);
+        editPassword = rootView.findViewById(R.id.login_password_textField);
+        checkRememberMe = rootView.findViewById(R.id.chkRememberMe);
 
         setup();
         return rootView;
@@ -91,7 +115,7 @@ public class LoginFragment extends Fragment
             @Override
             public void onClick(View view)
             {
-                gotoMain();
+                signIn(editEmail.getText().toString(), editPassword.getText().toString());
             }
         });
 
@@ -107,6 +131,9 @@ public class LoginFragment extends Fragment
 
     private void gotoMain()
     {
+        prefEditor.putString(LOGIN_CURRENT_USER, editEmail.getText().toString());
+        prefEditor.apply();
+
         Intent intent = new Intent(getContext(), LoginActivity.class);
         intent.setAction(ACTION_LOAD_MAIN_PAGE);
         startActivity(intent);
@@ -114,6 +141,8 @@ public class LoginFragment extends Fragment
 
     private void gotoSignUp()
     {
+        Log.d(TAG, editEmail.getText().toString());
+        Log.d(TAG, editPassword.getText().toString());
         Intent intent = new Intent(getContext(), LoginActivity.class);
         intent.setAction(ACTION_LOAD_PROFILE_PAGE);
         startActivity(intent);
