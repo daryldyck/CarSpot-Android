@@ -54,17 +54,17 @@ public class Utils
     }
 
     // set error on editText
-    public synchronized static void setEditTextError(Context context, TextInputLayout textInputLayout)
+    public synchronized static void setEditTextError(TextInputLayout textInputLayout, String errorString)
     {
-        textInputLayout.setError(context.getString(R.string.incorrect_input));
+        textInputLayout.setError(errorString);
         textInputLayout.setErrorEnabled(true);
     }
 
-    public static boolean checkBuildingCode(Context context, TextInputLayout textInputLayout)
+    public static boolean checkBuildingCode(TextInputLayout textInputLayout, String errorString)
     {
         if (textInputLayout.getEditText().getText().toString().length() != 5)
         {
-            setEditTextError(context, textInputLayout);
+            setEditTextError(textInputLayout, errorString);
             return false;
         }
 
@@ -72,13 +72,13 @@ public class Utils
         return true;
     }
 
-    public static boolean checkSuiteNumber(Context context, TextInputLayout textInputLayout)
+    public static boolean checkSuiteNumber(TextInputLayout textInputLayout, String errorString)
     {
         String stringToCheck = textInputLayout.getEditText().getText().toString();
 
         if (stringToCheck.isEmpty() || stringToCheck.length() < 2 || stringToCheck.length() > 5)
         {
-            setEditTextError(context, textInputLayout);
+            setEditTextError(textInputLayout, errorString);
             return false;
         }
 
@@ -86,13 +86,13 @@ public class Utils
         return true;
     }
 
-    public static boolean checkStreetAddress(Context context, TextInputLayout textInputLayout)
+    public static boolean checkStreetAddress(TextInputLayout textInputLayout, String errorString)
     {
         String stringToCheck = textInputLayout.getEditText().getText().toString();
 
         if (stringToCheck.isEmpty() || stringToCheck.length() < 3)
         {
-            setEditTextError(context, textInputLayout);
+            setEditTextError(textInputLayout, errorString);
             return false;
         }
 

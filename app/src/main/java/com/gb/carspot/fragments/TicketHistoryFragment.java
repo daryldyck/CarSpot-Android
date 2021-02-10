@@ -8,11 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gb.carspot.R;
+import com.gb.carspot.activities.MainActivity;
 import com.gb.carspot.adapters.TicketAdapter;
+import com.gb.carspot.models.ParkingTicket;
+import com.gb.carspot.viewmodels.MainActivityViewModel;
 
 import java.util.Date;
+import java.util.List;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.transition.TransitionInflater;
@@ -25,6 +30,7 @@ import androidx.transition.TransitionInflater;
 public class TicketHistoryFragment extends Fragment
 {
     private final String TAG = getClass().getCanonicalName();
+    private MainActivityViewModel mainActivityViewModel;
     private View rootView;
 
     private RecyclerView recyclerView;
@@ -34,7 +40,7 @@ public class TicketHistoryFragment extends Fragment
     {
     }
 
-    public static TicketHistoryFragment newInstance()
+    public static TicketHistoryFragment newInstance(MainActivityViewModel mainActivityViewModel)
     {
         return new TicketHistoryFragment();
     }
@@ -68,10 +74,24 @@ public class TicketHistoryFragment extends Fragment
     {
         if (getContext() != null)
         {
+            this.mainActivityViewModel = ((MainActivity) getActivity()).getViewModel();
+
             recyclerView = rootView.findViewById(R.id.ticketHistory_recyclerView);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-            ticketAdapter = new TicketAdapter(getContext());
+            recyclerView.setHasFixedSize(true);
+            ticketAdapter = new TicketAdapter((MainActivity) getActivity());
             recyclerView.setAdapter(ticketAdapter);
+
+            mainActivityViewModel.getParkingTicketList().observe(getActivity(), new Observer<List<ParkingTicket>>()
+            {
+                @Override
+                public void onChanged(List<ParkingTicket> parkingTickets)
+                {
+                    Log.d(TAG, "ParkingTicketList onChanged: " + parkingTickets.size());
+                    ticketAdapter.setTicketList(parkingTickets);
+                    ticketAdapter.notifyDataSetChanged();
+                }
+            });
         }
     }
 }

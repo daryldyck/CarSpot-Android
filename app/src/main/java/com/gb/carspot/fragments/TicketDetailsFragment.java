@@ -4,10 +4,12 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.transition.TransitionInflater;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +25,6 @@ import static com.gb.carspot.utils.Constants.ACTION_DISPLAY_BACK_BUTTON;
 import static com.gb.carspot.utils.Constants.EXTRA_PARKING_TICKET;
 import static com.gb.carspot.utils.Constants.INITIAL_FRAGMENT_LOAD;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link TicketDetailsFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class TicketDetailsFragment extends Fragment
 {
     private final String TAG = getClass().getCanonicalName();
@@ -35,6 +32,7 @@ public class TicketDetailsFragment extends Fragment
     private TicketDetailsFragmentViewModel viewModel;
 
     private MapView mapView;
+    private ConstraintLayout constraintLayout;
     private TextView address;
     private TextView address2;
     private TextView buildingCode;
@@ -44,9 +42,6 @@ public class TicketDetailsFragment extends Fragment
     private TextView end;
     private TextView license;
     private TextView length;
-
-    // used to track first load of fragment
-    private boolean initialFragmentLoad = true;
 
     public TicketDetailsFragment()
     {
@@ -77,8 +72,7 @@ public class TicketDetailsFragment extends Fragment
             setSharedElementReturnTransition(TransitionInflater.from(getContext()).inflateTransition(R.transition.move));
         }
 
-        // load values from saved state
-        if (savedInstanceState != null)
+        if (getArguments() != null)
         {
             viewModel.setParkingTicket((ParkingTicket) getArguments().getSerializable(EXTRA_PARKING_TICKET));
         }
@@ -98,6 +92,7 @@ public class TicketDetailsFragment extends Fragment
     {
         if (getContext() != null)
         {
+            constraintLayout = rootView.findViewById(R.id.ticketDetails_constraintLayout);
             mapView = rootView.findViewById(R.id.mapView);
             address = rootView.findViewById(R.id.address_textView);
             address2 = rootView.findViewById(R.id.address2_textView);
@@ -108,6 +103,16 @@ public class TicketDetailsFragment extends Fragment
             end = rootView.findViewById(R.id.endValue_textView);
             license = rootView.findViewById(R.id.license_textView);
             length = rootView.findViewById(R.id.length_textView);
+
+            // used for shared element animations
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
+            {
+                constraintLayout.setTransitionName("constraintLayout" + "_" + viewModel.getParkingTicket().getDate().getTime());
+                mapView.setTransitionName("imageView" + "_" + viewModel.getParkingTicket().getDate().getTime());
+                address.setTransitionName("address" + "_" + viewModel.getParkingTicket().getDate().getTime());
+                date.setTransitionName("date" + "_" + viewModel.getParkingTicket().getDate().getTime());
+                length.setTransitionName("length" + "_" + viewModel.getParkingTicket().getDate().getTime());
+            }
 
             //TODO - load map
 

@@ -4,6 +4,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.transition.TransitionInflater;
 
 import android.text.Editable;
@@ -13,14 +14,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
 import com.gb.carspot.R;
+import com.gb.carspot.activities.MainActivity;
+import com.gb.carspot.models.Location;
+import com.gb.carspot.models.ParkingTicket;
+import com.gb.carspot.models.User;
 import com.gb.carspot.utils.Utils;
+import com.gb.carspot.viewmodels.MainActivityViewModel;
 import com.google.android.gms.maps.MapView;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.textfield.TextInputLayout;
+
+import java.util.Date;
 
 import static com.gb.carspot.utils.Constants.INITIAL_FRAGMENT_LOAD;
 
@@ -32,6 +41,8 @@ import static com.gb.carspot.utils.Constants.INITIAL_FRAGMENT_LOAD;
 public class MapFragment extends Fragment
 {
     private final String TAG = getClass().getCanonicalName();
+    private MainActivityViewModel mainActivityViewModel;
+
     private View rootView;
     boolean okToError = false;
 
@@ -51,7 +62,7 @@ public class MapFragment extends Fragment
     {
     }
 
-    public static MapFragment newInstance()
+    public static MapFragment newInstance(MainActivityViewModel mainActivityViewModel)
     {
         return new MapFragment();
     }
@@ -102,6 +113,8 @@ public class MapFragment extends Fragment
 
         if (getContext() != null)
         {
+            this.mainActivityViewModel = ((MainActivity) getActivity()).getViewModel();
+
             // listen for views to fully load
             rootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener()
             {
@@ -133,7 +146,7 @@ public class MapFragment extends Fragment
                 {
                     if (okToError)
                     {
-                        Utils.checkBuildingCode(getContext(), buildingCodeTextInputLayout);
+                        Utils.checkBuildingCode(buildingCodeTextInputLayout, getString(R.string.five_characters));
                     }
                 }
             });
@@ -156,7 +169,7 @@ public class MapFragment extends Fragment
                 {
                     if (okToError)
                     {
-                        Utils.checkSuiteNumber(getContext(), hostSuiteTextInputLayout);
+                        Utils.checkSuiteNumber(hostSuiteTextInputLayout, getString(R.string.two_five_characters));
                     }
                 }
             });
@@ -180,7 +193,7 @@ public class MapFragment extends Fragment
                     if (okToError)
                     {
                         purchaseButton.setEnabled(false);
-                        Utils.checkStreetAddress(getContext(), addressTextInputLayout);
+//                        Utils.checkStreetAddress(addressTextInputLayout, getString(R.string.invalid_address));
                     }
                 }
             });
@@ -233,7 +246,7 @@ public class MapFragment extends Fragment
                 @Override
                 public void onClick(View view)
                 {
-
+                    purchaseButton.setEnabled(true);
                 }
             });
 
@@ -244,13 +257,34 @@ public class MapFragment extends Fragment
                 @Override
                 public void onClick(View view)
                 {
-
-                    if (Utils.checkBuildingCode(getContext(), buildingCodeTextInputLayout) &&
-                            Utils.checkBuildingCode(getContext(), hostSuiteTextInputLayout) &&
-                            Utils.checkBuildingCode(getContext(), addressTextInputLayout))
+                    if (Utils.checkBuildingCode(buildingCodeTextInputLayout, getString(R.string.five_characters)) &&
+                            Utils.checkSuiteNumber(hostSuiteTextInputLayout, getString(R.string.two_five_characters)) &&
+                            Utils.checkStreetAddress(addressTextInputLayout, getString(R.string.invalid_address)))
                     {
+                        ParkingTicket parkingTicket = new ParkingTicket(
+                                buildingCodeTextInputLayout.getEditText().getText().toString().toUpperCase(),
+                                getLength(),
+                                mainActivityViewModel.getUser().getValue().getLicensePlates().get(licensePlateSpinner.getSelectedItemPosition()),
+                                hostSuiteTextInputLayout.getEditText().getText().toString().toUpperCase(),
+                                new Location(),
+                                new Date(),
+                                "imageUrl");
 
+                        //mainActivityViewModel.addParkingTicket(parkingTicket);
                     }
+                }
+            });
+
+            mainActivityViewModel.getUser().observe(getActivity(), new Observer<User>()
+            {
+                @Override
+                public void onChanged(User user)
+                {
+                    ArrayAdapter arrayAdapter = new ArrayAdapter(getContext(), android.R.layout.simple_spinner_item,
+                            mainActivityViewModel.getUser().getValue().getLicensePlates());
+                    arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                    licensePlateSpinner.setAdapter(arrayAdapter);
+                    arrayAdapter.notifyDataSetChanged();
                 }
             });
         }

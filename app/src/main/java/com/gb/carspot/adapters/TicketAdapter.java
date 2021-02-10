@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.gb.carspot.R;
+import com.gb.carspot.activities.MainActivity;
 import com.gb.carspot.models.ParkingTicket;
 import com.gb.carspot.viewholders.TicketViewHolder;
 
@@ -18,26 +19,26 @@ import androidx.recyclerview.widget.RecyclerView;
 public class TicketAdapter extends RecyclerView.Adapter<TicketViewHolder>
 {
     private final String TAG = getClass().getCanonicalName();
-    private Context context;
+    private MainActivity mainActivity;
     private List<ParkingTicket> parkingTicketList = new ArrayList<ParkingTicket>();
 
-    public TicketAdapter(Context context)
+    public TicketAdapter(MainActivity mainActivity)
     {
-        this.context = context;
+        this.mainActivity = mainActivity;
     }
 
     @NonNull
     @Override
     public TicketViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType)
     {
-        View view = LayoutInflater.from(context).inflate(R.layout.ticket_item, null, false);
+        View view = LayoutInflater.from(mainActivity).inflate(R.layout.ticket_item, parent, false);
         return new TicketViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull TicketViewHolder holder, int position)
     {
-        holder.loadFields(parkingTicketList.get(position));
+        holder.loadFields(this, parkingTicketList.get(position));
     }
 
     @Override
@@ -50,4 +51,10 @@ public class TicketAdapter extends RecyclerView.Adapter<TicketViewHolder>
     {
         this.parkingTicketList = parkingTicketList;
     }
+
+    public MainActivity getMainActivity()
+    {
+        return mainActivity;
+    }
+
 }
