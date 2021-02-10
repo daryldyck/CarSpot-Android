@@ -42,7 +42,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ede69f89-9403-489f-aaa7-7b77527263b1" name="Default Changelist" comment="" />
+    <list default="true" id="ede69f89-9403-489f-aaa7-7b77527263b1" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-night-xxhdpi/card_background.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/card_background.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/ic_map_ticket_car.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -329,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612986189319</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Update Push">
+      <created>1612995967102</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1612995967102</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -357,7 +368,8 @@
     <MESSAGE value="Color Theme Update&#10;- some small adjustments to the repositories" />
     <MESSAGE value="Adjustment to User Model&#10;- removed parkingTicket List (loading separately)" />
     <MESSAGE value="Maps Fully operational&#10;- MapFragment map and ticket purchase fully working&#10;- reverse lookup form address working&#10;- ticket history map loads ticket location with shared element transition" />
-    <option name="LAST_COMMIT_MESSAGE" value="Maps Fully operational&#10;- MapFragment map and ticket purchase fully working&#10;- reverse lookup form address working&#10;- ticket history map loads ticket location with shared element transition" />
+    <MESSAGE value="Update Push" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update Push" />
   </component>
   <component name="WindowStateProjectService">
     <state x="894" y="302" key="#PSD" timestamp="1612475614152">
