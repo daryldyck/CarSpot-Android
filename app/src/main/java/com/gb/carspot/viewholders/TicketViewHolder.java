@@ -39,7 +39,7 @@ public class TicketViewHolder extends RecyclerView.ViewHolder
         length = itemView.findViewById(R.id.length_textView);
     }
 
-    public void loadFields(final TicketAdapter ticketAdapter, final ParkingTicket parkingTicket)
+    public void bind(final TicketAdapter ticketAdapter, final ParkingTicket parkingTicket)
     {
         // used for shared element animations
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)

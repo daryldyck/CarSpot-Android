@@ -37,7 +37,7 @@
 22-->[com.google.android.gms:play-services-measurement:18.0.2] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\94508f0dda3c757f8b49904443382759\jetified-play-services-measurement-18.0.2\AndroidManifest.xml:26:22-107
 23
 24    <application
-24-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:8:5-33:19
+24-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:8:5-31:19
 25        android:allowBackup="true"
 25-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:9:9-35
 26        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -57,34 +57,36 @@
 34-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:14:9-40
 35        android:usesCleartextTraffic="true" >
 35-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:15:9-44
-36        <activity
-36-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:17:9-26:20
-37            android:name="com.gb.carspot.activities.LoginActivity"
-37-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:18:13-53
-38            android:launchMode="singleTop"
-38-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:19:13-43
-39            android:theme="@style/AppTheme.NoActionBar" >
-39-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:20:13-56
-40            <intent-filter>
-40-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:21:13-25:29
-41                <action android:name="android.intent.action.MAIN" />
-41-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:22:17-69
-41-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:22:25-66
-42
-43                <category android:name="android.intent.category.LAUNCHER" />
-43-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:24:17-77
-43-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:24:27-74
-44            </intent-filter>
-45        </activity>
-46        <activity
-46-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:28:9-31:59
-47            android:name="com.gb.carspot.activities.MainActivity"
-47-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:29:13-52
-48            android:launchMode="singleTop"
-48-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:30:13-43
-49            android:theme="@style/AppTheme.NoActionBar" />
-49-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:31:13-56
-50
+36        <activity android:name="com.gb.carspot.activities.SignUpActivity" />
+36-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:16:9-72
+36-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:16:19-60
+37        <activity
+37-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:17:9-26:20
+38            android:name="com.gb.carspot.activities.LoginActivity"
+38-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:18:13-53
+39            android:launchMode="singleTop"
+39-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:19:13-43
+40            android:theme="@style/AppTheme.NoActionBar" >
+40-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:20:13-56
+41            <intent-filter>
+41-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:21:13-25:29
+42                <action android:name="android.intent.action.MAIN" />
+42-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:22:17-69
+42-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:22:25-66
+43
+44                <category android:name="android.intent.category.LAUNCHER" />
+44-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:24:17-77
+44-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:24:27-74
+45            </intent-filter>
+46        </activity>
+47        <activity
+47-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:27:9-30:59
+48            android:name="com.gb.carspot.activities.MainActivity"
+48-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:28:13-52
+49            android:launchMode="singleTop"
+49-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:29:13-43
+50            android:theme="@style/AppTheme.NoActionBar" />
+50-->C:\Users\DeNitE\Desktop\GeorgeBrown\MADS4006\Project\CarSpot\app\src\main\AndroidManifest.xml:30:13-56
 51        <!-- Needs to be explicitly declared on P+ -->
 52        <uses-library
 52-->[com.google.android.gms:play-services-maps:17.0.0] C:\Users\DeNitE\.gradle\caches\transforms-2\files-2.1\5ef8e64c0651f2c33189ccae2c75b60e\jetified-play-services-maps-17.0.0\AndroidManifest.xml:33:9-35:40

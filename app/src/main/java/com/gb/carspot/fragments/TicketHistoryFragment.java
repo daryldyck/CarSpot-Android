@@ -87,9 +87,7 @@ public class TicketHistoryFragment extends Fragment
                 @Override
                 public void onChanged(List<ParkingTicket> parkingTickets)
                 {
-                    Log.d(TAG, "ParkingTicketList onChanged: " + parkingTickets.size());
-                    ticketAdapter.setTicketList(parkingTickets);
-                    ticketAdapter.notifyDataSetChanged();
+                    ticketAdapter.submitList(parkingTickets);
                 }
             });
         }
