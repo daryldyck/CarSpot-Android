@@ -34,6 +34,7 @@
         android:testOnly="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true" >
+        <activity android:name="com.gb.carspot.activities.SignUpActivity" />
         <activity
             android:name="com.gb.carspot.activities.LoginActivity"
             android:launchMode="singleTop"
@@ -48,7 +49,6 @@
             android:name="com.gb.carspot.activities.MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <!-- Needs to be explicitly declared on P+ -->
         <uses-library
             android:name="org.apache.http.legacy"

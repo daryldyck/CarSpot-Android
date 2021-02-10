@@ -37,27 +37,6 @@ public class UserRepository
         firestore = FirebaseFirestore.getInstance();
     }
 
-
-    public void addUser(final User newUser) {
-        firestore.collection(COLLECTION_USERS)
-                .document(newUser.getEmail())
-                .set(newUser)
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "Successfully added new user for " + newUser.getEmail());
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Log.e(TAG, "Could not add new user " + newUser.getEmail());
-                        Log.e(TAG, e.toString());
-                        Log.e(TAG, e.getLocalizedMessage());
-                    }
-                });
-    }
-
     public static UserRepository getInstance()
     {
         if (instance == null)
@@ -105,6 +84,26 @@ public class UserRepository
             Log.d(TAG, e.toString());
             Log.d(TAG, e.getLocalizedMessage());
         }
+    }
+
+    public void addUser(final User newUser) {
+        firestore.collection(COLLECTION_USERS)
+                .document(newUser.getEmail())
+                .set(newUser)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "Successfully added new user for " + newUser.getEmail());
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.e(TAG, "Could not add new user " + newUser.getEmail());
+                        Log.e(TAG, e.toString());
+                        Log.e(TAG, e.getLocalizedMessage());
+                    }
+                });
     }
 
     public void updateUserInfo()

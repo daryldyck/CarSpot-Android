@@ -88,6 +88,10 @@
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\layout\\dialog_about.xml"
     },
     {
+        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_sign_up.xml.flat",
+        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\layout\\activity_sign_up.xml"
+    },
+    {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_ticket_history.xml.flat",
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\layout\\fragment_ticket_history.xml"
     },
@@ -190,6 +194,10 @@
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_carspot_logo.xml.flat",
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\drawable\\ic_carspot_logo.xml"
+    },
+    {
+        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_enter_license_plate.xml.flat",
+        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\layout\\fragment_enter_license_plate.xml"
     },
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\transition_explode.xml.flat",
