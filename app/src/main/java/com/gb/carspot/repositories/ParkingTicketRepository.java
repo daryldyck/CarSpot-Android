@@ -22,6 +22,8 @@ import androidx.lifecycle.MutableLiveData;
 import static com.gb.carspot.utils.Constants.COLLECTION_PARKING_TICKETS;
 import static com.gb.carspot.utils.Constants.COLLECTION_USERS;
 import static com.gb.carspot.utils.Constants.FIELD_DATE;
+import static com.gb.carspot.utils.Constants.TICKET_ADDED;
+import static com.gb.carspot.utils.Constants.TICKET_FAILED;
 
 public class ParkingTicketRepository
 {
@@ -29,6 +31,7 @@ public class ParkingTicketRepository
     private static ParkingTicketRepository instance;
     private FirebaseFirestore firestore;
     private MutableLiveData<List<ParkingTicket>> tickets = new MutableLiveData<List<ParkingTicket>>();
+    private MutableLiveData<Integer> ticketAdded = new MutableLiveData<Integer>();
 
     public ParkingTicketRepository()
     {
@@ -50,8 +53,14 @@ public class ParkingTicketRepository
         return tickets;
     }
 
-    public void addParkingTicket(String userId, ParkingTicket parkingTicket)
+    public MutableLiveData<Integer> getTicketAdded()
     {
+        return ticketAdded;
+    }
+
+    public void addParkingTicket(String userId, final ParkingTicket parkingTicket)
+    {
+        Log.d(TAG, "addParkingTicket: ");
         firestore.collection(COLLECTION_USERS)
                 .document(userId)
                 .collection(COLLECTION_PARKING_TICKETS)
@@ -64,10 +73,13 @@ public class ParkingTicketRepository
                     {
                         if (task.isSuccessful())
                         {
+                            tickets.getValue().add(0, parkingTicket);
+                            ticketAdded.postValue(TICKET_ADDED);
                             Log.d(TAG, "Parking ticket saved successfully.");
                         }
                         else
                         {
+                            ticketAdded.postValue(TICKET_FAILED);
                             Log.d(TAG, "There was a error. Parking ticket failed to save.");
                         }
                     }

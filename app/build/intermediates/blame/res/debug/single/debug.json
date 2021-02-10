@@ -4,16 +4,20 @@
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\layout\\fragment_map.xml"
     },
     {
+        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable-night-xxhdpi_card_background.9.png.flat",
+        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\drawable-night-xxhdpi\\card_background.9.png"
+    },
+    {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_profile.xml.flat",
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\layout\\fragment_profile.xml"
     },
     {
-        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\color_button_stroke_color.xml.flat",
-        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\color\\button_stroke_color.xml"
-    },
-    {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\color_button_stroke_color.xml.flat",
+        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\color\\button_stroke_color.xml"
     },
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\color_nav_selected_color.xml.flat",
@@ -22,10 +26,6 @@
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
-    },
-    {
-        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxxhdpi_card_background.9.png.flat",
-        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\drawable-xxxhdpi\\card_background.9.png"
     },
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_foreground.xml.flat",
@@ -50,6 +50,10 @@
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable_gradient_bottom.xml.flat",
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\drawable\\gradient_bottom.xml"
+    },
+    {
+        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable-xxhdpi_card_background.9.png.flat",
+        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\drawable-xxhdpi\\card_background.9.png"
     },
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xhdpi_ic_launcher.png.flat",
@@ -90,6 +94,10 @@
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_sign_up.xml.flat",
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\layout\\activity_sign_up.xml"
+    },
+    {
+        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_map_ticket_car.xml.flat",
+        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\drawable\\ic_map_ticket_car.xml"
     },
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_ticket_history.xml.flat",
@@ -206,10 +214,6 @@
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher.png.flat",
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
-    },
-    {
-        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable-night-xxxhdpi_card_background.9.png.flat",
-        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\drawable-night-xxxhdpi\\card_background.9.png"
     },
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",

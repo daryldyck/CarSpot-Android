@@ -49,6 +49,8 @@
     <color name="buttonDisabledOutline">@color/black_40</color>
     <color name="buttonDisabledText">@color/black_30</color>
 
+    <color name="mapTicketCar">@color/colorPrimary</color>
+
     <color name="ticketDetailsSubtitle">@color/colorPrimary</color>
     <color name="ticketDetailsLength">@color/colorSecondaryVariant</color>
 
