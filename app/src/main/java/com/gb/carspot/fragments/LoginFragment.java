@@ -32,6 +32,7 @@ import static com.gb.carspot.utils.Constants.ACTION_LOAD_LOGIN_PAGE;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_MAIN_PAGE;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_PROFILE_PAGE;
 import static com.gb.carspot.utils.Constants.LOGIN_CURRENT_USER;
+import static com.gb.carspot.utils.Constants.LOGIN_REMEMBER_ME;
 import static com.gb.carspot.utils.Constants.SHARED_PREF_NAME;
 import static com.gb.carspot.utils.Constants.THEME_PREFERENCE;
 import static com.gb.carspot.utils.Constants.THEME_PREFERENCE_DEFAULT;
@@ -143,6 +144,9 @@ public class LoginFragment extends Fragment
     private void gotoMain()
     {
         prefEditor.putString(LOGIN_CURRENT_USER, editEmail.getText().toString());
+        if(checkRememberMe.isChecked()) {
+            prefEditor.putBoolean(LOGIN_REMEMBER_ME, true);
+        }
         prefEditor.apply();
 
         Intent intent = new Intent(getContext(), LoginActivity.class);

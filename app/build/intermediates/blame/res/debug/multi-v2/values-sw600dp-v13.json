@@ -1,27 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+            "outputFile": "/Users/brianjayd/Documents/School/GB/Lectures/Adv-Android/CarSpot-Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\values-sw600dp\\dimens.xml",
-                    "from": {
-                        "startLines": "28,27,29,26,30,3,4,6,20,16,21,22,17,18,19,13,11,9,10,8,5",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "986,940,1036,891,1085,59,111,218,734,573,776,818,613,653,693,499,437,321,380,269,166",
-                        "endColumns": "48,44,47,47,49,50,53,47,40,38,40,40,38,38,39,46,58,57,55,50,50",
-                        "endOffsets": "1030,980,1079,934,1130,105,160,261,770,607,812,854,647,687,728,541,491,374,431,315,212"
-                    },
-                    "to": {
-                        "startLines": "10,11,12,13,14,15,16,26,27,28,29,30,31,32,33,34,37,38,39,40,41",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "611,660,705,753,801,851,902,1518,1566,1607,1646,1687,1728,1767,1806,1846,2008,2067,2125,2181,2232",
-                        "endColumns": "48,44,47,47,49,50,53,47,40,38,40,40,38,38,39,46,58,57,55,50,50",
-                        "endOffsets": "655,700,748,796,846,897,951,1561,1602,1641,1682,1723,1762,1801,1841,1888,2062,2120,2176,2227,2278"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\DeNitE\\.gradle\\caches\\transforms-2\\files-2.1\\2b7e6860e4978fe4111394a98b793dec\\material-1.3.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "/Users/brianjayd/.gradle/caches/transforms-2/files-2.1/2b7e6860e4978fe4111394a98b793dec/material-1.3.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,10,11,12,13,14",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4",
@@ -40,7 +23,24 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\DeNitE\\.gradle\\caches\\transforms-2\\files-2.1\\a15f2fb51ecc70570e5b0ae745b8cb67\\appcompat-1.2.0\\res\\values-sw600dp-v13\\values-sw600dp-v13.xml",
+                    "source": "/Users/brianjayd/Documents/School/GB/Lectures/Adv-Android/CarSpot-Android/app/src/main/res/values-sw600dp/dimens.xml",
+                    "from": {
+                        "startLines": "28,27,29,26,30,3,4,6,20,16,21,22,17,18,19,13,11,9,10,8,5",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "958,913,1007,865,1055,56,107,212,714,557,755,796,596,635,674,486,426,312,370,261,161",
+                        "endColumns": "48,44,47,47,49,50,53,47,40,38,40,40,38,38,39,46,58,57,55,50,50",
+                        "endOffsets": "1002,953,1050,908,1100,102,156,255,750,591,791,832,630,669,709,528,480,365,421,307,207"
+                    },
+                    "to": {
+                        "startLines": "10,11,12,13,14,15,16,26,27,28,29,30,31,32,33,34,37,38,39,40,41",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "611,660,705,753,801,851,902,1518,1566,1607,1646,1687,1728,1767,1806,1846,2008,2067,2125,2181,2232",
+                        "endColumns": "48,44,47,47,49,50,53,47,40,38,40,40,38,38,39,46,58,57,55,50,50",
+                        "endOffsets": "655,700,748,796,846,897,951,1561,1602,1641,1682,1723,1762,1801,1841,1888,2062,2120,2176,2227,2278"
+                    }
+                },
+                {
+                    "source": "/Users/brianjayd/.gradle/caches/transforms-2/files-2.1/a15f2fb51ecc70570e5b0ae745b8cb67/appcompat-1.2.0/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
