@@ -90,6 +90,9 @@ public class LocationManager
 
     public com.gb.carspot.models.Location getLocation(Context context, Location location)
     {
+        Log.d(TAG, "getLocation: Lat: " + location.getLatitude());
+        Log.d(TAG, "getLocation: Lon: " + location.getLongitude());
+
         if (context != null)
         {
             try
@@ -98,6 +101,7 @@ public class LocationManager
                 List<Address> addresses;
                 geocoder = new Geocoder(context, Locale.getDefault());
                 addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
+
                 String address = addresses.get(0).getSubThoroughfare() + " " + addresses.get(0).getThoroughfare();
                 String city = addresses.get(0).getLocality();
                 String state = addresses.get(0).getAdminArea();
@@ -120,7 +124,15 @@ public class LocationManager
                 e.printStackTrace();
             }
         }
-        return null;
+
+        com.gb.carspot.models.Location myLocation =
+                new com.gb.carspot.models.Location(location.getLatitude(),
+                        location.getLongitude(),
+                        "",
+                        "",
+                        "",
+                        false);
+        return myLocation;
     }
 
     public com.gb.carspot.models.Location getLocationFromAddress(Context context, com.gb.carspot.models.Location location)

@@ -28,9 +28,9 @@ public class Location implements Serializable
     {
         this.lat = lat;
         this.lon = lon;
-        this.streetAddress = streetAddress;
-        this.city = city;
-        this.country = country;
+        setStreetAddress(streetAddress);
+        setCity(city);
+        setCountry(country);
         this.isCurrentLocation = isCurrentLocation;
     }
 
@@ -61,7 +61,14 @@ public class Location implements Serializable
 
     public void setStreetAddress(String streetAddress)
     {
-        this.streetAddress = streetAddress;
+        if (streetAddress == null || streetAddress.contains("null"))
+        {
+            this.streetAddress = "";
+        }
+        else
+        {
+            this.streetAddress = streetAddress;
+        }
     }
 
     public String getCity()
@@ -71,7 +78,14 @@ public class Location implements Serializable
 
     public void setCity(String city)
     {
-        this.city = city;
+        if (city == null || city.contains("null"))
+        {
+            this.city = "";
+        }
+        else
+        {
+            this.city = city;
+        }
     }
 
     public String getCountry()
@@ -81,7 +95,14 @@ public class Location implements Serializable
 
     public void setCountry(String country)
     {
-        this.country = country;
+        if (country == null || country.contains("null"))
+        {
+            this.country = "";
+        }
+        else
+        {
+            this.country = country;
+        }
     }
 
     public boolean isCurrentLocation()

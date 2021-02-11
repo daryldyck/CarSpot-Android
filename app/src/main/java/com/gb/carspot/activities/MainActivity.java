@@ -52,10 +52,7 @@ public class MainActivity extends AppCompatActivity
     {
         sharedPrefs = getSharedPreferences(SHARED_PREF_NAME, 0);
         prefEditor = sharedPrefs.edit();
-
-        //prefEditor.putString(LOGIN_CURRENT_USER, "tester@email.com").commit();
         Utils.applyTheme(sharedPrefs.getInt(THEME_PREFERENCE, THEME_PREFERENCE_DEFAULT));
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);

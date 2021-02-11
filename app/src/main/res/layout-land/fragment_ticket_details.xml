@@ -6,5 +6,246 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground">
 
+    <com.google.android.gms.maps.MapView
+        android:id="@+id/mapView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ticketDetails_constraintLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
+    <View
+        android:id="@+id/gradient_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:background="@drawable/gradient_bottom"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/ticketDetails_constraintLayout"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintWidth_percent="0.45">
+
+        <ImageView
+            android:id="@+id/background_imageView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/card_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/address_textView"
+            style="@style/TicketDetails.Address.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="924 - College Park Rd."
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/address2_textView"
+            style="@style/TicketDetails.Address2.Text"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Toronto, Canada"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/address_textView" />
+
+        <TextView
+            android:id="@+id/building_textView"
+            style="@style/TicketDetails.Subtitle.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/building_code"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/address2_textView" />
+
+        <TextView
+            android:id="@+id/buildingCode_textView"
+            style="@style/TicketDetails.Value.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="8dp"
+            android:text="FRONT"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toEndOf="@+id/building_textView"
+            app:layout_constraintTop_toBottomOf="@+id/address2_textView" />
+
+        <TextView
+            android:id="@+id/suite_textView"
+            style="@style/TicketDetails.Subtitle.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/suite_no"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toEndOf="@+id/buildingCode_textView"
+            app:layout_constraintTop_toBottomOf="@+id/address2_textView" />
+
+        <TextView
+            android:id="@+id/suiteNo_textView"
+            style="@style/TicketDetails.Value.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:text="93"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/suite_textView"
+            app:layout_constraintTop_toBottomOf="@+id/address2_textView" />
+
+        <TextView
+            android:id="@+id/date_textView"
+            style="@style/TicketDetails.Subtitle.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/date"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/building_textView" />
+
+        <TextView
+            android:id="@+id/dateValue_textView"
+            style="@style/TicketDetails.Value.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="16dp"
+            android:text="02/06/21"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toEndOf="@+id/start_textView"
+            app:layout_constraintTop_toBottomOf="@+id/building_textView" />
+
+        <TextView
+            android:id="@+id/start_textView"
+            style="@style/TicketDetails.Subtitle.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="@string/start"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date_textView" />
+
+        <TextView
+            android:id="@+id/startValue_textView"
+            style="@style/TicketDetails.Value.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="10:31 AM"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintStart_toEndOf="@+id/start_textView"
+            app:layout_constraintTop_toBottomOf="@+id/date_textView" />
+
+        <TextView
+            android:id="@+id/end_textView"
+            style="@style/TicketDetails.Subtitle.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:text="@string/end"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toStartOf="@+id/endValue_textView"
+            app:layout_constraintTop_toBottomOf="@+id/date_textView" />
+
+        <TextView
+            android:id="@+id/endValue_textView"
+            style="@style/TicketDetails.Value.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="2:31 PM"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/date_textView" />
+
+        <TextView
+            android:id="@+id/licensePlate_textView"
+            style="@style/TicketDetails.Subtitle.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/license_plate"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toTopOf="@+id/license_textView"
+            app:layout_constraintEnd_toStartOf="@+id/length_textView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/start_textView"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/license_textView"
+            style="@style/TicketDetails.License.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="12dp"
+            android:text="JWM0E6"
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/length_textView"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/length_textView"
+            style="@style/TicketDetails.Length.Text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="4 Hrs."
+            app:autoSizeTextType="uniform"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/purchased_textView" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

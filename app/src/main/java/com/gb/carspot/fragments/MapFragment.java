@@ -1,11 +1,14 @@
 package com.gb.carspot.fragments;
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.transition.TransitionInflater;
@@ -61,6 +64,7 @@ public class MapFragment extends Fragment
 
     private GoogleMap googleMap;
     private final Float DEFAULT_ZOOM = 16.0f;
+    private Double mapOffset;
     private LocationManager locationManager;
     private LocationCallback locationCallback;
     private LatLng currentLocation;
@@ -135,6 +139,8 @@ public class MapFragment extends Fragment
 
         if (getContext() != null)
         {
+            mapOffset = Utils.getMapOffset(getActivity());
+
             this.mainActivityViewModel = ((MainActivity) getActivity()).getViewModel();
 
             // listen for views to fully load
@@ -170,14 +176,14 @@ public class MapFragment extends Fragment
 
                             // move camera center point up a bit
                             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(currentLocation.latitude - 0.002, currentLocation.longitude), DEFAULT_ZOOM));
+                                    new LatLng(currentLocation.latitude - mapOffset, currentLocation.longitude), DEFAULT_ZOOM));
 
                             Marker marker = googleMap.addMarker(
                                     new MarkerOptions().position(currentLocation).title(getString(R.string.current_location)));
                             marker.showInfoWindow();
 
                             // add current location to sharedPrefs
-                            prefEditor.putString(LOCATION_LAT, String.valueOf(loc.getLatitude() - 0.002)).commit();
+                            prefEditor.putString(LOCATION_LAT, String.valueOf(loc.getLatitude() - mapOffset)).commit();
                             prefEditor.putString(LOCATION_LON, String.valueOf(loc.getLongitude())).commit();
                         }
                     }
@@ -465,7 +471,7 @@ public class MapFragment extends Fragment
             myLocation = newLocation;
             // move map to new location and the camera center point up a bit
             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                    new LatLng(newLocation.getLat() - 0.002, newLocation.getLon()), DEFAULT_ZOOM));
+                    new LatLng(newLocation.getLat() - mapOffset, newLocation.getLon()), DEFAULT_ZOOM));
 
             googleMap.addMarker(new MarkerOptions()
                     .position(new LatLng(newLocation.getLat(), newLocation.getLon()))

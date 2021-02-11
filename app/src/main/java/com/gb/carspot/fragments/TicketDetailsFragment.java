@@ -48,6 +48,7 @@ public class TicketDetailsFragment extends Fragment
 
     private GoogleMap googleMap;
     private final Float DEFAULT_ZOOM = 16.0f;
+    private Double mapOffset;
     private LocationManager locationManager;
     private MapView mapView;
 
@@ -112,6 +113,8 @@ public class TicketDetailsFragment extends Fragment
     {
         if (getContext() != null)
         {
+            mapOffset = Utils.getMapOffset(getActivity());
+
             locationManager = LocationManager.getInstance();
             locationManager.checkPermissions(getActivity(), this);
 
@@ -135,7 +138,7 @@ public class TicketDetailsFragment extends Fragment
                                 .anchor(0f, 0.5f));
 
                         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
-                                new LatLng(viewModel.getParkingTicket().getLocation().getLat() - 0.002,
+                                new LatLng(viewModel.getParkingTicket().getLocation().getLat() - mapOffset,
                                         viewModel.getParkingTicket().getLocation().getLon()), DEFAULT_ZOOM));
 
                     }
