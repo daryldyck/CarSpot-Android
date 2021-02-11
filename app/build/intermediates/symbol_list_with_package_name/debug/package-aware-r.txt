@@ -1264,7 +1264,9 @@ color test_mtrl_calendar_day
 color test_mtrl_calendar_day_selected
 color text_enabled_color
 color ticketDetailsLength
+color ticketDetailsLicense
 color ticketDetailsSubtitle
+color ticketDetailsValues
 color ticketPreviewLength
 color toolbarBg
 color tooltip_background_dark
@@ -2086,6 +2088,7 @@ id fragment_container_view_tag
 id ghost_view
 id ghost_view_holder
 id gone
+id gradient_view
 id graph
 id graph_wrap
 id group_divider
@@ -2355,7 +2358,7 @@ id theme_light
 id ticketDetails_constraintLayout
 id ticketHistory_recyclerView
 id ticketPreview_constraintLayout
-id ticket_imageView
+id ticket_mapView
 id time
 id title
 id titleDividerNoCustom

@@ -110,4 +110,6 @@ public class TicketAdapter extends ListAdapter<ParkingTicket, TicketViewHolder>
         return true;
     }
 
+
+
 }

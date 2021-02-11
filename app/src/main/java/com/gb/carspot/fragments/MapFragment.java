@@ -39,6 +39,7 @@ import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.material.button.MaterialButtonToggleGroup;
 import com.google.android.material.textfield.TextInputLayout;
@@ -171,7 +172,9 @@ public class MapFragment extends Fragment
                             googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(currentLocation.latitude - 0.002, currentLocation.longitude), DEFAULT_ZOOM));
 
-                            googleMap.addMarker(new MarkerOptions().position(currentLocation).title(getString(R.string.current_location)));
+                            Marker marker = googleMap.addMarker(
+                                    new MarkerOptions().position(currentLocation).title(getString(R.string.current_location)));
+                            marker.showInfoWindow();
 
                             // add current location to sharedPrefs
                             prefEditor.putString(LOCATION_LAT, String.valueOf(loc.getLatitude() - 0.002)).commit();
@@ -439,7 +442,8 @@ public class MapFragment extends Fragment
                 {
                     googleMap.addMarker(new MarkerOptions()
                             .position(new LatLng(parkingTicket.getLocation().getLat(), parkingTicket.getLocation().getLon()))
-                            .icon(Utils.getBitmapDescriptor(getActivity(), R.drawable.ic_map_ticket_car)));
+                            .icon(Utils.getBitmapDescriptor(getActivity(), R.drawable.ic_map_ticket_car))
+                            .anchor(0f, 0.5f));
                 }
             }
         }
