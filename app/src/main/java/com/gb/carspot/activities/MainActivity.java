@@ -29,6 +29,7 @@ import com.gb.carspot.utils.Utils;
 import com.gb.carspot.viewmodels.MainActivityViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.button.MaterialButton;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.Objects;
 
@@ -44,18 +45,23 @@ public class MainActivity extends AppCompatActivity
     private Toolbar toolbar;
     private BottomNavigationView bottomNavigationView;
 
+    private FirebaseAuth mAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         sharedPrefs = getSharedPreferences(SHARED_PREF_NAME, 0);
         prefEditor = sharedPrefs.edit();
 
-        prefEditor.putString(LOGIN_CURRENT_USER, "tester@email.com").commit();
+        //prefEditor.putString(LOGIN_CURRENT_USER, "tester@email.com").commit();
         Utils.applyTheme(sharedPrefs.getInt(THEME_PREFERENCE, THEME_PREFERENCE_DEFAULT));
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         viewModel = new ViewModelProvider(this).get(MainActivityViewModel.class);
+
+        //Get FirebaseAuth for logging out
+        mAuth = FirebaseAuth.getInstance();
 
         // needed to ensure vector drawable compatibility
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
@@ -232,6 +238,9 @@ public class MainActivity extends AppCompatActivity
     {
         prefEditor.putBoolean(LOGIN_REMEMBER_ME, false).commit();
         prefEditor.putString(LOGIN_CURRENT_USER, null).commit();
+
+        //Sign out current firebase user
+        mAuth.signOut();
 
         finish();
         Intent intent = new Intent(this, LoginActivity.class);

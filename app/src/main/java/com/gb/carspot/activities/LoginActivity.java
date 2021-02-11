@@ -24,6 +24,7 @@ import com.google.firebase.auth.FirebaseUser;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_LOGIN_PAGE;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_MAIN_PAGE;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_PROFILE_PAGE;
+import static com.gb.carspot.utils.Constants.LOGIN_REMEMBER_ME;
 import static com.gb.carspot.utils.Constants.SHARED_PREF_NAME;
 import static com.gb.carspot.utils.Constants.THEME_PREFERENCE;
 import static com.gb.carspot.utils.Constants.THEME_PREFERENCE_DEFAULT;
@@ -52,7 +53,11 @@ public class LoginActivity extends AppCompatActivity
         //initialize firebase auth
         mAuth = FirebaseAuth.getInstance();
 
-        loadLoginPage();
+        if(sharedPrefs.getBoolean(LOGIN_REMEMBER_ME, false) == true) {
+            gotoMain();
+        } else {
+            loadLoginPage();
+        }
     }
 
 //    Checks to see if user is already logged in. Uncomment after log in functionality works.

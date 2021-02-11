@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-h720dp-v13\\values-h720dp-v13.xml",
+            "outputFile": "/Users/brianjayd/Documents/School/GB/Lectures/Adv-Android/CarSpot-Android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\DeNitE\\.gradle\\caches\\transforms-2\\files-2.1\\a15f2fb51ecc70570e5b0ae745b8cb67\\appcompat-1.2.0\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "source": "/Users/brianjayd/.gradle/caches/transforms-2/files-2.1/a15f2fb51ecc70570e5b0ae745b8cb67/appcompat-1.2.0/res/values-h720dp-v13/values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
