@@ -1,6 +1,7 @@
 package com.gb.carspot.viewholders;
 
 import android.os.Build;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -10,6 +11,13 @@ import com.gb.carspot.adapters.TicketAdapter;
 import com.gb.carspot.fragments.TicketDetailsFragment;
 import com.gb.carspot.models.ParkingTicket;
 import com.gb.carspot.utils.Utils;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
 
 import androidx.annotation.NonNull;
@@ -22,8 +30,10 @@ import static com.gb.carspot.utils.Constants.PAGE_TICKET_DETAILS;
 public class TicketViewHolder extends RecyclerView.ViewHolder
 {
     private final String TAG = getClass().getCanonicalName();
+    private final Float DEFAULT_ZOOM = 14.0f;
     private ImageView background;
-    private ImageView imageView;
+    private View gradient;
+    private MapView mapView;
     private TextView address;
     private TextView date;
     private TextView length;
@@ -33,7 +43,8 @@ public class TicketViewHolder extends RecyclerView.ViewHolder
         super(itemView);
         background = itemView.findViewById(R.id.background_imageView);
         Utils.setHaptic(background);
-        imageView = itemView.findViewById(R.id.ticket_imageView);
+        gradient = itemView.findViewById(R.id.gradient_view);
+        mapView = itemView.findViewById(R.id.ticket_mapView);
         address = itemView.findViewById(R.id.address_textView);
         date = itemView.findViewById(R.id.date_textView);
         length = itemView.findViewById(R.id.length_textView);
@@ -45,7 +56,8 @@ public class TicketViewHolder extends RecyclerView.ViewHolder
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
         {
             background.setTransitionName("background" + "_" + parkingTicket.getDate().getTime());
-            imageView.setTransitionName("imageView" + "_" + parkingTicket.getDate().getTime());
+            gradient.setTransitionName("gradient" + "_" + parkingTicket.getDate().getTime());
+            mapView.setTransitionName("mapView" + "_" + parkingTicket.getDate().getTime());
             address.setTransitionName("address" + "_" + parkingTicket.getDate().getTime());
             date.setTransitionName("date" + "_" + parkingTicket.getDate().getTime());
             length.setTransitionName("length" + "_" + parkingTicket.getDate().getTime());
@@ -63,7 +75,8 @@ public class TicketViewHolder extends RecyclerView.ViewHolder
                 {
                     ticketAdapter.getMainActivity().getSupportFragmentManager().beginTransaction()
                             .addSharedElement(background, ViewCompat.getTransitionName(background))
-                            .addSharedElement(imageView, ViewCompat.getTransitionName(imageView))
+                            .addSharedElement(gradient, ViewCompat.getTransitionName(gradient))
+                            //.addSharedElement(mapView, ViewCompat.getTransitionName(mapView))
                             .addSharedElement(address, ViewCompat.getTransitionName(address))
                             .addSharedElement(date, ViewCompat.getTransitionName(date))
                             .addSharedElement(length, ViewCompat.getTransitionName(length))
@@ -83,12 +96,37 @@ public class TicketViewHolder extends RecyclerView.ViewHolder
             }
         });
 
-        Picasso.get()
-                .load(parkingTicket.getImageUrl())
-                .placeholder(R.drawable.ic_map_default)
-                .into(imageView);
+        mapView.onCreate(null);
+        mapView.getMapAsync(new OnMapReadyCallback()
+        {
+            @Override
+            public void onMapReady(GoogleMap googleMap)
+            {
+                Log.d(TAG, "onMapReady: ");
+                if (googleMap != null)
+                {
+                    googleMap.getUiSettings().setAllGesturesEnabled(false);
+                    googleMap.getUiSettings().setMapToolbarEnabled(false);
+
+                    googleMap.addMarker(new MarkerOptions()
+                            .position(new LatLng(parkingTicket.getLocation().getLat(),
+                                    parkingTicket.getLocation().getLon()))
+                            .icon(Utils.getBitmapDescriptor(ticketAdapter.getMainActivity(), R.drawable.ic_map_ticket_car))
+                            .anchor(0f, 0.5f));
+
+
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
+                            new LatLng(parkingTicket.getLocation().getLat(),
+                                    parkingTicket.getLocation().getLon()), DEFAULT_ZOOM));
+                }
+            }
+        });
+        mapView.onResume();
+
         address.setText(parkingTicket.getLocation().getStreetAddress());
         date.setText(parkingTicket.getDateString());
         length.setText(parkingTicket.getLength());
     }
+
+
 }

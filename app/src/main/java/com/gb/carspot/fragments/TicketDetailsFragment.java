@@ -52,6 +52,7 @@ public class TicketDetailsFragment extends Fragment
     private MapView mapView;
 
     private ImageView background;
+    private View gradient;
     private TextView address;
     private TextView address2;
     private TextView buildingCode;
@@ -127,15 +128,11 @@ public class TicketDetailsFragment extends Fragment
                     {
                         setupMapScreen(googleMap);
 
-//                        // move map to new location and the camera center point up a bit
-//                        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-//                                new LatLng(viewModel.getParkingTicket().getLocation().getLat() - 0.002,
-//                                        viewModel.getParkingTicket().getLocation().getLon()), DEFAULT_ZOOM));
-
                         googleMap.addMarker(new MarkerOptions()
                                 .position(new LatLng(viewModel.getParkingTicket().getLocation().getLat(),
                                         viewModel.getParkingTicket().getLocation().getLon()))
-                                .icon(Utils.getBitmapDescriptor(getActivity(), R.drawable.ic_map_ticket_car)));
+                                .icon(Utils.getBitmapDescriptor(getActivity(), R.drawable.ic_map_ticket_car))
+                                .anchor(0f, 0.5f));
 
                         googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                 new LatLng(viewModel.getParkingTicket().getLocation().getLat() - 0.002,
@@ -146,6 +143,7 @@ public class TicketDetailsFragment extends Fragment
             });
 
             background = rootView.findViewById(R.id.background_imageView);
+            gradient = rootView.findViewById(R.id.gradient_view);
             mapView = rootView.findViewById(R.id.mapView);
             address = rootView.findViewById(R.id.address_textView);
             address2 = rootView.findViewById(R.id.address2_textView);
@@ -161,13 +159,12 @@ public class TicketDetailsFragment extends Fragment
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP)
             {
                 background.setTransitionName("background" + "_" + viewModel.getParkingTicket().getDate().getTime());
-                mapView.setTransitionName("imageView" + "_" + viewModel.getParkingTicket().getDate().getTime());
+                gradient.setTransitionName("gradient" + "_" + viewModel.getParkingTicket().getDate().getTime());
+                mapView.setTransitionName("mapView" + "_" + viewModel.getParkingTicket().getDate().getTime());
                 address.setTransitionName("address" + "_" + viewModel.getParkingTicket().getDate().getTime());
                 date.setTransitionName("date" + "_" + viewModel.getParkingTicket().getDate().getTime());
                 length.setTransitionName("length" + "_" + viewModel.getParkingTicket().getDate().getTime());
             }
-
-            //TODO - load map
 
             address.setText(viewModel.getParkingTicket().getLocation().getStreetAddress());
             address2.setText(viewModel.getParkingTicket().getLocation().getCity() + ", " +

@@ -147,14 +147,14 @@
 
     <style name="TicketDetails.Value.Text" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/colorOnBackground</item>
+        <item name="android:textColor">@color/ticketDetailsValues</item>
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">sans</item>
     </style>
 
     <style name="TicketDetails.License.Text" parent="TextAppearance.MaterialComponents.Headline1">
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/colorSecondaryVariant</item>
+        <item name="android:textColor">@color/ticketDetailsLicense</item>
         <item name="android:textStyle">bold</item>
         <item name="android:typeface">sans</item>
     </style>

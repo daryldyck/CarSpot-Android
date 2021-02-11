@@ -23,7 +23,7 @@
     <color name="colorOnPrimary">#ffffff</color>
     <color name="colorOnSecondary">#ffffff</color>
     <color name="colorOnBackground">@color/black_5</color>
-    <color name="colorOnBackgroundSecondary">@color/black_25</color>
+    <color name="colorOnBackgroundSecondary">@color/black_35</color>
     <color name="colorOnError">#ffffff</color>
     <color name="colorOnSurface">#ffffff</color>
     <color name="colorError">#B00000</color>
@@ -51,8 +51,10 @@
 
     <color name="mapTicketCar">@color/colorPrimaryLight</color>
 
-    <color name="ticketDetailsSubtitle">@color/colorPrimaryVariant</color>
+    <color name="ticketDetailsSubtitle">@color/colorOnBackground</color>
+    <color name="ticketDetailsValues">@color/colorOnBackgroundSecondary</color>
     <color name="ticketDetailsLength">@color/colorSecondaryLight</color>
+    <color name="ticketDetailsLicense">@color/colorPrimary</color>
 
     <color name="ticketPreviewLength">@color/colorPrimaryVariant</color>
 
