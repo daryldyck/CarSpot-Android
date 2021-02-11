@@ -2,6 +2,7 @@ package com.gb.carspot.utils;
 
 
 import android.content.Context;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
@@ -116,5 +117,18 @@ public class Utils
         vectorDrawable.setBounds(0, 0, (int) (canvas.getWidth() * 0.6f), (int) (canvas.getHeight() * 0.6f));
         vectorDrawable.draw(canvas);
         return BitmapDescriptorFactory.fromBitmap(bitmap);
+    }
+
+    public static Double getMapOffset(Context context)
+    {
+        int orientation = context.getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE)
+        {
+            return 0.0;
+        }
+        else
+        {
+            return 0.002;
+        }
     }
 }
