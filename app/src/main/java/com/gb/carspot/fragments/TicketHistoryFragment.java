@@ -1,3 +1,12 @@
+//
+//  Advanced Android - MADS4006
+//  CarSpot
+//
+//  Group 7
+//  Brian Domingo - 101330689
+//  Daryl Dyck - 101338429
+//
+
 package com.gb.carspot.fragments;
 
 import android.os.Build;
@@ -40,6 +49,7 @@ public class TicketHistoryFragment extends Fragment
     {
     }
 
+    // singleton initializer
     public static TicketHistoryFragment newInstance(MainActivityViewModel mainActivityViewModel)
     {
         return new TicketHistoryFragment();
@@ -82,6 +92,7 @@ public class TicketHistoryFragment extends Fragment
             ticketAdapter = new TicketAdapter((MainActivity) getActivity());
             recyclerView.setAdapter(ticketAdapter);
 
+            // listen for updates in ticket list
             mainActivityViewModel.getParkingTicketList().observe(getActivity(), new Observer<List<ParkingTicket>>()
             {
                 @Override

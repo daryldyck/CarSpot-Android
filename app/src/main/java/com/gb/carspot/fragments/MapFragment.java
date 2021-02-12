@@ -1,3 +1,12 @@
+//
+//  Advanced Android - MADS4006
+//  CarSpot
+//
+//  Group 7
+//  Brian Domingo - 101330689
+//  Daryl Dyck - 101338429
+//
+
 package com.gb.carspot.fragments;
 
 import android.content.Context;
@@ -154,6 +163,7 @@ public class MapFragment extends Fragment
                 }
             });
 
+            // callback for users current location
             locationCallback = new LocationCallback()
             {
                 @Override
@@ -171,22 +181,26 @@ public class MapFragment extends Fragment
 
                         if (myLocation != null && googleMap != null)
                         {
-                            addressTextInputLayout.getEditText().setText(myLocation.getStreetAddress());
-                            purchaseButton.setEnabled(true);
+                            if (getContext() != null)
+                            {
+                                addressTextInputLayout.getEditText().setText(myLocation.getStreetAddress());
+                                purchaseButton.setEnabled(true);
 
-                            // move camera center point up a bit
-                            googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(currentLocation.latitude - mapOffset, currentLocation.longitude), DEFAULT_ZOOM));
+                                // move camera center point up a bit
+                                googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
+                                        new LatLng(currentLocation.latitude - mapOffset, currentLocation.longitude), DEFAULT_ZOOM));
 
-                            Marker marker = googleMap.addMarker(
-                                    new MarkerOptions().position(currentLocation).title(getString(R.string.current_location)));
-                            marker.showInfoWindow();
+                                Marker marker = googleMap.addMarker(
+                                        new MarkerOptions().position(currentLocation).title(getString(R.string.current_location)));
+                                marker.showInfoWindow();
 
-                            // add current location to sharedPrefs
-                            prefEditor.putString(LOCATION_LAT, String.valueOf(loc.getLatitude() - mapOffset)).commit();
-                            prefEditor.putString(LOCATION_LON, String.valueOf(loc.getLongitude())).commit();
+                                // add current location to sharedPrefs
+                                prefEditor.putString(LOCATION_LAT, String.valueOf(loc.getLatitude() - mapOffset)).commit();
+                                prefEditor.putString(LOCATION_LON, String.valueOf(loc.getLongitude())).commit();
+                            }
                         }
                     }
+                    // cancel location updates after received
                     locationManager.stopLocationUpdates(getActivity(), this);
                 }
 
@@ -205,6 +219,7 @@ public class MapFragment extends Fragment
                 locationManager.requestLocationUpdates(getActivity(), locationCallback);
             }
 
+            //setup Google MapView
             mapView = rootView.findViewById(R.id.mapView);
             mapView.onCreate(savedInstanceState);
             mapView.getMapAsync(new OnMapReadyCallback()
@@ -376,6 +391,7 @@ public class MapFragment extends Fragment
                 }
             });
 
+            // listen for license plate updates
             mainActivityViewModel.getUser().observe(getActivity(), new Observer<User>()
             {
                 @Override
@@ -389,6 +405,7 @@ public class MapFragment extends Fragment
                 }
             });
 
+            // listen for previous ticket updates - add markers
             mainActivityViewModel.getParkingTicketList().observe(getActivity(), new Observer<List<ParkingTicket>>()
             {
                 @Override
@@ -398,6 +415,7 @@ public class MapFragment extends Fragment
                 }
             });
 
+            // listen for ticket purchase confirmations
             mainActivityViewModel.getTicketAdded().observe(getActivity(), new Observer<Integer>()
             {
                 @Override
@@ -420,6 +438,7 @@ public class MapFragment extends Fragment
         }
     }
 
+    // setup mapView
     private void setupMapScreen(GoogleMap googleMap)
     {
         if (googleMap != null)
@@ -438,6 +457,7 @@ public class MapFragment extends Fragment
         }
     }
 
+    // add markers to map for previous ticket purchases
     private void addTicketMarkers()
     {
         if (mainActivityViewModel.getParkingTicketList().getValue() != null)
@@ -455,6 +475,7 @@ public class MapFragment extends Fragment
         }
     }
 
+    // update map with new user input address
     private void updateMap()
     {
         Location newLocation = locationManager.getLocationFromAddress(getActivity(),
@@ -485,6 +506,7 @@ public class MapFragment extends Fragment
         }
     }
 
+    // get ticket length from button toggle group
     private int getLength()
     {
         int length = 1;
@@ -506,7 +528,7 @@ public class MapFragment extends Fragment
         return length;
     }
 
-    @Override
+    @Override // callback for permission requests
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults)
     {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
@@ -530,8 +552,8 @@ public class MapFragment extends Fragment
     @Override
     public void onResume()
     {
-        mapView.onResume();
         super.onResume();
+        mapView.onResume();
     }
 
 
@@ -539,6 +561,7 @@ public class MapFragment extends Fragment
     public void onPause()
     {
         super.onPause();
+        locationManager.stopLocationUpdates(getActivity(), locationCallback);
         mapView.onPause();
     }
 

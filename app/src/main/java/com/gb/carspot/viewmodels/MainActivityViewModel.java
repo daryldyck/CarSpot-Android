@@ -1,3 +1,12 @@
+//
+//  Advanced Android - MADS4006
+//  CarSpot
+//
+//  Group 7
+//  Brian Domingo - 101330689
+//  Daryl Dyck - 101338429
+//
+
 package com.gb.carspot.viewmodels;
 
 
@@ -23,6 +32,7 @@ import static com.gb.carspot.utils.Constants.LOGIN_CURRENT_USER;
 import static com.gb.carspot.utils.Constants.PAGE_MAP;
 import static com.gb.carspot.utils.Constants.SHARED_PREF_NAME;
 
+// viewModel for mainActivity - bound to activity life cycle. All fragments inside activity have access to this viewModel
 public class MainActivityViewModel extends AndroidViewModel
 {
     private final String TAG = getClass().getCanonicalName();
@@ -51,6 +61,7 @@ public class MainActivityViewModel extends AndroidViewModel
         init();
     }
 
+    // initialize vieModel
     public void init()
     {
         if (parkingTicketList != null && user != null)

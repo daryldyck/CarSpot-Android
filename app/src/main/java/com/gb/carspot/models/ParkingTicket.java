@@ -1,3 +1,12 @@
+//
+//  Advanced Android - MADS4006
+//  CarSpot
+//
+//  Group 7
+//  Brian Domingo - 101330689
+//  Daryl Dyck - 101338429
+//
+
 package com.gb.carspot.models;
 
 import java.io.Serializable;
@@ -60,6 +69,7 @@ public class ParkingTicket implements Serializable
         this.noOfHours = noOfHours;
     }
 
+    // get length string
     public String getLength()
     {
         String length = "";
@@ -121,18 +131,21 @@ public class ParkingTicket implements Serializable
         this.date = date;
     }
 
+    // get date string
     public String getDateString()
     {
         DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
         return dateFormat.format(date).toString();
     }
 
+    // get  ticket start time
     public String getStartString()
     {
         DateFormat dateFormat = new SimpleDateFormat("hh:mm aa");
         return dateFormat.format(date).toString();
     }
 
+    // get ticket end time
     public String getEndString()
     {
         Calendar calendar = Calendar.getInstance();

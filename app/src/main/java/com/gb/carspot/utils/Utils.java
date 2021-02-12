@@ -1,3 +1,12 @@
+//
+//  Advanced Android - MADS4006
+//  CarSpot
+//
+//  Group 7
+//  Brian Domingo - 101330689
+//  Daryl Dyck - 101338429
+//
+
 package com.gb.carspot.utils;
 
 
@@ -68,6 +77,7 @@ public class Utils
         textInputLayout.setErrorEnabled(true);
     }
 
+    // validate building code input
     public static boolean checkBuildingCode(TextInputLayout textInputLayout, String errorString)
     {
         if (textInputLayout.getEditText().getText().toString().length() != 5)
@@ -80,6 +90,7 @@ public class Utils
         return true;
     }
 
+    // validate suite number input
     public static boolean checkSuiteNumber(TextInputLayout textInputLayout, String errorString)
     {
         String stringToCheck = textInputLayout.getEditText().getText().toString();
@@ -94,6 +105,7 @@ public class Utils
         return true;
     }
 
+    // validate street address input
     public static boolean checkStreetAddress(TextInputLayout textInputLayout, String errorString)
     {
         String stringToCheck = textInputLayout.getEditText().getText().toString();
@@ -108,6 +120,7 @@ public class Utils
         return true;
     }
 
+    // get icon for map markers
     public static synchronized BitmapDescriptor getBitmapDescriptor(Context context, int id)
     {
         Drawable vectorDrawable = ResourcesCompat.getDrawable(context.getResources(), id, null);
@@ -119,6 +132,7 @@ public class Utils
         return BitmapDescriptorFactory.fromBitmap(bitmap);
     }
 
+    // get map center point offset based on device orientation
     public static Double getMapOffset(Context context)
     {
         int orientation = context.getResources().getConfiguration().orientation;

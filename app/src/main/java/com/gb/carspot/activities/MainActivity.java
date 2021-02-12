@@ -1,3 +1,12 @@
+//
+//  Advanced Android - MADS4006
+//  CarSpot
+//
+//  Group 7
+//  Brian Domingo - 101330689
+//  Daryl Dyck - 101338429
+//
+
 package com.gb.carspot.activities;
 
 import androidx.annotation.NonNull;
@@ -21,6 +30,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.gb.carspot.R;
+import com.gb.carspot.activities.LoginActivity;
 import com.gb.carspot.fragments.ProfileFragment;
 import com.gb.carspot.fragments.MapFragment;
 import com.gb.carspot.fragments.TicketHistoryFragment;
@@ -35,6 +45,7 @@ import java.util.Objects;
 
 import static com.gb.carspot.utils.Constants.*;
 
+// the app architecture was setup prior to learning navigation components
 public class MainActivity extends AppCompatActivity
 {
     private final String TAG = getClass().getCanonicalName();
@@ -106,6 +117,7 @@ public class MainActivity extends AppCompatActivity
             }
         });
 
+        // get user object when loading complete
         viewModel.getUser().observe(this, new Observer<User>()
         {
             @Override
@@ -127,7 +139,7 @@ public class MainActivity extends AppCompatActivity
         return true;
     }
 
-    @Override // setup actions for top menu
+    @Override // setup actions for overflow menu
     public boolean onOptionsItemSelected(MenuItem item)
     {
         switch (item.getItemId())
