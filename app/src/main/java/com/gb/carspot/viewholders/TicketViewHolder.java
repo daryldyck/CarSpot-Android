@@ -1,3 +1,12 @@
+//
+//  Advanced Android - MADS4006
+//  CarSpot
+//
+//  Group 7
+//  Brian Domingo - 101330689
+//  Daryl Dyck - 101338429
+//
+
 package com.gb.carspot.viewholders;
 
 import android.os.Build;
@@ -50,6 +59,7 @@ public class TicketViewHolder extends RecyclerView.ViewHolder
         length = itemView.findViewById(R.id.length_textView);
     }
 
+    // bind all values to current ticket
     public void bind(final TicketAdapter ticketAdapter, final ParkingTicket parkingTicket)
     {
         // used for shared element animations
@@ -63,6 +73,7 @@ public class TicketViewHolder extends RecyclerView.ViewHolder
             length.setTransitionName("length" + "_" + parkingTicket.getDate().getTime());
         }
 
+        // parking ticket on click listener to load ticket details page
         background.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -96,6 +107,7 @@ public class TicketViewHolder extends RecyclerView.ViewHolder
             }
         });
 
+        // setup Google MapView preview
         mapView.onCreate(null);
         mapView.getMapAsync(new OnMapReadyCallback()
         {

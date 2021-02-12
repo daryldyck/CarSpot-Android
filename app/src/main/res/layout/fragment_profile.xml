@@ -12,8 +12,8 @@
         android:layout_height="wrap_content"
         android:text="@string/personal_information"
         android:layout_marginTop="25dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
         android:textStyle="bold"
         android:textSize="24sp"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,8 +24,8 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginStart="@dimen/margin_16"
+        android:layout_marginEnd="@dimen/margin_16"
         android:background="@drawable/card_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -36,9 +36,9 @@
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
             android:text="@string/first_name"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/margin_16"
             android:layout_marginBottom="4dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -51,9 +51,9 @@
             style="@style/EditTextBox"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/margin_16"
             android:layout_marginBottom="4dp"
             android:hint="@string/first_name"
             app:layout_constraintBottom_toTopOf="@id/tvLastName"
@@ -67,8 +67,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textNoSuggestions"
                 android:maxLines="1"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp" />
+                android:paddingTop="@dimen/margin_8"
+                android:paddingBottom="@dimen/margin_8" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -76,9 +76,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/last_name"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/margin_16"
             android:layout_marginBottom="4dp"
             app:layout_constraintTop_toBottomOf="@id/firstName_InputLayout"
             app:layout_constraintStart_toStartOf="parent"
@@ -90,9 +90,9 @@
             style="@style/EditTextBox"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/margin_16"
             android:layout_marginBottom="4dp"
             android:hint="@string/last_name"
             app:layout_constraintTop_toBottomOf="@id/tvLastName"
@@ -106,8 +106,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textNoSuggestions"
                 android:maxLines="1"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp" />
+                android:paddingTop="@dimen/margin_8"
+                android:paddingBottom="@dimen/margin_8" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -115,9 +115,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/e_mail"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/margin_16"
             android:layout_marginBottom="4dp"
             app:layout_constraintTop_toBottomOf="@id/lastName_InputLayout"
             app:layout_constraintStart_toStartOf="parent"
@@ -129,9 +129,9 @@
             style="@style/EditTextBox"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/margin_16"
             android:layout_marginBottom="4dp"
             android:hint="@string/e_mail"
             app:layout_constraintTop_toBottomOf="@id/tvEmail"
@@ -145,8 +145,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textNoSuggestions"
                 android:maxLines="1"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp" />
+                android:paddingTop="@dimen/margin_8"
+                android:paddingBottom="@dimen/margin_8" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -154,9 +154,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/phone_number"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/margin_16"
             android:layout_marginBottom="4dp"
             app:layout_constraintTop_toBottomOf="@id/email_InputLayout"
             app:layout_constraintStart_toStartOf="parent"
@@ -168,9 +168,9 @@
             style="@style/EditTextBox"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="@dimen/margin_16"
             android:layout_marginTop="4dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="@dimen/margin_16"
             android:layout_marginBottom="4dp"
             android:hint="@string/phone_number"
             app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber"
@@ -184,8 +184,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textNoSuggestions"
                 android:maxLines="1"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp" />
+                android:paddingTop="@dimen/margin_8"
+                android:paddingBottom="@dimen/margin_8" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -223,8 +223,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textNoSuggestions"
                 android:maxLines="1"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp" />
+                android:paddingTop="@dimen/margin_8"
+                android:paddingBottom="@dimen/margin_8" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -262,8 +262,8 @@
                 android:layout_height="wrap_content"
                 android:inputType="textNoSuggestions"
                 android:maxLines="1"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp" />
+                android:paddingTop="@dimen/margin_8"
+                android:paddingBottom="@dimen/margin_8" />
         </com.google.android.material.textfield.TextInputLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

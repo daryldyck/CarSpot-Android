@@ -9,17 +9,17 @@
 
     <com.google.android.gms.maps.MapView
         android:id="@+id/mapView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginEnd="8dp"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
+        android:layout_marginEnd="@dimen/margin_8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/purchaseCard_constraintLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
         android:visibility="gone"
         android:background="@drawable/gradient_bottom"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,12 +28,12 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/purchaseCard_constraintLayout"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_width="@dimen/match_constraint"
+        android:layout_height="@dimen/match_constraint"
+        android:layout_marginStart="@dimen/margin_8"
+        android:layout_marginTop="@dimen/margin_8"
+        android:layout_marginEnd="@dimen/margin_8"
+        android:layout_marginBottom="@dimen/margin_8"
         android:background="@drawable/card_background"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,9 +45,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/editText_constraintLayout"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/margin_8"
             app:layout_constraintBottom_toTopOf="@+id/address_InputLayout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -59,8 +59,8 @@
                 style="@style/EditTextBox"
                 android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_8"
                 android:hint="Building Code"
                 app:layout_constraintEnd_toStartOf="@+id/hostSuite_InputLayout"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -73,8 +73,8 @@
                     android:layout_height="40dp"
                     android:inputType="textNoSuggestions"
                     android:maxLines="1"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp" />
+                    android:paddingTop="@dimen/margin_8"
+                    android:paddingBottom="@dimen/margin_8" />
             </com.google.android.material.textfield.TextInputLayout>
 
             <com.google.android.material.textfield.TextInputLayout
@@ -82,9 +82,9 @@
                 style="@style/EditTextBox"
                 android:layout_width="@dimen/match_constraint"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
+                android:layout_marginStart="@dimen/margin_8"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginEnd="@dimen/margin_8"
                 android:hint="Host Suite"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -97,8 +97,8 @@
                     android:layout_height="40dp"
                     android:inputType="textNoSuggestions"
                     android:maxLines="1"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp" />
+                    android:paddingTop="@dimen/margin_8"
+                    android:paddingBottom="@dimen/margin_8" />
             </com.google.android.material.textfield.TextInputLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -107,9 +107,9 @@
             style="@style/EditTextBox"
             android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
             android:hint="Address"
             app:layout_constraintBottom_toTopOf="@+id/length_ButtonToggleGroup"
             app:layout_constraintEnd_toEndOf="parent"
@@ -123,18 +123,18 @@
                 android:layout_height="40dp"
                 android:inputType="textNoSuggestions"
                 android:maxLines="1"
-                android:paddingTop="8dp"
-                android:paddingBottom="8dp" />
+                android:paddingTop="@dimen/margin_8"
+                android:paddingBottom="@dimen/margin_8" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <com.google.android.material.button.MaterialButtonToggleGroup
             android:id="@+id/length_ButtonToggleGroup"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
             android:gravity="center_vertical"
             app:layout_constraintBottom_toTopOf="@+id/license_spinner"
             app:layout_constraintEnd_toEndOf="parent"
@@ -193,7 +193,7 @@
             android:id="@+id/licensePlate_textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="@dimen/margin_8"
             android:layout_marginTop="3dp"
             android:text="License Plate:"
             android:textSize="16sp"
@@ -205,11 +205,11 @@
 
         <androidx.appcompat.widget.AppCompatSpinner
             android:id="@+id/license_spinner"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
             app:layout_constraintBottom_toTopOf="@+id/update_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.5"
@@ -219,11 +219,11 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/update_button"
             style="@style/ButtonOutlined2"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginTop="@dimen/margin_8"
+            android:layout_marginBottom="@dimen/margin_8"
             android:text="Update Map"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/purchase_button"
@@ -234,10 +234,10 @@
         <com.google.android.material.button.MaterialButton
             android:id="@+id/purchase_button"
             style="@style/ButtonOutlined2"
-            android:layout_width="0dp"
+            android:layout_width="@dimen/match_constraint"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
+            android:layout_marginStart="@dimen/margin_8"
+            android:layout_marginEnd="@dimen/margin_8"
             android:text="Purchase"
             app:layout_constraintBottom_toBottomOf="@+id/update_button"
             app:layout_constraintEnd_toEndOf="parent"

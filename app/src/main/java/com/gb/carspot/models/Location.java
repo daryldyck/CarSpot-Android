@@ -1,3 +1,12 @@
+//
+//  Advanced Android - MADS4006
+//  CarSpot
+//
+//  Group 7
+//  Brian Domingo - 101330689
+//  Daryl Dyck - 101338429
+//
+
 package com.gb.carspot.models;
 
 import java.io.Serializable;
@@ -59,6 +68,7 @@ public class Location implements Serializable
         return streetAddress;
     }
 
+    // prevent null inputs
     public void setStreetAddress(String streetAddress)
     {
         if (streetAddress == null || streetAddress.contains("null"))
@@ -76,6 +86,7 @@ public class Location implements Serializable
         return city;
     }
 
+    // prevent null inputs
     public void setCity(String city)
     {
         if (city == null || city.contains("null"))
@@ -93,6 +104,7 @@ public class Location implements Serializable
         return country;
     }
 
+    // prevent null inputs
     public void setCountry(String country)
     {
         if (country == null || country.contains("null"))

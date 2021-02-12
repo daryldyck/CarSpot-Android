@@ -1,3 +1,12 @@
+//
+//  Advanced Android - MADS4006
+//  CarSpot
+//
+//  Group 7
+//  Brian Domingo - 101330689
+//  Daryl Dyck - 101338429
+//
+
 package com.gb.carspot.fragments;
 
 import android.content.Intent;
@@ -68,6 +77,7 @@ public class TicketDetailsFragment extends Fragment
     {
     }
 
+    // singleton initializer
     public static TicketDetailsFragment newInstance(ParkingTicket parkingTicket)
     {
         TicketDetailsFragment fragment = new TicketDetailsFragment();
@@ -118,6 +128,7 @@ public class TicketDetailsFragment extends Fragment
             locationManager = LocationManager.getInstance();
             locationManager.checkPermissions(getActivity(), this);
 
+            // setup Google MapView
             mapView = rootView.findViewById(R.id.mapView);
             mapView.onCreate(savedInstanceState);
             mapView.getMapAsync(new OnMapReadyCallback()
@@ -182,6 +193,7 @@ public class TicketDetailsFragment extends Fragment
         }
     }
 
+    // setup MapView
     private void setupMapScreen(GoogleMap googleMap)
     {
         if (googleMap != null)
@@ -236,5 +248,4 @@ public class TicketDetailsFragment extends Fragment
         super.onLowMemory();
         mapView.onLowMemory();
     }
-
 }

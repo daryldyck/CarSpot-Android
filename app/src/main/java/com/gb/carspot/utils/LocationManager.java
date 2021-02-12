@@ -1,3 +1,12 @@
+//
+//  Advanced Android - MADS4006
+//  CarSpot
+//
+//  Group 7
+//  Brian Domingo - 101330689
+//  Daryl Dyck - 101338429
+//
+
 package com.gb.carspot.utils;
 
 import android.Manifest;
@@ -46,11 +55,13 @@ public class LocationManager
         createLocationRequest();
     }
 
+    // singleton initializer
     public static LocationManager getInstance()
     {
         return instance;
     }
 
+    // create request to get current location
     private void createLocationRequest()
     {
         locationRequest = new LocationRequest();
@@ -58,6 +69,7 @@ public class LocationManager
         locationRequest.setInterval(5000);
     }
 
+    // check for required location permissions
     public void checkPermissions(Context context, Fragment fragment)
     {
         locationPermissionGranted = (ContextCompat.checkSelfPermission(context.getApplicationContext(),
@@ -71,6 +83,7 @@ public class LocationManager
         }
     }
 
+    // request required permissions for location
     private void requestPermission(Fragment fragment)
     {
         //ActivityCompat.requestPermissions((Activity) context, permissionArray, LOCATION_PERMISSION_REQUEST_CODE);
@@ -79,6 +92,7 @@ public class LocationManager
                 LOCATION_PERMISSION_REQUEST_CODE);
     }
 
+    // fuse location manager to current context
     public FusedLocationProviderClient getFusedLocationProviderClient(Context context)
     {
         if (fusedLocationProviderClient == null)
@@ -88,6 +102,7 @@ public class LocationManager
         return fusedLocationProviderClient;
     }
 
+    // get location information for lat and lon
     public com.gb.carspot.models.Location getLocation(Context context, Location location)
     {
         Log.d(TAG, "getLocation: Lat: " + location.getLatitude());
@@ -135,6 +150,7 @@ public class LocationManager
         return myLocation;
     }
 
+    // get location information from address string
     public com.gb.carspot.models.Location getLocationFromAddress(Context context, com.gb.carspot.models.Location location)
     {
         Geocoder coder = new Geocoder(context);
@@ -164,7 +180,7 @@ public class LocationManager
         return null;
     }
 
-    @SuppressLint("MissingPermission")
+    @SuppressLint("MissingPermission") // get users last location
     public MutableLiveData<Location> getLastLocation(Context context)
     {
         if (locationPermissionGranted)
@@ -211,7 +227,7 @@ public class LocationManager
         return null;
     }
 
-    @SuppressLint("MissingPermission")
+    @SuppressLint("MissingPermission") // request reoccurring location updates
     public void requestLocationUpdates(Context context, LocationCallback locationCallback)
     {
         if (locationPermissionGranted)
@@ -228,7 +244,7 @@ public class LocationManager
         }
     }
 
-    @SuppressLint("MissingPermission")
+    @SuppressLint("MissingPermission") // stop location updates
     public void stopLocationUpdates(Context context, LocationCallback locationCallback)
     {
         if (locationPermissionGranted)
