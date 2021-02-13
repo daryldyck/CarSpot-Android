@@ -81,6 +81,11 @@ public class MainActivityViewModel extends AndroidViewModel
         parkingTicketRepository.addParkingTicket(userId, parkingTicket);
     }
 
+    public void saveParkingTicket(ParkingTicket parkingTicket)
+    {
+        parkingTicketRepository.saveParkingTicket(userId, parkingTicket);
+    }
+
     public boolean isInitialized()
     {
         return initialized;
