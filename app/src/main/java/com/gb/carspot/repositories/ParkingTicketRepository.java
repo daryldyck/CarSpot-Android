@@ -31,6 +31,7 @@ import androidx.lifecycle.MutableLiveData;
 import static com.gb.carspot.utils.Constants.COLLECTION_PARKING_TICKETS;
 import static com.gb.carspot.utils.Constants.COLLECTION_USERS;
 import static com.gb.carspot.utils.Constants.FIELD_DATE;
+import static com.gb.carspot.utils.Constants.FIELD_IMAGE_URL;
 import static com.gb.carspot.utils.Constants.TICKET_ADDED;
 import static com.gb.carspot.utils.Constants.TICKET_FAILED;
 
@@ -90,6 +91,31 @@ public class ParkingTicketRepository
                         {
                             ticketAdded.postValue(TICKET_FAILED);
                             Log.d(TAG, "There was a error. Parking ticket failed to save.");
+                        }
+                    }
+                });
+    }
+
+    public void saveParkingTicket(String userId, final ParkingTicket parkingTicket)
+    {
+        Log.d(TAG, "addParkingTicket: ");
+        firestore.collection(COLLECTION_USERS)
+                .document(userId)
+                .collection(COLLECTION_PARKING_TICKETS)
+                .document(String.valueOf(parkingTicket.getDate().getTime()))
+                .update(FIELD_IMAGE_URL, parkingTicket.getImageUrl())
+                .addOnCompleteListener(new OnCompleteListener<Void>()
+                {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task)
+                    {
+                        if (task.isSuccessful())
+                        {
+                            Log.d(TAG, "Parking ticket updated successfully.");
+                        }
+                        else
+                        {
+                            Log.d(TAG, "There was a error. Parking ticket failed to update.");
                         }
                     }
                 });

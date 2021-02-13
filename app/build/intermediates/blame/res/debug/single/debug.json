@@ -1,23 +1,23 @@
 [
     {
-        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable-night-xxhdpi_card_background.9.png.flat",
-        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\drawable-night-xxhdpi\\card_background.9.png"
-    },
-    {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_map.xml.flat",
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\layout\\fragment_map.xml"
+    },
+    {
+        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable-night-xxhdpi_card_background.9.png.flat",
+        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\drawable-night-xxhdpi\\card_background.9.png"
     },
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_profile.xml.flat",
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\layout\\fragment_profile.xml"
     },
     {
-        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\color_button_stroke_color.xml.flat",
-        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\color\\button_stroke_color.xml"
-    },
-    {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\color_button_stroke_color.xml.flat",
+        "source": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\color\\button_stroke_color.xml"
     },
     {
         "merged": "C:\\Users\\DeNitE\\Desktop\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\color_nav_selected_color.xml.flat",

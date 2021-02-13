@@ -2157,6 +2157,7 @@ id main_container
 id main_coordinatorLayout
 id managePlates_button
 id mapView
+id map_imageView
 id masked
 id material_clock_display
 id material_clock_face

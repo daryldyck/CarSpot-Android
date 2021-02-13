@@ -384,7 +384,7 @@ public class MapFragment extends Fragment
                                 hostSuiteTextInputLayout.getEditText().getText().toString().toUpperCase(),
                                 myLocation,
                                 new Date(),
-                                "imageUrl");
+                                "");
 
                         mainActivityViewModel.addParkingTicket(parkingTicket);
                     }
