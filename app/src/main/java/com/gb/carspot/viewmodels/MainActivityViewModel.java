@@ -14,9 +14,11 @@ import android.app.Application;
 import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.gb.carspot.fragments.ManagePlatesFragment;
 import com.gb.carspot.fragments.MapFragment;
 import com.gb.carspot.fragments.ProfileFragment;
 import com.gb.carspot.fragments.TicketHistoryFragment;
+import com.gb.carspot.models.LicensePlate;
 import com.gb.carspot.models.ParkingTicket;
 import com.gb.carspot.models.User;
 import com.gb.carspot.repositories.ParkingTicketRepository;
@@ -45,6 +47,7 @@ public class MainActivityViewModel extends AndroidViewModel
     private MapFragment mapFragment;
     private TicketHistoryFragment ticketHistoryFragment;
     private ProfileFragment profileFragment;
+    private ManagePlatesFragment managePlatesFragment;
 
     private ParkingTicketRepository parkingTicketRepository;
     private UserRepository userRepository;
@@ -136,6 +139,25 @@ public class MainActivityViewModel extends AndroidViewModel
         this.profileFragment = profileFragment;
     }
 
+    public void setManagePlatesFragment(ManagePlatesFragment managePlatesFragment) {
+        this.managePlatesFragment = managePlatesFragment;
+    }
+
+    public void createAccount(User newUser)
+    {
+        userRepository.addUser(newUser);
+    }
+
+    public void updateUserPlates(User user,List<String> newPlateList) {
+        userRepository.updateLicensePlates(user, newPlateList);
+    }
+
+    public void updateUserField(User user, String field, String newValue) {
+        userRepository.updateUserInfo(user, field, newValue);
+    }
+
+    public ManagePlatesFragment getManagePlatesFragment() { return managePlatesFragment; }
+
     public MutableLiveData<User> getUser()
     {
         return user;
@@ -150,4 +172,5 @@ public class MainActivityViewModel extends AndroidViewModel
     {
         return ticketAdded;
     }
+
 }

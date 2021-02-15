@@ -43,7 +43,7 @@
             android:layout_marginBottom="4dp"
             android:hint="@string/license_plate"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/managePlates_button"
+            app:layout_constraintBottom_toTopOf="@id/addPlate_button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
@@ -58,7 +58,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/managePlates_button"
+            android:id="@+id/addPlate_button"
             style="@style/ButtonOutlined"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

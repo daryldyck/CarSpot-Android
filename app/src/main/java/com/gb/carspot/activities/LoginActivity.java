@@ -3,6 +3,7 @@ package com.gb.carspot.activities;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,7 +14,10 @@ import android.widget.Toast;
 
 import com.gb.carspot.R;
 import com.gb.carspot.fragments.LoginFragment;
+import com.gb.carspot.fragments.ProfileFragment;
 import com.gb.carspot.utils.Utils;
+import com.gb.carspot.viewmodels.LoginActivityViewModel;
+import com.gb.carspot.viewmodels.MainActivityViewModel;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
@@ -25,6 +29,8 @@ import static com.gb.carspot.utils.Constants.ACTION_LOAD_LOGIN_PAGE;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_MAIN_PAGE;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_PROFILE_PAGE;
 import static com.gb.carspot.utils.Constants.LOGIN_REMEMBER_ME;
+import static com.gb.carspot.utils.Constants.PAGE_LOGIN;
+import static com.gb.carspot.utils.Constants.PAGE_PROFILE;
 import static com.gb.carspot.utils.Constants.SHARED_PREF_NAME;
 import static com.gb.carspot.utils.Constants.THEME_PREFERENCE;
 import static com.gb.carspot.utils.Constants.THEME_PREFERENCE_DEFAULT;
@@ -35,11 +41,13 @@ public class LoginActivity extends AppCompatActivity
     private static SharedPreferences sharedPrefs;
     private static SharedPreferences.Editor prefEditor;
     public String str;
+    private LoginActivityViewModel loginActivityViewModel;
 
     //Firebase authorization
     private FirebaseAuth mAuth;
 
     private LoginFragment loginFragment;
+    private ProfileFragment profileFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -49,6 +57,8 @@ public class LoginActivity extends AppCompatActivity
         Utils.applyTheme(sharedPrefs.getInt(THEME_PREFERENCE, THEME_PREFERENCE_DEFAULT));
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        loginActivityViewModel = new ViewModelProvider(this).get(LoginActivityViewModel.class);
 
         //initialize firebase auth
         mAuth = FirebaseAuth.getInstance();
@@ -60,17 +70,7 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
-//    Checks to see if user is already logged in. Uncomment after log in functionality works.
-//    @Override
-//    public void onStart() {
-//        super.onStart();
-//        // Check if user is signed in (non-null) and update UI accordingly.
-//        FirebaseUser currentUser = mAuth.getCurrentUser();
-//        if(currentUser != null){
-//            //if user is already in go to main activity
-//            gotoMain();
-//        }
-//    }
+    public LoginActivityViewModel getLoginActivityViewModel() { return loginActivityViewModel; }
 
     // load Login fragment
     private void loadLoginPage()
@@ -83,11 +83,11 @@ public class LoginActivity extends AppCompatActivity
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if (getSupportFragmentManager().getFragments().size() == 0)
         {
-            transaction.add(R.id.main_container, loginFragment).commit();
+            transaction.add(R.id.login_container, loginFragment).commit();
         }
         else
         {
-            transaction.replace(R.id.main_container, loginFragment).commit();
+            transaction.replace(R.id.login_container, loginFragment).commit();
         }
     }
 
@@ -110,6 +110,7 @@ public class LoginActivity extends AppCompatActivity
                 case ACTION_LOAD_PROFILE_PAGE:
                     // load profile page
                     gotoSignUp();
+                    Log.d(TAG, "ACTION_LOAD_PROFILE_PAGE");
                     break;
             }
         }
@@ -125,8 +126,23 @@ public class LoginActivity extends AppCompatActivity
 
     private void gotoSignUp()
     {
-        Log.d(TAG, "gotoSignUp: ");
-        Intent intent = new Intent(this, SignUpActivity.class);
-        startActivity(intent);
+
+        if (loginActivityViewModel.getProfileFragment() == null)
+        {
+            loginActivityViewModel.setProfileFragment(ProfileFragment.newInstance());
+        }
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        loginActivityViewModel.setCurrentPage(PAGE_PROFILE);
+        transaction.replace(R.id.login_container, loginActivityViewModel.getProfileFragment()).commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(loginActivityViewModel.getCurrentPage() == PAGE_PROFILE) {
+            loadLoginPage();
+        } else {
+            super.onBackPressed();
+        }
     }
 }

@@ -31,6 +31,7 @@ import android.widget.TextView;
 
 import com.gb.carspot.R;
 import com.gb.carspot.activities.LoginActivity;
+import com.gb.carspot.fragments.ManagePlatesFragment;
 import com.gb.carspot.fragments.ProfileFragment;
 import com.gb.carspot.fragments.MapFragment;
 import com.gb.carspot.fragments.TicketHistoryFragment;
@@ -341,6 +342,8 @@ public class MainActivity extends AppCompatActivity
                     Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
                     getSupportActionBar().setDisplayShowHomeEnabled(true);
                     break;
+                case ACTION_LOAD_MANAGE_PLATES_PAGE:
+                    loadManagePlatesFragment();
             }
         }
     }
@@ -352,9 +355,13 @@ public class MainActivity extends AppCompatActivity
         {
             returnToTicketHistory();
         }
-        else if (viewModel.getCurrentPage() != PAGE_MAP)
+        else if (viewModel.getCurrentPage() == PAGE_TICKET_HISTORY || viewModel.getCurrentPage() == PAGE_PROFILE)
         {
             loadMapPage();
+        }
+        else if (viewModel.getCurrentPage() == PAGE_MANAGE_PLATES)
+        {
+            loadProfilePage();
         }
         else if (viewModel.getCurrentPage() == PAGE_MAP)
         {
@@ -364,5 +371,16 @@ public class MainActivity extends AppCompatActivity
         {
             super.onBackPressed();
         }
+    }
+
+    private void loadManagePlatesFragment() {
+        if (viewModel.getManagePlatesFragment() == null)
+        {
+            viewModel.setManagePlatesFragment(ManagePlatesFragment.newInstance(viewModel));
+        }
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.main_container, viewModel.getManagePlatesFragment()).commit();
+        viewModel.setCurrentPage(PAGE_MANAGE_PLATES);
+        resetBackButton();
     }
 }
