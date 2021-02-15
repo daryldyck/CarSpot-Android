@@ -26,11 +26,14 @@ public class Constants
     public final static int PAGE_TICKET_HISTORY = 1;
     public final static int PAGE_TICKET_DETAILS = 2;
     public final static int PAGE_PROFILE = 3;
+    public final static int PAGE_MANAGE_PLATES = 4;
+    public final static int PAGE_LOGIN = 5;
 
     public static final String ACTION_DISPLAY_BACK_BUTTON = "actionDisplayBackButton";
     public static final String ACTION_LOAD_LOGIN_PAGE = "actionLoadLoginPage";
     public static final String ACTION_LOAD_PROFILE_PAGE = "actionLoadProfilePage";
     public static final String ACTION_LOAD_MAIN_PAGE = "actionLoadMainPage";
+    public static final String ACTION_LOAD_MANAGE_PLATES_PAGE = "actionLoadManagePlatesPage";
 
     public static final String INITIAL_FRAGMENT_LOAD = "initialFragmentLoad";
 

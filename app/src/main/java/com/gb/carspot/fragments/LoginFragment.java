@@ -156,8 +156,6 @@ public class LoginFragment extends Fragment
 
     private void gotoSignUp()
     {
-        Log.d(TAG, editEmail.getText().toString());
-        Log.d(TAG, editPassword.getText().toString());
         Intent intent = new Intent(getContext(), LoginActivity.class);
         intent.setAction(ACTION_LOAD_PROFILE_PAGE);
         startActivity(intent);

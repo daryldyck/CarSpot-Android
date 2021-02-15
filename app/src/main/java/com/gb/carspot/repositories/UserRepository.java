@@ -1,13 +1,19 @@
 package com.gb.carspot.repositories;
 
 import android.util.Log;
+import android.widget.Toast;
 
+import com.gb.carspot.models.LicensePlate;
 import com.gb.carspot.models.ParkingTicket;
 import com.gb.carspot.models.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
@@ -16,6 +22,7 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executor;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.MutableLiveData;
@@ -24,6 +31,8 @@ import static com.gb.carspot.utils.Constants.COLLECTION_PARKING_TICKETS;
 import static com.gb.carspot.utils.Constants.COLLECTION_USERS;
 import static com.gb.carspot.utils.Constants.FIELD_DATE;
 import static com.gb.carspot.utils.Constants.FIELD_EMAIL;
+import static com.gb.carspot.utils.Constants.FIELD_LICENSE_PLATES;
+import static com.gb.carspot.utils.Constants.FIELD_PHONE;
 
 public class UserRepository
 {
@@ -31,10 +40,13 @@ public class UserRepository
     private static UserRepository instance;
     private FirebaseFirestore firestore;
     private MutableLiveData<User> userData = new MutableLiveData<User>();
+    private MutableLiveData<List<LicensePlate>> licensePlateList = new MutableLiveData<List<LicensePlate>>();
+    private FirebaseAuth mAuth;
 
     public UserRepository()
     {
         firestore = FirebaseFirestore.getInstance();
+        mAuth = FirebaseAuth.getInstance();
     }
 
     public static UserRepository getInstance()
@@ -106,18 +118,67 @@ public class UserRepository
                 });
     }
 
-    public void updateUserInfo()
+    public void updateUserInfo(User user, final String field, String newValue)
     {
+        DocumentReference userRef = firestore.collection(COLLECTION_USERS)
+                .document(user.getEmail());
+
+        if(field.equals(FIELD_PHONE)) {
+
+            long phoneNumber = Long.valueOf(newValue);
+
+            userRef
+                    .update(FIELD_PHONE, phoneNumber)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d(TAG, "User successfully updated!");
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w(TAG, "Error updating user field " + field, e);
+                        }
+                    });
+        } else {
+            userRef
+                    .update(field, newValue)
+                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            Log.d(TAG, "User successfully updated!");
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.w(TAG, "Error updating user field " + field, e);
+                        }
+                    });
+        }
 
     }
 
-    public void addLicensePlate()
+    public void updateLicensePlates(User user, List<String> newPlateList)
     {
+        DocumentReference userRef = firestore.collection(COLLECTION_USERS)
+                .document(user.getEmail());
 
-    }
-
-    public void removeLicensePlate()
-    {
+        userRef
+                .update(FIELD_LICENSE_PLATES, newPlateList)
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "License plates successfully updated!");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error updating license plates. ", e);
+                    }
+                });
 
     }
 
