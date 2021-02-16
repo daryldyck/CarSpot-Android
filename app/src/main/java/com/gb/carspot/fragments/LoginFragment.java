@@ -53,7 +53,6 @@ public class LoginFragment extends Fragment
     private FirebaseAuth mAuth;
 
     private Button loginButton;
-    private Button loginButton2;
     private TextView tvCreateAccount;
 
     private TextInputEditText editEmail;
@@ -107,16 +106,6 @@ public class LoginFragment extends Fragment
 
     private void setup()
     {
-        loginButton2 = rootView.findViewById(R.id.login_button2);
-        loginButton2.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                gotoMain();
-            }
-        });
-
         loginButton = rootView.findViewById(R.id.login_button);
         tvCreateAccount = rootView.findViewById(R.id.lblCreateAccount);
 

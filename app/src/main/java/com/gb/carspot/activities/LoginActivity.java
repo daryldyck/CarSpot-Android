@@ -49,6 +49,8 @@ public class LoginActivity extends AppCompatActivity
     private LoginFragment loginFragment;
     private ProfileFragment profileFragment;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
