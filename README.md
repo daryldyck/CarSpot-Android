@@ -15,7 +15,7 @@ ___
 
 **Features include:**
 - Built in Java
-- Uses Firestore to store user data
+- Uses Google Firestore to store user data
 ___
 ### Profile Page
 ##### By Brian Domingo
@@ -31,14 +31,14 @@ ___
 **Features include:**
 - Google MapView with current location annotation
 - Forward Geocoding (Fetching location from street address)
-- All user data retrieved from FireStore
+- All user data retrieved from Google FireStore
 ___
 ### Ticket History Page
 ##### By Daryl Dyck
 
 **Features include:**
 - RecyclerView with all previous parking tickets
-- All ticket data retrieved from FireStore
+- All ticket data retrieved from Google FireStore
 - Google MapView snapShot image stored with Google Cloud Storage
 - Shared element transition animations
 ___
@@ -53,3 +53,4 @@ ___
 - Logo & App Icon by Daryl Dyck
 - Screenshots & Screen Recording by Daryl Dyck
 - All color assets added by Daryl Dyck
+- App framework by Daryl Dyck
