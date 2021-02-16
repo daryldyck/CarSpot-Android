@@ -141,8 +141,6 @@ public class ProfileFragment extends Fragment
         if(cu != null && getActivity() instanceof MainActivity) {
             setupUserInfo();
         }
-        editPassword.setText("");
-        editConfirm.setText("");
     }
 
     @Override
@@ -220,6 +218,8 @@ public class ProfileFragment extends Fragment
                 editLastName.setText(user.getLastName());
                 editEmail.setText(user.getEmail());
                 editPhoneNumber.setText(Long.toString(user.getPhone()));
+                editPassword.setText(user.getPassword());
+                editConfirm.setText(user.getPassword());
 
                 currentUserInfo = new User(user.getEmail(), user.getPassword(),
                         user.getPhone(), user.getFirstName(), user.getLastName(),
@@ -231,6 +231,8 @@ public class ProfileFragment extends Fragment
     }
 
     private void setupTextFieldsForEditing() {
+        okayToError = false;
+
         rootView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
             @Override
             public void onGlobalLayout() {
@@ -464,6 +466,7 @@ public class ProfileFragment extends Fragment
                     mainActivityViewModel.createAccount(currentUserInfo);
 
                     prefEditor.putString(LOGIN_CURRENT_USER, editEmail.getText().toString());
+                    prefEditor.apply();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
