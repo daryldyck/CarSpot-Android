@@ -156,6 +156,10 @@ public class MainActivityViewModel extends AndroidViewModel
         userRepository.updateUserInfo(user, field, newValue);
     }
 
+    public void deleteUser(User oldUser) {
+        userRepository.deleteUser(oldUser);
+    }
+
     public ManagePlatesFragment getManagePlatesFragment() { return managePlatesFragment; }
 
     public MutableLiveData<User> getUser()

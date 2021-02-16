@@ -182,8 +182,19 @@ public class UserRepository
 
     }
 
-    public void deleteUser()
+    public void deleteUser(User user)
     {
-
+        firestore.collection(COLLECTION_USERS).document(user.getEmail()).delete()
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "Successfully deleted old user");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "Unable to delete user.");
+            }
+        });
     }
 }
