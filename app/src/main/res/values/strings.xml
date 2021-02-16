@@ -54,5 +54,6 @@
     <string name="invalid_password">Must be at least 6 characters</string>
     <string name="passwords_do_not_match">Passwords do not match</string>
     <string name="two_eight_characters">2-8 characters</string>
+    <string name="no_parking_tickets_history">It does not appear you have purchased any parking tickets.</string>
 
 </resources>

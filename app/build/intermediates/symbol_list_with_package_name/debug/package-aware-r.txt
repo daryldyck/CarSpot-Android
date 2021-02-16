@@ -1948,8 +1948,8 @@ id actions
 id activity_chooser_view_content
 id add
 id addPlateCard_constraintLayout
+id addPlate_button
 id addPlate_constraintLayout
-id add_plate_layout
 id address2_textView
 id address_InputLayout
 id address_textField
@@ -2068,7 +2068,6 @@ id enterAlways
 id enterAlwaysCollapsed
 id enterPlate_InputLayout
 id enterPlate_textField
-id enter_plate_layout
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -2134,7 +2133,7 @@ id length24_button
 id length4_button
 id length_ButtonToggleGroup
 id length_textView
-id licensePlate_frame
+id licensePlate_layout
 id licensePlate_textView
 id licensePlates_recyclerView
 id license_spinner
@@ -2148,6 +2147,7 @@ id list_item
 id loginCard_constraintLayout
 id login_button
 id login_button2
+id login_container
 id login_password_InputLayout
 id login_password_textField
 id login_username_InputLayout
@@ -2217,6 +2217,7 @@ id navigation_header_container
 id never
 id newPlate_InputLayout
 id newPlate_textField
+id noHistory_textView
 id noScroll
 id none
 id normal
@@ -2483,8 +2484,6 @@ layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dialog_about
-layout fragment_add_license_plate
-layout fragment_enter_license_plate
 layout fragment_login
 layout fragment_manage_plates
 layout fragment_map
@@ -2717,6 +2716,7 @@ string mtrl_picker_toggle_to_calendar_input_mode
 string mtrl_picker_toggle_to_day_selection
 string mtrl_picker_toggle_to_text_input_mode
 string mtrl_picker_toggle_to_year_selection
+string no_parking_tickets_history
 string password
 string password_toggle_content_description
 string path_password_eye

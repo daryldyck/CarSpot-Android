@@ -45,7 +45,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.gb.carspot.activities.SignUpActivity" />
         <activity
             android:name="com.gb.carspot.activities.MainActivity"
             android:launchMode="singleTop"
