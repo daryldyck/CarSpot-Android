@@ -43,20 +43,6 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvPersonalInfo">
 
-                <TextView
-                    android:id="@+id/tvFirstName"
-                    android:layout_width="@dimen/match_constraint"
-                    android:layout_height="wrap_content"
-                    android:text="@string/first_name"
-                    android:layout_marginStart="@dimen/margin_16"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="@dimen/margin_16"
-                    android:layout_marginBottom="4dp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/firstName_InputLayout"/>
-
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/firstName_InputLayout"
@@ -64,14 +50,14 @@
                     android:layout_width="@dimen/match_constraint"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="16dp"
                     android:layout_marginEnd="@dimen/margin_16"
                     android:layout_marginBottom="4dp"
                     android:hint="@string/first_name"
-                    app:layout_constraintBottom_toTopOf="@id/tvLastName"
+                    app:layout_constraintBottom_toTopOf="@id/lastName_InputLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/tvFirstName">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/firstName_textField"
@@ -83,34 +69,20 @@
                         android:paddingBottom="@dimen/margin_8" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/tvLastName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/last_name"
-                    android:layout_marginStart="@dimen/margin_16"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="@dimen/margin_16"
-                    android:layout_marginBottom="4dp"
-                    app:layout_constraintTop_toBottomOf="@id/firstName_InputLayout"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/lastName_InputLayout"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/lastName_InputLayout"
                     style="@style/EditTextBox"
                     android:layout_width="@dimen/match_constraint"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="@dimen/margin_16"
                     android:layout_marginBottom="4dp"
                     android:hint="@string/last_name"
-                    app:layout_constraintTop_toBottomOf="@id/tvLastName"
+                    app:layout_constraintTop_toBottomOf="@id/firstName_InputLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tvEmail">
+                    app:layout_constraintBottom_toTopOf="@id/email_InputLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/lastName_textField"
@@ -122,34 +94,20 @@
                         android:paddingBottom="@dimen/margin_8" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/tvEmail"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/e_mail"
-                    android:layout_marginStart="@dimen/margin_16"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="@dimen/margin_16"
-                    android:layout_marginBottom="4dp"
-                    app:layout_constraintTop_toBottomOf="@id/lastName_InputLayout"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/email_InputLayout"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/email_InputLayout"
                     style="@style/EditTextBox"
                     android:layout_width="@dimen/match_constraint"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="@dimen/margin_16"
                     android:layout_marginBottom="4dp"
                     android:hint="@string/e_mail"
-                    app:layout_constraintTop_toBottomOf="@id/tvEmail"
+                    app:layout_constraintTop_toBottomOf="@id/email_InputLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tvPhoneNumber">
+                    app:layout_constraintBottom_toTopOf="@id/phoneNumber_InputLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/email_textField"
@@ -161,34 +119,20 @@
                         android:paddingBottom="@dimen/margin_8" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/tvPhoneNumber"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/phone_number"
-                    android:layout_marginStart="@dimen/margin_16"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="@dimen/margin_16"
-                    android:layout_marginBottom="4dp"
-                    app:layout_constraintTop_toBottomOf="@id/email_InputLayout"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/phoneNumber_InputLayout"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/phoneNumber_InputLayout"
                     style="@style/EditTextBox"
                     android:layout_width="@dimen/match_constraint"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/margin_16"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="@dimen/margin_16"
                     android:layout_marginBottom="4dp"
                     android:hint="@string/phone_number"
-                    app:layout_constraintTop_toBottomOf="@id/tvPhoneNumber"
+                    app:layout_constraintTop_toBottomOf="@id/email_InputLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tvPassword">
+                    app:layout_constraintBottom_toTopOf="@id/password_InputLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/phoneNumber_textField"
@@ -200,34 +144,20 @@
                         android:paddingBottom="@dimen/margin_8" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/tvPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/password"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="4dp"
-                    app:layout_constraintTop_toBottomOf="@id/phoneNumber_InputLayout"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/password_InputLayout"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/password_InputLayout"
                     style="@style/EditTextBox"
                     android:layout_width="@dimen/match_constraint"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="4dp"
                     android:hint="@string/password"
-                    app:layout_constraintTop_toBottomOf="@id/tvPassword"
+                    app:layout_constraintTop_toBottomOf="@id/phoneNumber_InputLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/tvConfirmPassword">
+                    app:layout_constraintBottom_toTopOf="@id/confirmPassword_InputLayout">
 
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/password_textField"
@@ -239,31 +169,17 @@
                         android:paddingBottom="@dimen/margin_8" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <TextView
-                    android:id="@+id/tvConfirmPassword"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/confirm_password"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="4dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginBottom="4dp"
-                    app:layout_constraintTop_toBottomOf="@id/password_InputLayout"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintBottom_toTopOf="@id/confirmPassword_InputLayout"/>
-
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/confirmPassword_InputLayout"
                     style="@style/EditTextBox"
                     android:layout_width="@dimen/match_constraint"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="2dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp"
                     android:layout_marginBottom="12dp"
                     android:hint="@string/confirm_password"
-                    app:layout_constraintTop_toBottomOf="@id/tvConfirmPassword"
+                    app:layout_constraintTop_toBottomOf="@id/password_InputLayout"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent">

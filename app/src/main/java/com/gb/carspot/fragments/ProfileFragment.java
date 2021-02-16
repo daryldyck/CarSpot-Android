@@ -362,7 +362,6 @@ public class ProfileFragment extends Fragment
     }
 
     public void updateAccount() {
-        boolean isChanged = false;
         if(!editFirstName.getText().toString().equals(currentUserInfo.getFirstName())
                 && Utils.checkName(firstNameInputLayout, getString(R.string.cannot_be_empty))) {
 
@@ -375,7 +374,6 @@ public class ProfileFragment extends Fragment
                     FIELD_FIRST_NAME, newFirstName);
             currentUserInfo.setFirstName(newFirstName);
             mainActivityViewModel.getUser().getValue().setFirstName(newFirstName);
-            isChanged = true;
         } else {
             Log.d(TAG, "No change in first name.");
         }
@@ -392,7 +390,6 @@ public class ProfileFragment extends Fragment
                     FIELD_LAST_NAME, newLastName);
             currentUserInfo.setLastName(newLastName);
             mainActivityViewModel.getUser().getValue().setLastName(newLastName);
-            isChanged = true;
         } else {
             Log.d(TAG, "No change in last name.");
         }
@@ -410,7 +407,6 @@ public class ProfileFragment extends Fragment
 
             currentUserInfo.setPhone(Long.valueOf(newPhone));
             mainActivityViewModel.getUser().getValue().setPhone(Long.valueOf(newPhone));
-            isChanged = true;
         } else {
             Log.d(TAG, "No change in phone number.");
         }
@@ -443,7 +439,6 @@ public class ProfileFragment extends Fragment
                     Log.e(TAG, e.getLocalizedMessage());
                 }
             });
-            isChanged = true;
         } else {
             Log.d(TAG, "No change in password.");
         }
@@ -479,13 +474,8 @@ public class ProfileFragment extends Fragment
                     Log.e(TAG, e.getLocalizedMessage());
                 }
             });
-            isChanged = true;
         } else {
             Log.d(TAG, "No change in email.");
-        }
-
-        if(isChanged) {
-            Toast.makeText(getActivity(), "Account updated", Toast.LENGTH_LONG).show();
         }
     }
 
