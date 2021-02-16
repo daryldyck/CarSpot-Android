@@ -423,15 +423,18 @@ public class MapFragment extends Fragment
                 {
                     Log.d(TAG, "getTicketAdded onChanged: ");
 
-                    switch (ticketAdded)
+                    if (getContext() != null)
                     {
-                        case TICKET_ADDED:
-                            Toast.makeText(getActivity(), R.string.ticket_purchase_success, Toast.LENGTH_SHORT).show();
-                            mainActivityViewModel.getTicketAdded().setValue(TICKET_DEFAULT);
-                            break;
-                        case TICKET_FAILED:
-                            Toast.makeText(getActivity(), R.string.error_purchasing_ticket, Toast.LENGTH_SHORT).show();
-                            break;
+                        switch (ticketAdded)
+                        {
+                            case TICKET_ADDED:
+                                Toast.makeText(getActivity(), R.string.ticket_purchase_success, Toast.LENGTH_SHORT).show();
+                                mainActivityViewModel.getTicketAdded().setValue(TICKET_DEFAULT);
+                                break;
+                            case TICKET_FAILED:
+                                Toast.makeText(getActivity(), R.string.error_purchasing_ticket, Toast.LENGTH_SHORT).show();
+                                break;
+                        }
                     }
                 }
             });
