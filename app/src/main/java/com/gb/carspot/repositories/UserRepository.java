@@ -98,9 +98,9 @@ public class UserRepository
         }
     }
 
-    public void addUser(final User newUser) {
+    public void addUser(final String uid, final User newUser) {
         firestore.collection(COLLECTION_USERS)
-                .document(newUser.getEmail())
+                .document(uid)
                 .set(newUser)
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -118,10 +118,10 @@ public class UserRepository
                 });
     }
 
-    public void updateUserInfo(User user, final String field, String newValue)
+    public void updateUserInfo(String uid, final String field, String newValue)
     {
         DocumentReference userRef = firestore.collection(COLLECTION_USERS)
-                .document(user.getEmail());
+                .document(uid);
 
         if(field.equals(FIELD_PHONE)) {
 
@@ -160,10 +160,10 @@ public class UserRepository
 
     }
 
-    public void updateLicensePlates(User user, List<String> newPlateList)
+    public void updateLicensePlates(String uid, List<String> newPlateList)
     {
         DocumentReference userRef = firestore.collection(COLLECTION_USERS)
-                .document(user.getEmail());
+                .document(uid);
 
         userRef
                 .update(FIELD_LICENSE_PLATES, newPlateList)
@@ -182,9 +182,9 @@ public class UserRepository
 
     }
 
-    public void deleteUser(User user)
+    public void deleteUser(String uid)
     {
-        firestore.collection(COLLECTION_USERS).document(user.getEmail()).delete()
+        firestore.collection(COLLECTION_USERS).document(uid).delete()
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
             @Override
             public void onSuccess(Void aVoid) {

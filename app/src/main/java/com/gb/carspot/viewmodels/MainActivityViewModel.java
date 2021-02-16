@@ -143,21 +143,21 @@ public class MainActivityViewModel extends AndroidViewModel
         this.managePlatesFragment = managePlatesFragment;
     }
 
-    public void createAccount(User newUser)
+    public void createAccount(String uid, User newUser)
     {
-        userRepository.addUser(newUser);
+        userRepository.addUser(uid, newUser);
     }
 
-    public void updateUserPlates(User user,List<String> newPlateList) {
-        userRepository.updateLicensePlates(user, newPlateList);
+    public void updateUserPlates(String uid, List<String> newPlateList) {
+        userRepository.updateLicensePlates(uid, newPlateList);
     }
 
-    public void updateUserField(User user, String field, String newValue) {
-        userRepository.updateUserInfo(user, field, newValue);
+    public void updateUserField(String uid, String field, String newValue) {
+        userRepository.updateUserInfo(uid, field, newValue);
     }
 
-    public void deleteUser(User oldUser) {
-        userRepository.deleteUser(oldUser);
+    public void deleteUser(String uid) {
+        userRepository.deleteUser(uid);
     }
 
     public ManagePlatesFragment getManagePlatesFragment() { return managePlatesFragment; }

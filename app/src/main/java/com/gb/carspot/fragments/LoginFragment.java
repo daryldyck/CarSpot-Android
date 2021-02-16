@@ -132,7 +132,7 @@ public class LoginFragment extends Fragment
 
     private void gotoMain()
     {
-        prefEditor.putString(LOGIN_CURRENT_USER, editEmail.getText().toString());
+        prefEditor.putString(LOGIN_CURRENT_USER, mAuth.getUid());
         if(checkRememberMe.isChecked()) {
             prefEditor.putBoolean(LOGIN_REMEMBER_ME, true);
         }
