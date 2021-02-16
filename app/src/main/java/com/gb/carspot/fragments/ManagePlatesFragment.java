@@ -155,7 +155,7 @@ public class ManagePlatesFragment extends Fragment {
             userInfo.setLicensePlates(newPlateList);
             licensePlateAdapter.setLicensePlates(userPlates);
 
-            mainActivityViewModel.updateUserPlates(userInfo, newPlateList);
+            mainActivityViewModel.updateUserPlates(mAuth.getUid(), newPlateList);
         }
     };
 
@@ -171,7 +171,7 @@ public class ManagePlatesFragment extends Fragment {
         licensePlateAdapter.setLicensePlates(userPlates);
 
         editNewPlate.setText("");
-        mainActivityViewModel.updateUserPlates(userInfo, newPlateList);
+        mainActivityViewModel.updateUserPlates(mAuth.getUid(), newPlateList);
     }
 
 }

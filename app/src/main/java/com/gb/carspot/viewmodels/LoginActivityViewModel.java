@@ -44,9 +44,9 @@ public class LoginActivityViewModel extends AndroidViewModel {
         this.profileFragment = profileFragment;
     }
 
-    public void createAccount(User newUser)
+    public void createAccount(String uid, User newUser)
     {
-        userRepository.addUser(newUser);
+        userRepository.addUser(uid, newUser);
     }
 
     public int getCurrentPage() {

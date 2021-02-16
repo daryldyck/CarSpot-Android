@@ -130,7 +130,6 @@ public class ProfileFragment extends Fragment
 
         //Check to see if there is a current user
         currentFirebaseUser = mAuth.getCurrentUser();
-        //setupUserInfo();
     }
 
     @Override
@@ -372,9 +371,10 @@ public class ProfileFragment extends Fragment
             Log.d(TAG, "First name update to " + newFirstName
                     + " from " + currentUserInfo.getFirstName());
 
-            mainActivityViewModel.updateUserField(currentUserInfo,
+            mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
                     FIELD_FIRST_NAME, newFirstName);
             currentUserInfo.setFirstName(newFirstName);
+            mainActivityViewModel.getUser().getValue().setFirstName(newFirstName);
             isChanged = true;
         } else {
             Log.d(TAG, "No change in first name.");
@@ -388,9 +388,10 @@ public class ProfileFragment extends Fragment
             Log.d(TAG, "First name update to " + newLastName
                     + " from " + currentUserInfo.getLastName());
 
-            mainActivityViewModel.updateUserField(currentUserInfo,
+            mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
                     FIELD_LAST_NAME, newLastName);
             currentUserInfo.setLastName(newLastName);
+            mainActivityViewModel.getUser().getValue().setLastName(newLastName);
             isChanged = true;
         } else {
             Log.d(TAG, "No change in last name.");
@@ -404,10 +405,11 @@ public class ProfileFragment extends Fragment
             Log.d(TAG, "Phone update to " + newPhone
                     + " from " + currentUserInfo.getPhone());
 
-            mainActivityViewModel.updateUserField(currentUserInfo,
+            mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
                     FIELD_PHONE, newPhone);
 
             currentUserInfo.setPhone(Long.valueOf(newPhone));
+            mainActivityViewModel.getUser().getValue().setPhone(Long.valueOf(newPhone));
             isChanged = true;
         } else {
             Log.d(TAG, "No change in phone number.");
@@ -421,20 +423,24 @@ public class ProfileFragment extends Fragment
             Log.d(TAG, "Password update to " + newPassword
                     + " from " + currentUserInfo.getPassword());
 
-            mainActivityViewModel.updateUserField(currentUserInfo,
-                    FIELD_PASSWORD, newPassword);
 
-            currentUserInfo.setPassword(newPassword);
 
             currentFirebaseUser.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
                     Log.d(TAG, "FirebaseAuth password Changed.");
+                    mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
+                            FIELD_PASSWORD, editPassword.getText().toString());
+
+                    currentUserInfo.setPassword(editPassword.getText().toString());
+                    mainActivityViewModel.getUser().getValue().setPassword(editPassword.getText().toString());
+                    mAuth.signInWithEmailAndPassword(currentFirebaseUser.getEmail(), editPassword.getText().toString());
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Log.d(TAG, "FirebaseAuth password change error");
+                    Log.e(TAG, e.getLocalizedMessage());
                 }
             });
             isChanged = true;
@@ -456,26 +462,24 @@ public class ProfileFragment extends Fragment
                 public void onSuccess(Void aVoid) {
                     Log.d(TAG, "FirebaseAuth email Changed.");
 
-                    //delete old document
-                    mainActivityViewModel.deleteUser(currentUserInfo);
-
                     //set new email
                     currentUserInfo.setEmail(editEmail.getText().toString().toLowerCase());
+                    mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
+                            FIELD_EMAIL, editEmail.getText().toString().toLowerCase());
+                    mainActivityViewModel.getUser().getValue().setEmail(editEmail.getText().toString().toLowerCase());
 
-                    //write new user with new email
-                    mainActivityViewModel.createAccount(currentUserInfo);
-
-                    prefEditor.putString(LOGIN_CURRENT_USER, editEmail.getText().toString());
+                    prefEditor.putString(LOGIN_CURRENT_USER, currentFirebaseUser.getUid());
                     prefEditor.apply();
+
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Log.d(TAG, "FirebaseAuth email change error");
+                    Log.e(TAG, e.getLocalizedMessage());
                 }
             });
             isChanged = true;
-
         } else {
             Log.d(TAG, "No change in email.");
         }
@@ -505,8 +509,10 @@ public class ProfileFragment extends Fragment
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
                                 // Sign in success, update UI with the signed-in user's information
-                                Log.d(TAG, "createUserWithEmail:success");
-                                addUserToFirebase();
+                                String id = mAuth.getCurrentUser().getUid();
+                                Log.d(TAG, "createUserWithEmail:success. UID: " + id);
+
+                                addUserToFirebase(id);
                                 Toast.makeText(getActivity(), "Account Created", Toast.LENGTH_LONG).show();
                             } else {
                                 // If sign in fails, display a message to the user.
@@ -520,7 +526,7 @@ public class ProfileFragment extends Fragment
         }
     }
 
-    public void addUserToFirebase() {
+    public void addUserToFirebase(String uid) {
         if(getContext() != null) {
             this.loginActivityViewModel = ((LoginActivity) getActivity()).getLoginActivityViewModel();
         }
@@ -532,7 +538,7 @@ public class ProfileFragment extends Fragment
                 Long.parseLong(editPhoneNumber.getText().toString()), editFirstName.getText().toString(),
                 editLastName.getText().toString(), newPlateList);
 
-        loginActivityViewModel.createAccount(newUser);
+        loginActivityViewModel.createAccount(uid ,newUser);
 
         Intent intent = new Intent(getContext(), LoginActivity.class);
         intent.setAction(ACTION_LOAD_LOGIN_PAGE);

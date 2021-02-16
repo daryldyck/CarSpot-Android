@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity
         // needed to ensure vector drawable compatibility
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true);
 
+        Log.d(TAG, "CURRENT USER: " + sharedPrefs.getString(LOGIN_CURRENT_USER, null));
         setup();
 
         if (!viewModel.isInitialized())
