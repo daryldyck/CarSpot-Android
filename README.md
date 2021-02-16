@@ -16,14 +16,14 @@ ___
 **Features include:**
 - Built in Java
 - Uses Google Firestore to store user data
+- Uses Google Authentication to verify login
 ___
 ### Profile Page
 ##### By Brian Domingo
 
 **Features include:**
-- Built in SwiftUI
 - SwiftUI changes appearance depending if user is creating a new profile or updating an existing profile.
-- Uses CoreDara for CRUD operations.
+- Uses Google FireStore for CRUD operations.
 ___
 ### Purchase Ticket Page
 **_By Daryl Dyck_**
@@ -39,7 +39,7 @@ ___
 **Features include:**
 - RecyclerView with all previous parking tickets
 - All ticket data retrieved from Google FireStore
-- Google MapView snapShot image stored with Google Cloud Storage
+- Google MapView snapshot image stored with Google Cloud Storage
 - Shared element transition animations
 ___
 ### Ticket Details Page
