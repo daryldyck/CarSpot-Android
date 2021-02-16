@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
+import android.widget.Toast;
 
 import com.gb.carspot.R;
 import com.gb.carspot.activities.LoginActivity;
@@ -128,7 +129,19 @@ public class ProfileFragment extends Fragment
 
         //Check to see if there is a current user
         currentFirebaseUser = mAuth.getCurrentUser();
-        setupUserInfo();
+        //setupUserInfo();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        String cu = sharedPrefs.getString(LOGIN_CURRENT_USER, null);
+        if(cu != null) {
+            setupUserInfo();
+        }
+        editPassword.setText("");
+        editConfirm.setText("");
     }
 
     @Override
@@ -180,7 +193,6 @@ public class ProfileFragment extends Fragment
                 @Override
                 public void onClick(View view) {
                     createAccount();
-                    addUserToFirebase();
                 }
             });
         }
@@ -380,36 +392,6 @@ public class ProfileFragment extends Fragment
             Log.d(TAG, "No change in last name.");
         }
 
-        //TODO FIX
-        if(!editEmail.getText().toString().equals(currentUserInfo.getEmail())
-                && Utils.checkName(emailInputLayout, getString(R.string.invalid_email))) {
-
-            String newEmail = editEmail.getText().toString().toLowerCase();
-
-            Log.d(TAG, "Email update to " + newEmail
-                    + " from " + currentUserInfo.getEmail());
-
-            mainActivityViewModel.updateUserField(currentUserInfo,
-                    FIELD_EMAIL, newEmail);
-
-            currentUserInfo.setEmail(newEmail);
-
-            currentFirebaseUser.updateEmail(newEmail).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "FirebaseAuth email Changed.");
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d(TAG, "FirebaseAuth email change error");
-                }
-            });
-
-        } else {
-            Log.d(TAG, "No change in email.");
-        }
-
         if(!editPhoneNumber.getText().toString().equals(currentUserInfo.getPhone())
                 && Utils.checkPhone(phoneInputLayout, getString(R.string.invalid_phone_number))) {
 
@@ -456,6 +438,42 @@ public class ProfileFragment extends Fragment
             Log.d(TAG, "No change in password.");
         }
 
+        //Email change
+        if(!editEmail.getText().toString().equals(currentUserInfo.getEmail())
+                && Utils.checkName(emailInputLayout, getString(R.string.invalid_email))) {
+
+            String newEmail = editEmail.getText().toString().toLowerCase();
+
+            Log.d(TAG, "Email update to " + newEmail
+                    + " from " + currentUserInfo.getEmail());
+
+            currentFirebaseUser.updateEmail(newEmail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d(TAG, "FirebaseAuth email Changed.");
+
+                    //delete old document
+                    mainActivityViewModel.deleteUser(currentUserInfo);
+
+                    //set new email
+                    currentUserInfo.setEmail(editEmail.getText().toString().toLowerCase());
+
+                    //write new user with new email
+                    mainActivityViewModel.createAccount(currentUserInfo);
+
+                    prefEditor.putString(LOGIN_CURRENT_USER, editEmail.getText().toString());
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d(TAG, "FirebaseAuth email change error");
+                }
+            });
+
+
+        } else {
+            Log.d(TAG, "No change in email.");
+        }
     }
 
     public void createAccount() {
@@ -466,9 +484,13 @@ public class ProfileFragment extends Fragment
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
+                            addUserToFirebase();
+                            Toast.makeText(getContext(), "Account Created", Toast.LENGTH_LONG);
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                            Log.d(TAG, task.getResult().toString());
+                            Toast.makeText(getContext(), "Could not create account", Toast.LENGTH_SHORT);
                             return;
                         }
                     }
@@ -476,6 +498,10 @@ public class ProfileFragment extends Fragment
     }
 
     public void addUserToFirebase() {
+        if(getContext() != null) {
+            this.loginActivityViewModel = ((LoginActivity) getActivity()).getLoginActivityViewModel();
+        }
+
         List<String> newPlateList = new ArrayList<>();
         newPlateList.add(editPlateNumber.getText().toString().toUpperCase());
 
@@ -483,7 +509,7 @@ public class ProfileFragment extends Fragment
                 Long.parseLong(editPhoneNumber.getText().toString()), editFirstName.getText().toString(),
                 editLastName.getText().toString(), newPlateList);
 
-        userRepository.addUser(newUser);
+        loginActivityViewModel.createAccount(newUser);
 
         Intent intent = new Intent(getContext(), LoginActivity.class);
         intent.setAction(ACTION_LOAD_LOGIN_PAGE);
