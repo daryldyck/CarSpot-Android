@@ -37,6 +37,7 @@ import androidx.annotation.NonNull;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.Observer;
 import androidx.transition.TransitionInflater;
 
@@ -137,7 +138,7 @@ public class ProfileFragment extends Fragment
         super.onResume();
 
         String cu = sharedPrefs.getString(LOGIN_CURRENT_USER, null);
-        if(cu != null) {
+        if(cu != null && getActivity() instanceof MainActivity) {
             setupUserInfo();
         }
         editPassword.setText("");
@@ -170,8 +171,7 @@ public class ProfileFragment extends Fragment
 
         btnSignUp = rootView.findViewById(R.id.createAccount_button);
 
-
-        if(sharedPrefs.getString(LOGIN_CURRENT_USER, null) != null){
+        if(sharedPrefs.getString(LOGIN_CURRENT_USER, null) != null && getActivity() instanceof MainActivity){
             //if user is already in go to main activity
             btnManagePlates.setVisibility(View.VISIBLE);
             inputLayoutEnterPlate.setVisibility(View.INVISIBLE);
@@ -185,7 +185,6 @@ public class ProfileFragment extends Fragment
                 }
             });
         } else {
-            Log.d(TAG, "Load fragment_add_license_plates");
             setupTextFieldsForEditing();
             btnManagePlates.setVisibility(View.INVISIBLE);
             inputLayoutEnterPlate.setVisibility(View.VISIBLE);
@@ -362,6 +361,7 @@ public class ProfileFragment extends Fragment
     }
 
     public void updateAccount() {
+        boolean isChanged = false;
         if(!editFirstName.getText().toString().equals(currentUserInfo.getFirstName())
                 && Utils.checkName(firstNameInputLayout, getString(R.string.cannot_be_empty))) {
 
@@ -373,6 +373,7 @@ public class ProfileFragment extends Fragment
             mainActivityViewModel.updateUserField(currentUserInfo,
                     FIELD_FIRST_NAME, newFirstName);
             currentUserInfo.setFirstName(newFirstName);
+            isChanged = true;
         } else {
             Log.d(TAG, "No change in first name.");
         }
@@ -388,6 +389,7 @@ public class ProfileFragment extends Fragment
             mainActivityViewModel.updateUserField(currentUserInfo,
                     FIELD_LAST_NAME, newLastName);
             currentUserInfo.setLastName(newLastName);
+            isChanged = true;
         } else {
             Log.d(TAG, "No change in last name.");
         }
@@ -404,7 +406,7 @@ public class ProfileFragment extends Fragment
                     FIELD_PHONE, newPhone);
 
             currentUserInfo.setPhone(Long.valueOf(newPhone));
-
+            isChanged = true;
         } else {
             Log.d(TAG, "No change in phone number.");
         }
@@ -433,7 +435,7 @@ public class ProfileFragment extends Fragment
                     Log.d(TAG, "FirebaseAuth password change error");
                 }
             });
-
+            isChanged = true;
         } else {
             Log.d(TAG, "No change in password.");
         }
@@ -469,32 +471,50 @@ public class ProfileFragment extends Fragment
                     Log.d(TAG, "FirebaseAuth email change error");
                 }
             });
-
+            isChanged = true;
 
         } else {
             Log.d(TAG, "No change in email.");
         }
+
+        if(isChanged) {
+            Toast.makeText(getActivity(), "Account updated", Toast.LENGTH_LONG).show();
+        }
     }
 
     public void createAccount() {
-        mAuth.createUserWithEmailAndPassword(editEmail.getText().toString(), editPassword.getText().toString())
-                .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            // Sign in success, update UI with the signed-in user's information
-                            Log.d(TAG, "createUserWithEmail:success");
-                            addUserToFirebase();
-                            Toast.makeText(getContext(), "Account Created", Toast.LENGTH_LONG);
-                        } else {
-                            // If sign in fails, display a message to the user.
-                            Log.w(TAG, "createUserWithEmail:failure", task.getException());
-                            Log.d(TAG, task.getResult().toString());
-                            Toast.makeText(getContext(), "Could not create account", Toast.LENGTH_SHORT);
-                            return;
+        String fName = editFirstName.getText().toString();
+        String lName = editLastName.getText().toString();
+        String email = editEmail.getText().toString();
+        String phone = editPhoneNumber.getText().toString();
+        String password = editPassword.getText().toString();
+        String confirm = editConfirm.getText().toString();
+        String lPlate = editPlateNumber.getText().toString();
+
+        if(fName.isEmpty() && lName.isEmpty() && email.isEmpty() && phone.isEmpty()
+                && password.isEmpty() && confirm.isEmpty() && lPlate.isEmpty()) {
+            Toast.makeText(getActivity(), "Fields should not be empty", Toast.LENGTH_SHORT).show();
+            Log.e(TAG, "Fields should not be empty");
+        } else {
+            mAuth.createUserWithEmailAndPassword(editEmail.getText().toString(), editPassword.getText().toString())
+                    .addOnCompleteListener(getActivity(), new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                Log.d(TAG, "createUserWithEmail:success");
+                                addUserToFirebase();
+                                Toast.makeText(getActivity(), "Account Created", Toast.LENGTH_LONG).show();
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Log.w(TAG, "createUserWithEmail:failure", task.getException());
+                                Log.d(TAG, task.getResult().toString());
+                                Toast.makeText(getActivity(), "Could not create account", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
                         }
-                    }
-                });
+                    });
+        }
     }
 
     public void addUserToFirebase() {

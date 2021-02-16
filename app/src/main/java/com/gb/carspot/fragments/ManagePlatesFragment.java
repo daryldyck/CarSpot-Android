@@ -1,6 +1,7 @@
 package com.gb.carspot.fragments;
 
 import android.content.ClipData;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -33,6 +34,7 @@ import com.google.firebase.auth.FirebaseUser;
 import java.util.ArrayList;
 import java.util.List;
 
+import static com.gb.carspot.utils.Constants.ACTION_LOAD_PROFILE_PAGE;
 import static com.gb.carspot.utils.Constants.LOGIN_CURRENT_USER;
 import static com.gb.carspot.utils.Constants.SHARED_PREF_NAME;
 
@@ -171,4 +173,5 @@ public class ManagePlatesFragment extends Fragment {
         editNewPlate.setText("");
         mainActivityViewModel.updateUserPlates(userInfo, newPlateList);
     }
+
 }

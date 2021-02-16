@@ -77,24 +77,13 @@
         android:id="@+id/licensePlates_recyclerView"
         android:layout_width="@dimen/match_constraint"
         android:layout_height="@dimen/match_constraint"
-        app:layout_constraintBottom_toTopOf="@id/close_button"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/addPlate_constraintLayout"
         tools:listitem="@layout/license_plate_item"/>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/close_button"
-        style="@style/ButtonOutlined"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/close"
-        app:layout_constraintTop_toBottomOf="@id/licensePlates_recyclerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
