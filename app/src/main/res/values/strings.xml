@@ -48,5 +48,11 @@
     <string name="current_location">Current Location</string>
     <string name="ticket_purchase_success">Parking ticket purchase successful!</string>
     <string name="error_purchasing_ticket">There was an error purchasing your parking ticket.</string>
+    <string name="cannot_be_empty">Cannot be empty</string>
+    <string name="invalid_email">Invalid E-mail address</string>
+    <string name="invalid_phone_number">Phone number must be 10 digits</string>
+    <string name="invalid_password">Must be at least 6 characters</string>
+    <string name="passwords_do_not_match">Passwords do not match</string>
+    <string name="two_eight_characters">2-8 characters</string>
 
 </resources>
