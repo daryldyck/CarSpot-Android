@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.gb.carspot.R;
 import com.gb.carspot.activities.MainActivity;
@@ -44,6 +45,7 @@ public class TicketHistoryFragment extends Fragment
 
     private RecyclerView recyclerView;
     private TicketAdapter ticketAdapter;
+    private TextView noHistoryTextView;
 
     public TicketHistoryFragment()
     {
@@ -92,12 +94,22 @@ public class TicketHistoryFragment extends Fragment
             ticketAdapter = new TicketAdapter((MainActivity) getActivity());
             recyclerView.setAdapter(ticketAdapter);
 
+            noHistoryTextView = rootView.findViewById(R.id.noHistory_textView);
+
             // listen for updates in ticket list
             mainActivityViewModel.getParkingTicketList().observe(getActivity(), new Observer<List<ParkingTicket>>()
             {
                 @Override
                 public void onChanged(List<ParkingTicket> parkingTickets)
                 {
+                    if(parkingTickets.size()>0)
+                    {
+                        noHistoryTextView.setVisibility(View.GONE);
+                    }
+                    else
+                    {
+                        noHistoryTextView.setVisibility(View.VISIBLE);
+                    }
                     ticketAdapter.submitList(parkingTickets);
                 }
             });

@@ -48,5 +48,6 @@
     <string name="current_location">Current Location</string>
     <string name="ticket_purchase_success">Parking ticket purchase successful!</string>
     <string name="error_purchasing_ticket">There was an error purchasing your parking ticket.</string>
+    <string name="no_parking_tickets_history">It does not appear you have purchased any parking tickets.</string>
 
 </resources>
