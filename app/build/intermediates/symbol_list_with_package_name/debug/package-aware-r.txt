@@ -1066,6 +1066,7 @@ color colorAccent
 color colorAccentLight
 color colorBackground
 color colorError
+color colorErrorRipple
 color colorOnBackground
 color colorOnBackgroundSecondary
 color colorOnError
@@ -2030,6 +2031,7 @@ id decelerate
 id decelerateAndComplete
 id decor_content_parent
 id default_activity_button
+id delete_button
 id deltaRelative
 id dependency_ordering
 id design_bottom_sheet
@@ -2146,7 +2148,6 @@ id listMode
 id list_item
 id loginCard_constraintLayout
 id login_button
-id login_button2
 id login_container
 id login_password_InputLayout
 id login_password_textField
@@ -2378,15 +2379,9 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
-id tvConfirmPassword
-id tvEmail
 id tvEnterPlate
-id tvFirstName
-id tvLastName
 id tvLicensePlate
-id tvPassword
 id tvPersonalInfo
-id tvPhoneNumber
 id tvPlateNumber
 id unchecked
 id uniform
@@ -2984,6 +2979,7 @@ style Base_Widget_MaterialComponents_Snackbar
 style Base_Widget_MaterialComponents_TextInputEditText
 style Base_Widget_MaterialComponents_TextInputLayout
 style Base_Widget_MaterialComponents_TextView
+style ButtonDelete
 style ButtonOutlined
 style ButtonOutlined2
 style ButtonToggleOutlined
