@@ -31,7 +31,10 @@ import static com.gb.carspot.utils.Constants.COLLECTION_PARKING_TICKETS;
 import static com.gb.carspot.utils.Constants.COLLECTION_USERS;
 import static com.gb.carspot.utils.Constants.FIELD_DATE;
 import static com.gb.carspot.utils.Constants.FIELD_EMAIL;
+import static com.gb.carspot.utils.Constants.FIELD_FIRST_NAME;
+import static com.gb.carspot.utils.Constants.FIELD_LAST_NAME;
 import static com.gb.carspot.utils.Constants.FIELD_LICENSE_PLATES;
+import static com.gb.carspot.utils.Constants.FIELD_PASSWORD;
 import static com.gb.carspot.utils.Constants.FIELD_PHONE;
 
 public class UserRepository
@@ -153,11 +156,33 @@ public class UserRepository
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Log.w(TAG, "Error updating user field " + field, e);
+                            Log.e(TAG, "Error updating user field " + field, e);
                         }
                     });
         }
+    }
 
+    public void updateUserFields(String uid, User newUserInfoObject) {
+        DocumentReference userRef = firestore.collection(COLLECTION_USERS)
+                .document(uid);
+
+        userRef.update(
+                FIELD_EMAIL, newUserInfoObject.getEmail(),
+                FIELD_FIRST_NAME, newUserInfoObject.getFirstName(),
+                FIELD_LAST_NAME, newUserInfoObject.getLastName(),
+                FIELD_PASSWORD, newUserInfoObject.getPassword(),
+                FIELD_PHONE, newUserInfoObject.getPhone()
+        ).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Log.d(TAG, "User successfully updated!");
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Log.e(TAG, "Failed to update user.");
+            }
+        });
     }
 
     public void updateLicensePlates(String uid, List<String> newPlateList)

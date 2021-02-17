@@ -34,6 +34,7 @@ public class Constants
     public static final String ACTION_LOAD_PROFILE_PAGE = "actionLoadProfilePage";
     public static final String ACTION_LOAD_MAIN_PAGE = "actionLoadMainPage";
     public static final String ACTION_LOAD_MANAGE_PLATES_PAGE = "actionLoadManagePlatesPage";
+    public static final String ACTION_LOGOUT = "actionLogOut";
 
     public static final String INITIAL_FRAGMENT_LOAD = "initialFragmentLoad";
 

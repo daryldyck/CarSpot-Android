@@ -85,6 +85,24 @@ public class MainActivity extends AppCompatActivity
         }
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        // get user object when loading complete
+        viewModel.getUser().observe(this, new Observer<User>()
+        {
+            @Override
+            public void onChanged(User user)
+            {
+                Log.d(TAG, "User onChanged");
+                if (user != null)
+                {
+                    Log.d(TAG, "User: " + user.getEmail());
+                }
+            }
+        });
+    }
+
     // initialize views
     private void setup()
     {
@@ -345,6 +363,8 @@ public class MainActivity extends AppCompatActivity
                     break;
                 case ACTION_LOAD_MANAGE_PLATES_PAGE:
                     loadManagePlatesFragment();
+                case ACTION_LOGOUT:
+                    logout();
             }
         }
     }

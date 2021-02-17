@@ -167,6 +167,10 @@ public class MainActivityViewModel extends AndroidViewModel
         return user;
     }
 
+    public void updateUserFields(String uid, User userinfo) {
+        userRepository.updateUserFields(uid, userinfo);
+    }
+
     public MutableLiveData<List<ParkingTicket>> getParkingTicketList()
     {
         return parkingTicketList;

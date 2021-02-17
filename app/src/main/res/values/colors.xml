@@ -27,6 +27,7 @@
     <color name="colorOnError">#ffffff</color>
     <color name="colorOnSurface">#ffffff</color>
     <color name="colorError">#B00000</color>
+    <color name="colorErrorRipple">#FF8888</color>
 
     <color name="primaryBackground">@color/black_10</color>
     <color name="secondaryBackground">@color/white</color>
