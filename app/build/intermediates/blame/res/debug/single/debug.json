@@ -1,15 +1,15 @@
 [
     {
-        "merged": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
+        "merged": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable-night-xxhdpi_card_background.9.png.flat",
+        "source": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\drawable-night-xxhdpi\\card_background.9.png"
     },
     {
         "merged": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable-night-xxhdpi_card_background.9.png.flat",
-        "source": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\drawable-night-xxhdpi\\card_background.9.png"
+        "merged": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher_round.png"
     },
     {
         "merged": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_ticket_history.xml.flat",
@@ -66,6 +66,10 @@
     {
         "merged": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\layout-land_fragment_login.xml.flat",
+        "source": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\layout-land\\fragment_login.xml"
     },
     {
         "merged": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_map_ticket_car.xml.flat",
@@ -170,6 +174,10 @@
     {
         "merged": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\transition_explode.xml.flat",
         "source": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\transition\\explode.xml"
+    },
+    {
+        "merged": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\layout-land_fragment_manage_plates.xml.flat",
+        "source": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\src\\main\\res\\layout-land\\fragment_manage_plates.xml"
     },
     {
         "merged": "D:\\GeorgeBrown\\MADS4006\\Project\\CarSpot\\app\\build\\intermediates\\res\\merged\\debug\\layout_fragment_map.xml.flat",
