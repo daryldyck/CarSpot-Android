@@ -22,8 +22,9 @@ ___
 ##### By Brian Domingo
 
 **Features include:**
-- SwiftUI changes appearance depending if user is creating a new profile or updating an existing profile.
+- XML ui changes appearance depending if user is creating a new profile or updating an existing profile.
 - Uses Google FireStore for CRUD operations.
+- Uses FirebaseAuth to create and update user email and password.
 ___
 ### Purchase Ticket Page
 **_By Daryl Dyck_**
