@@ -1,3 +1,12 @@
+//
+//  Advanced Android - MADS4006
+//  CarSpot
+//
+//  Group 7
+//  Brian Domingo - 101330689
+//  Daryl Dyck - 101338429
+//
+
 package com.gb.carspot.fragments;
 
 import android.app.AlertDialog;
@@ -143,6 +152,9 @@ public class ProfileFragment extends Fragment
     public void onResume() {
         super.onResume();
 
+        clearFields();
+        okayToError = false;
+        setupTextFieldsForEditing();
         String cu = sharedPrefs.getString(LOGIN_CURRENT_USER, null);
         if(cu != null && getActivity() instanceof MainActivity) {
             setupUserInfo();
@@ -197,6 +209,7 @@ public class ProfileFragment extends Fragment
                 }
             });
         } else {
+            clearFields();
             setupTextFieldsForEditing();
             btnDelete.setVisibility(View.INVISIBLE);
             btnManagePlates.setVisibility(View.INVISIBLE);
@@ -375,6 +388,17 @@ public class ProfileFragment extends Fragment
                 }
             }
         });
+    }
+
+    private void clearFields() {
+        okayToError = false;
+        editFirstName.setText("");
+        editLastName.setText("");
+        editEmail.setText("");
+        editPhoneNumber.setText("");
+        editPassword.setText("");
+        editConfirm.setText("");
+        editPlateNumber.setText("");
     }
 
     public void updateAccount() {
@@ -663,11 +687,8 @@ public class ProfileFragment extends Fragment
                         currentFirebaseUser.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                mainActivityViewModel.deleteUser(currentFirebaseUser.getUid());
+                                mainActivityViewModel.deleteUser(sharedPrefs.getString(LOGIN_CURRENT_USER, null));
                                 Toast.makeText(getActivity(), "Account deleted", Toast.LENGTH_LONG);
-
-                                //Sign out current firebase user
-                                mAuth.signOut();
 
                                 Intent intent = new Intent(getContext(), MainActivity.class);
                                 intent.setAction(ACTION_LOGOUT);
