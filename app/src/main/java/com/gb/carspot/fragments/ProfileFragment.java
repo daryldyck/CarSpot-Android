@@ -254,8 +254,6 @@ public class ProfileFragment extends Fragment
                         user.getLicensePlates());
             }
         });
-
-        Log.d(TAG, "Loaded user: " + currentUserInfo.toString());
     }
 
     private void setupTextFieldsForEditing() {
@@ -532,9 +530,6 @@ public class ProfileFragment extends Fragment
                 public void onSuccess(Void aVoid) {
                     Log.d(TAG, "FirebaseAuth password Changed.");
 
-//                    mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
-//                            FIELD_PASSWORD, editPassword.getText().toString());
-
                     currentUserInfo.setPassword(editPassword.getText().toString());
 
                     mainActivityViewModel.getUser().getValue().setPassword(editPassword.getText().toString());
@@ -575,9 +570,6 @@ public class ProfileFragment extends Fragment
                     //set new email
                     currentUserInfo.setEmail(editEmail.getText().toString().toLowerCase());
 
-//                    mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
-//                            FIELD_EMAIL, editEmail.getText().toString().toLowerCase());
-
                     mainActivityViewModel.getUser().getValue().setEmail(editEmail.getText().toString().toLowerCase());
 
                     prefEditor.putString(LOGIN_CURRENT_USER, currentFirebaseUser.getUid());
@@ -586,83 +578,6 @@ public class ProfileFragment extends Fragment
                     Log.d(TAG, "Email change");
                     mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(), FIELD_EMAIL,
                             editEmail.getText().toString());
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d(TAG, "FirebaseAuth email change error");
-                    Log.e(TAG, e.getLocalizedMessage());
-                }
-            });
-        } else {
-            Log.d(TAG, "No change in email.");
-        }
-    }
-
-    public void updateEmailAndPassword() {
-        //Email change
-        if (!editEmail.getText().toString().equals(currentUserInfo.getEmail())
-                && Utils.checkName(emailInputLayout, getString(R.string.invalid_email))) {
-
-            String newEmail = editEmail.getText().toString().toLowerCase();
-
-            Log.d(TAG, "Email update to " + newEmail
-                    + " from " + currentUserInfo.getEmail());
-
-            currentFirebaseUser.updateEmail(newEmail).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "FirebaseAuth email Changed.");
-
-                    //set new email
-                    currentUserInfo.setEmail(editEmail.getText().toString().toLowerCase());
-
-                    mainActivityViewModel.getUser().getValue().setEmail(editEmail.getText().toString().toLowerCase());
-
-                    prefEditor.putString(LOGIN_CURRENT_USER, currentFirebaseUser.getUid());
-                    prefEditor.apply();
-                    fieldChanged = true;
-                    Log.d(TAG, "Email change");
-
-                    currentFirebaseUser.updatePassword(editPassword.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            String newPassword = editPassword.getText().toString();
-
-                            Log.d(TAG, "Password update to " + newPassword
-                                    + " from " + currentUserInfo.getPassword());
-
-                            currentFirebaseUser.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Log.d(TAG, "FirebaseAuth password Changed.");
-
-                                    currentUserInfo.setPassword(editPassword.getText().toString());
-
-                                    mainActivityViewModel.getUser().getValue().setPassword(editPassword.getText().toString());
-
-                                    mAuth.signInWithEmailAndPassword(currentFirebaseUser.getEmail(), editPassword.getText().toString());
-
-                                    mainActivityViewModel.updateUserFields(currentFirebaseUser.getUid(),
-                                            mainActivityViewModel.getUser().getValue());
-
-                                    fieldChanged = true;
-                                    Log.d(TAG, "Password change");
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Log.e(TAG, "Could not update password after email");
-                                }
-                            });
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Log.e(TAG, "Could not update email before password");
-                        }
-                    });
-
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
