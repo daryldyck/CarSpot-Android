@@ -363,8 +363,10 @@ public class MainActivity extends AppCompatActivity
                     break;
                 case ACTION_LOAD_MANAGE_PLATES_PAGE:
                     loadManagePlatesFragment();
+                    break;
                 case ACTION_LOGOUT:
                     logout();
+                    break;
             }
         }
     }
