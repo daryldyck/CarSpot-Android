@@ -229,4 +229,8 @@ public class Utils
             return 0.002;
         }
     }
+
+    public void clearFieldError(TextInputLayout textInputLayout) {
+        clearError(textInputLayout);
+    }
 }

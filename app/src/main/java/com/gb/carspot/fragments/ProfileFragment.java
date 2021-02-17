@@ -1,10 +1,13 @@
 package com.gb.carspot.fragments;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -47,12 +50,14 @@ import java.util.List;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_LOGIN_PAGE;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_MANAGE_PLATES_PAGE;
 import static com.gb.carspot.utils.Constants.ACTION_LOAD_PROFILE_PAGE;
+import static com.gb.carspot.utils.Constants.ACTION_LOGOUT;
 import static com.gb.carspot.utils.Constants.FIELD_EMAIL;
 import static com.gb.carspot.utils.Constants.FIELD_FIRST_NAME;
 import static com.gb.carspot.utils.Constants.FIELD_LAST_NAME;
 import static com.gb.carspot.utils.Constants.FIELD_PASSWORD;
 import static com.gb.carspot.utils.Constants.FIELD_PHONE;
 import static com.gb.carspot.utils.Constants.LOGIN_CURRENT_USER;
+import static com.gb.carspot.utils.Constants.LOGIN_REMEMBER_ME;
 import static com.gb.carspot.utils.Constants.SHARED_PREF_NAME;
 
 /**
@@ -82,6 +87,7 @@ public class ProfileFragment extends Fragment
     private TextInputLayout inputLayoutEnterPlate;
     private MaterialButton btnManagePlates;
     private MaterialButton btnSignUp;
+    private MaterialButton btnDelete;
 
     private TextInputLayout firstNameInputLayout;
     private TextInputLayout lastNameInputLayout;
@@ -92,6 +98,7 @@ public class ProfileFragment extends Fragment
 
     private User currentUserInfo;
     private boolean okayToError = false;
+    boolean fieldChanged = false;
     private FirebaseUser currentFirebaseUser;
 
     public ProfileFragment()
@@ -167,12 +174,20 @@ public class ProfileFragment extends Fragment
         });
 
         btnSignUp = rootView.findViewById(R.id.createAccount_button);
+        btnDelete = rootView.findViewById(R.id.delete_button);
 
         if(sharedPrefs.getString(LOGIN_CURRENT_USER, null) != null && getActivity() instanceof MainActivity){
             //if user is already in go to main activity
             btnManagePlates.setVisibility(View.VISIBLE);
+            btnDelete.setVisibility(View.VISIBLE);
             inputLayoutEnterPlate.setVisibility(View.INVISIBLE);
             setupUserInfo();
+            btnDelete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    deleteUser();
+                }
+            });
             btnSignUp.setText("Update Account Info");
             btnSignUp.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -183,6 +198,7 @@ public class ProfileFragment extends Fragment
             });
         } else {
             setupTextFieldsForEditing();
+            btnDelete.setVisibility(View.INVISIBLE);
             btnManagePlates.setVisibility(View.INVISIBLE);
             inputLayoutEnterPlate.setVisibility(View.VISIBLE);
             btnSignUp.setOnClickListener(new View.OnClickListener() {
@@ -362,7 +378,9 @@ public class ProfileFragment extends Fragment
     }
 
     public void updateAccount() {
-        if(!editFirstName.getText().toString().equals(currentUserInfo.getFirstName())
+        fieldChanged = false;
+
+        if (!editFirstName.getText().toString().equals(currentUserInfo.getFirstName())
                 && Utils.checkName(firstNameInputLayout, getString(R.string.cannot_be_empty))) {
 
             String newFirstName = editFirstName.getText().toString();
@@ -370,15 +388,15 @@ public class ProfileFragment extends Fragment
             Log.d(TAG, "First name update to " + newFirstName
                     + " from " + currentUserInfo.getFirstName());
 
-            mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
-                    FIELD_FIRST_NAME, newFirstName);
             currentUserInfo.setFirstName(newFirstName);
             mainActivityViewModel.getUser().getValue().setFirstName(newFirstName);
+            fieldChanged = true;
+            Log.d(TAG, "Firstname change");
         } else {
             Log.d(TAG, "No change in first name.");
         }
 
-        if(!editLastName.getText().toString().equals(currentUserInfo.getLastName())
+        if (!editLastName.getText().toString().equals(currentUserInfo.getLastName())
                 && Utils.checkName(lastNameInputLayout, getString(R.string.cannot_be_empty))) {
 
             String newLastName = editLastName.getText().toString();
@@ -386,15 +404,15 @@ public class ProfileFragment extends Fragment
             Log.d(TAG, "First name update to " + newLastName
                     + " from " + currentUserInfo.getLastName());
 
-            mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
-                    FIELD_LAST_NAME, newLastName);
             currentUserInfo.setLastName(newLastName);
             mainActivityViewModel.getUser().getValue().setLastName(newLastName);
+            fieldChanged = true;
+            Log.d(TAG, "Lastname change");
         } else {
             Log.d(TAG, "No change in last name.");
         }
 
-        if(!editPhoneNumber.getText().toString().equals(currentUserInfo.getPhone())
+        if (Long.valueOf(editPhoneNumber.getText().toString()) != currentUserInfo.getPhone()
                 && Utils.checkPhone(phoneInputLayout, getString(R.string.invalid_phone_number))) {
 
             String newPhone = editPhoneNumber.getText().toString();
@@ -402,80 +420,21 @@ public class ProfileFragment extends Fragment
             Log.d(TAG, "Phone update to " + newPhone
                     + " from " + currentUserInfo.getPhone());
 
-            mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
-                    FIELD_PHONE, newPhone);
-
             currentUserInfo.setPhone(Long.valueOf(newPhone));
             mainActivityViewModel.getUser().getValue().setPhone(Long.valueOf(newPhone));
+            fieldChanged = true;
+            Log.d(TAG, "Phone change");
         } else {
             Log.d(TAG, "No change in phone number.");
         }
 
-        if(!editPassword.getText().toString().equals(currentUserInfo.getPassword())
-                && Utils.checkConfirm(passwordInputLayout, confirmInputLayout, getString(R.string.invalid_email))) {
+        updatePassword();
+        updateEmail();
 
-            String newPassword = editPassword.getText().toString();
-
-            Log.d(TAG, "Password update to " + newPassword
-                    + " from " + currentUserInfo.getPassword());
-
-
-
-            currentFirebaseUser.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "FirebaseAuth password Changed.");
-                    mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
-                            FIELD_PASSWORD, editPassword.getText().toString());
-
-                    currentUserInfo.setPassword(editPassword.getText().toString());
-                    mainActivityViewModel.getUser().getValue().setPassword(editPassword.getText().toString());
-                    mAuth.signInWithEmailAndPassword(currentFirebaseUser.getEmail(), editPassword.getText().toString());
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d(TAG, "FirebaseAuth password change error");
-                    Log.e(TAG, e.getLocalizedMessage());
-                }
-            });
-        } else {
-            Log.d(TAG, "No change in password.");
-        }
-
-        //Email change
-        if(!editEmail.getText().toString().equals(currentUserInfo.getEmail())
-                && Utils.checkName(emailInputLayout, getString(R.string.invalid_email))) {
-
-            String newEmail = editEmail.getText().toString().toLowerCase();
-
-            Log.d(TAG, "Email update to " + newEmail
-                    + " from " + currentUserInfo.getEmail());
-
-            currentFirebaseUser.updateEmail(newEmail).addOnSuccessListener(new OnSuccessListener<Void>() {
-                @Override
-                public void onSuccess(Void aVoid) {
-                    Log.d(TAG, "FirebaseAuth email Changed.");
-
-                    //set new email
-                    currentUserInfo.setEmail(editEmail.getText().toString().toLowerCase());
-                    mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
-                            FIELD_EMAIL, editEmail.getText().toString().toLowerCase());
-                    mainActivityViewModel.getUser().getValue().setEmail(editEmail.getText().toString().toLowerCase());
-
-                    prefEditor.putString(LOGIN_CURRENT_USER, currentFirebaseUser.getUid());
-                    prefEditor.apply();
-
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    Log.d(TAG, "FirebaseAuth email change error");
-                    Log.e(TAG, e.getLocalizedMessage());
-                }
-            });
-        } else {
-            Log.d(TAG, "No change in email.");
+        if(fieldChanged) {
+            mainActivityViewModel.updateUserFields(currentFirebaseUser.getUid(),
+                    mainActivityViewModel.getUser().getValue());
+            Toast.makeText(getActivity(), "Account updated", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -535,4 +494,196 @@ public class ProfileFragment extends Fragment
         startActivity(intent);
     }
 
+    public void updatePassword() {
+        if (!editPassword.getText().toString().equals(currentUserInfo.getPassword())
+                && Utils.checkConfirm(passwordInputLayout, confirmInputLayout, getString(R.string.invalid_email))) {
+
+            String newPassword = editPassword.getText().toString();
+
+            Log.d(TAG, "Password update to " + newPassword
+                    + " from " + currentUserInfo.getPassword());
+
+            currentFirebaseUser.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d(TAG, "FirebaseAuth password Changed.");
+
+//                    mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
+//                            FIELD_PASSWORD, editPassword.getText().toString());
+
+                    currentUserInfo.setPassword(editPassword.getText().toString());
+
+                    mainActivityViewModel.getUser().getValue().setPassword(editPassword.getText().toString());
+
+                    mAuth.signInWithEmailAndPassword(currentFirebaseUser.getEmail(), editPassword.getText().toString());
+                    mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(), FIELD_PASSWORD,
+                            editPassword.getText().toString());
+                    fieldChanged = true;
+                    Log.d(TAG, "Password change");
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d(TAG, "FirebaseAuth password change error");
+                    Log.e(TAG, e.getLocalizedMessage());
+                }
+            });
+        } else {
+            Log.d(TAG, "No change in password.");
+        }
+    }
+
+    public void updateEmail() {
+        //Email change
+        if (!editEmail.getText().toString().equals(currentUserInfo.getEmail())
+                && Utils.checkName(emailInputLayout, getString(R.string.invalid_email))) {
+
+            String newEmail = editEmail.getText().toString().toLowerCase();
+
+            Log.d(TAG, "Email update to " + newEmail
+                    + " from " + currentUserInfo.getEmail());
+
+            currentFirebaseUser.updateEmail(newEmail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d(TAG, "FirebaseAuth email Changed.");
+
+                    //set new email
+                    currentUserInfo.setEmail(editEmail.getText().toString().toLowerCase());
+
+//                    mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(),
+//                            FIELD_EMAIL, editEmail.getText().toString().toLowerCase());
+
+                    mainActivityViewModel.getUser().getValue().setEmail(editEmail.getText().toString().toLowerCase());
+
+                    prefEditor.putString(LOGIN_CURRENT_USER, currentFirebaseUser.getUid());
+                    prefEditor.apply();
+                    fieldChanged = true;
+                    Log.d(TAG, "Email change");
+                    mainActivityViewModel.updateUserField(currentFirebaseUser.getUid(), FIELD_EMAIL,
+                            editEmail.getText().toString());
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d(TAG, "FirebaseAuth email change error");
+                    Log.e(TAG, e.getLocalizedMessage());
+                }
+            });
+        } else {
+            Log.d(TAG, "No change in email.");
+        }
+    }
+
+    public void updateEmailAndPassword() {
+        //Email change
+        if (!editEmail.getText().toString().equals(currentUserInfo.getEmail())
+                && Utils.checkName(emailInputLayout, getString(R.string.invalid_email))) {
+
+            String newEmail = editEmail.getText().toString().toLowerCase();
+
+            Log.d(TAG, "Email update to " + newEmail
+                    + " from " + currentUserInfo.getEmail());
+
+            currentFirebaseUser.updateEmail(newEmail).addOnSuccessListener(new OnSuccessListener<Void>() {
+                @Override
+                public void onSuccess(Void aVoid) {
+                    Log.d(TAG, "FirebaseAuth email Changed.");
+
+                    //set new email
+                    currentUserInfo.setEmail(editEmail.getText().toString().toLowerCase());
+
+                    mainActivityViewModel.getUser().getValue().setEmail(editEmail.getText().toString().toLowerCase());
+
+                    prefEditor.putString(LOGIN_CURRENT_USER, currentFirebaseUser.getUid());
+                    prefEditor.apply();
+                    fieldChanged = true;
+                    Log.d(TAG, "Email change");
+
+                    currentFirebaseUser.updatePassword(editPassword.getText().toString()).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void aVoid) {
+                            String newPassword = editPassword.getText().toString();
+
+                            Log.d(TAG, "Password update to " + newPassword
+                                    + " from " + currentUserInfo.getPassword());
+
+                            currentFirebaseUser.updatePassword(newPassword).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG, "FirebaseAuth password Changed.");
+
+                                    currentUserInfo.setPassword(editPassword.getText().toString());
+
+                                    mainActivityViewModel.getUser().getValue().setPassword(editPassword.getText().toString());
+
+                                    mAuth.signInWithEmailAndPassword(currentFirebaseUser.getEmail(), editPassword.getText().toString());
+
+                                    mainActivityViewModel.updateUserFields(currentFirebaseUser.getUid(),
+                                            mainActivityViewModel.getUser().getValue());
+
+                                    fieldChanged = true;
+                                    Log.d(TAG, "Password change");
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Log.e(TAG, "Could not update password after email");
+                                }
+                            });
+                        }
+                    }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Log.e(TAG, "Could not update email before password");
+                        }
+                    });
+
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Log.d(TAG, "FirebaseAuth email change error");
+                    Log.e(TAG, e.getLocalizedMessage());
+                }
+            });
+        } else {
+            Log.d(TAG, "No change in email.");
+        }
+    }
+
+    public void deleteUser() {
+        new AlertDialog.Builder(getActivity())
+                .setTitle("Delete Account")
+                .setMessage("Are you sure you want to delete your account?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Log.d(TAG, "Deleting user");
+
+                        currentFirebaseUser.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                mainActivityViewModel.deleteUser(currentFirebaseUser.getUid());
+                                Toast.makeText(getActivity(), "Account deleted", Toast.LENGTH_LONG);
+
+                                //Sign out current firebase user
+                                mAuth.signOut();
+
+                                Intent intent = new Intent(getContext(), MainActivity.class);
+                                intent.setAction(ACTION_LOGOUT);
+                                startActivity(intent);
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(getActivity(), "Error deleting account", Toast.LENGTH_LONG);
+                            }
+                        });
+                    }
+                })
+                // A null listener allows the button to dismiss the dialog and take no further action.
+                .setNegativeButton(android.R.string.no, null)
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
+    }
 }
