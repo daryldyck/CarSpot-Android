@@ -50,6 +50,4 @@ ___
 ___
 #### Additional items
 - Logo & App Icon by Daryl Dyck
-- Screenshots & Screen Recording by Daryl Dyck
-- All color assets added by Daryl Dyck
 - App framework by Daryl Dyck
