@@ -2,6 +2,7 @@
 
 ### Authors
 [Brian Domingo](https://github.com/BrianJayD)
+
 [Daryl Dyck](https://github.com/daryldyck/)
 ___
 ![Screenshots](images/Screenshots.jpg)
